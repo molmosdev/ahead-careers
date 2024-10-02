@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(./app/styles/fonts.css);
+@import url(./app/styles/colors.css);
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}

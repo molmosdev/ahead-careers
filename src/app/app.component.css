@@ -1,0 +1,68 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+
+  header {
+    position: relative;
+    padding-bottom: 50px;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background-color: var(--blue);
+      border-bottom-left-radius: 100%;
+      border-bottom-right-radius: 100%;
+      scale: 1.2;
+    }
+
+    .header-wrapper {
+      background-color: var(--blue);
+      padding: 30px 40px 50px 40px;
+      box-sizing: border-box;
+      color: white;
+
+      .max-header-wrapper {
+        display: flex;
+        flex-direction: column;
+        max-width: 1400px;
+        margin-inline: auto;
+        gap: 80px;
+
+        .header-top {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+
+          .logo {
+            width: 100px;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+
+        .header-bottom {
+          align-items: center;
+          gap: 30px;
+          display: flex;
+          flex-direction: column;
+
+          .slogan {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-size: 45px;
+            font-family: 600;
+          }
+        }
+      }
+    }
+  }
+}
