@@ -42,6 +42,7 @@
 
           .logo {
             width: 100px;
+            height: 42.45px;
 
             &:hover {
               cursor: pointer;
