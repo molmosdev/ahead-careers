@@ -17,13 +17,8 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  // Generate and serve the sitemap.xml
-  server.get('/sitemap.xml', (req, res) => {
-    const sitemap = generateSitemap(); // Función para generar el sitemap
-    res.setHeader('Content-Type', 'application/xml');
-    res.send(sitemap);
-  });
-
+  // Example Express Rest API endpoints
+  // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
   server.get(
     '**',
@@ -50,25 +45,6 @@ export function app(): express.Express {
   });
 
   return server;
-}
-
-// Function that generates the content of sitemap.xml
-function generateSitemap(): string {
-  const urls = [{ loc: 'https://aheadcareers.com/', priority: '1.0', changefreq: 'daily' }];
-
-  let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n';
-  sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
-
-  urls.forEach(url => {
-    sitemap += `  <url>\n`;
-    sitemap += `    <loc>${url.loc}</loc>\n`;
-    sitemap += `    <changefreq>${url.changefreq}</changefreq>\n`;
-    sitemap += `    <priority>${url.priority}</priority>\n`;
-    sitemap += `  </url>\n`;
-  });
-
-  sitemap += '</urlset>';
-  return sitemap;
 }
 
 function run(): void {
