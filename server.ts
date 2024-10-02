@@ -3,6 +3,7 @@ import { CommonEngine } from '@angular/ssr';
 import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
+import { writeFileSync } from 'fs'; // Asegúrate de importar 'fs' para escribir el archivo
 import bootstrap from './src/main.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
@@ -17,8 +18,19 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
+  // Función para generar el sitemap y escribirlo en la carpeta browser
+  server.get('/sitemap.xml', (req, res) => {
+    const sitemap = generateSitemap(); // Generar el contenido del sitemap
+    const sitemapPath = join(browserDistFolder, 'sitemap.xml'); // Ruta donde se guardará el sitemap
+
+    // Escribir el sitemap en disco
+    writeFileSync(sitemapPath, sitemap);
+
+    // Enviar el sitemap al cliente
+    res.setHeader('Content-Type', 'application/xml');
+    res.send(sitemap);
+  });
+
   // Serve static files from /browser
   server.get(
     '**',
@@ -45,6 +57,25 @@ export function app(): express.Express {
   });
 
   return server;
+}
+
+// Función que genera el contenido del sitemap.xml
+function generateSitemap(): string {
+  const urls = [{ loc: 'https://aheadcareers.com/', priority: '1.0', changefreq: 'daily' }];
+
+  let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
+  urls.forEach(url => {
+    sitemap += `  <url>\n`;
+    sitemap += `    <loc>${url.loc}</loc>\n`;
+    sitemap += `    <changefreq>${url.changefreq}</changefreq>\n`;
+    sitemap += `    <priority>${url.priority}</priority>\n`;
+    sitemap += `  </url>\n`;
+  });
+
+  sitemap += '</urlset>';
+  return sitemap;
 }
 
 function run(): void {
