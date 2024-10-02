@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { Router, NavigationEnd, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRouteSnapshot, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { HeaderComponent } from './core/components/header/header.component';
 
 @Component({
   selector: 'ac-root',
+  standalone: true,
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
