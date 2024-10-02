@@ -21,6 +21,7 @@ a {
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
   color: var(--blue);
+  user-select: none;
 
   &.negative {
     color: var(--white);
@@ -28,5 +29,9 @@ a {
 
   &:not(.negative) {
     font-weight: 600;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }
