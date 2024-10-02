@@ -16,3 +16,17 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
+
+a {
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  color: var(--blue);
+
+  &.negative {
+    color: var(--white);
+  }
+
+  &:not(.negative) {
+    font-weight: 600;
+  }
+}

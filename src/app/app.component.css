@@ -39,6 +39,7 @@
           display: flex;
           width: 100%;
           justify-content: space-between;
+          align-items: center;
 
           .logo {
             width: 100px;
@@ -60,7 +61,39 @@
             font-family: 'Poppins', sans-serif;
             text-align: center;
             font-size: 45px;
-            font-family: 600;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  :host {
+    header {
+      .header-wrapper {
+        padding: 20px 20px 20px 20px;
+
+        .max-header-wrapper {
+          gap: 50px;
+
+          .header-top {
+            .logo {
+              width: 80px;
+              height: 34px;
+            }
+
+            ac-cta {
+              margin-right: -10px;
+            }
+          }
+
+          .header-bottom {
+            .slogan {
+              font-size: 26px;
+            }
           }
         }
       }
