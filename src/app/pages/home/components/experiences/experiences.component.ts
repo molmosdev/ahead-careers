@@ -77,6 +77,8 @@ export class ExperiencesComponent {
   currentIndex = signal(0);
   touchStartX = 0;
   touchEndX = 0;
+  touchStartY = 0;
+  touchEndY = 0;
 
   constructor(private sanityService: SanityService) {
     this.getComponentData();
@@ -120,24 +122,26 @@ export class ExperiencesComponent {
 
   onTouchStart(event: TouchEvent) {
     this.touchStartX = event.changedTouches[0].screenX;
+    this.touchStartY = event.changedTouches[0].screenY;
   }
 
   onTouchMove(event: TouchEvent) {
     this.touchEndX = event.changedTouches[0].screenX;
-    this.preventTouchScroll(event);
+    this.touchEndY = event.changedTouches[0].screenY;
   }
 
   onTouchEnd() {
+    const deltaY = Math.abs(this.touchEndY - this.touchStartY);
+
+    if (deltaY > 10) {
+      // No hacer nada si el desplazamiento vertical es mayor a 10 píxeles
+      return;
+    }
+
     if (this.touchEndX < this.touchStartX) {
       this.next();
     } else if (this.touchEndX > this.touchStartX) {
       this.prev();
-    }
-  }
-
-  preventTouchScroll(event: TouchEvent) {
-    if (Math.abs(this.touchEndX - this.touchStartX) > 10) {
-      event.preventDefault();
     }
   }
 }
