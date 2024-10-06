@@ -124,6 +124,7 @@ export class ExperiencesComponent {
 
   onTouchMove(event: TouchEvent) {
     this.touchEndX = event.changedTouches[0].screenX;
+    this.preventTouchScroll(event);
   }
 
   onTouchEnd() {
@@ -131,6 +132,12 @@ export class ExperiencesComponent {
       this.next();
     } else if (this.touchEndX > this.touchStartX) {
       this.prev();
+    }
+  }
+
+  preventTouchScroll(event: TouchEvent) {
+    if (Math.abs(this.touchEndX - this.touchStartX) > 10) {
+      event.preventDefault();
     }
   }
 }
