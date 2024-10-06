@@ -1,0 +1,34 @@
+@if (data()) {
+  <div class="section-title">
+    {{ data()!.title }}
+  </div>
+
+  <div class="carousel-container">
+    <div class="carousel-wrapper">
+      @for (experience of data()!.experiences; track experience) {
+        <div class="carousel-box" [@carouselAnimation]="getPositionState($index)">
+          <div class="content" [innerHTML]="getHtmlFromBlock(experience!.content)"></div>
+          <div class="bottom">
+            <div class="author">
+              {{ experience!.author }}
+            </div>
+            <div class="position">
+              {{ experience!.position }}
+            </div>
+            <div class="location">
+              {{ experience!.location }}
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="arrows">
+      <button class="prev-button" (click)="prev()">
+        <i class="icon-arrow-left"></i>
+      </button>
+      <button class="next-button" (click)="next()">
+        <i class="icon-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+}
