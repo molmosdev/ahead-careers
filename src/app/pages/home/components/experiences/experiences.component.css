@@ -80,6 +80,8 @@
     transform: translate(-50%, -50%);
     z-index: 10;
     left: 50%;
+    padding-inline: 20px;
+    box-sizing: border-box;
 
     .prev-button,
     .next-button {
