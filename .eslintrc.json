@@ -33,6 +33,18 @@
       "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/recommended", "plugin:@angular-eslint/template/accessibility"],
       "rules": {}
+    },
+    {
+      "files": ["*.js"],
+      "env": {
+        "es6": true,
+        "node": true
+      },
+      "parserOptions": {
+        "ecmaVersion": 2018
+      },
+      "extends": ["eslint:recommended"],
+      "rules": {}
     }
   ]
 }

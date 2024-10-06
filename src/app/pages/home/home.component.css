@@ -1,15 +1,9 @@
 :host {
-  .header-bottom {
-    align-items: center;
-    gap: 30px;
-    display: flex;
-    flex-direction: column;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding: 40px;
 
-    .slogan {
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-      font-size: 45px;
-      font-weight: 600;
-    }
+  @media (max-width: 768px) {
+    padding: 20px;
   }
 }

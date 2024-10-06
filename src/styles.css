@@ -35,3 +35,11 @@ a {
     cursor: pointer;
   }
 }
+
+.section-title {
+  color: var(--blue);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
