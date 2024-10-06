@@ -12,6 +12,8 @@ import { HeaderComponent } from './core/components/header/header.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  title: string = '';
+
   constructor(
     private meta: Meta,
     private projectTitle: Title,
@@ -26,6 +28,7 @@ export class AppComponent {
   }
 
   setMetaTagsForRoute(route: ActivatedRouteSnapshot) {
+    this.title = route.data['title'];
     this.projectTitle.setTitle(route.data['title']);
     this.meta.updateTag({ name: 'description', content: route.data['description'] });
     this.meta.updateTag({ name: 'keywords', content: route.data['keywords'] });
