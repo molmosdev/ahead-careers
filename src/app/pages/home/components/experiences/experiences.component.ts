@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, signal } from '@angular/core';
 import { Experiences } from './interfaces/experiences';
 import { SanityService } from '../../../../core/services/sanity.service';
@@ -49,6 +48,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class ExperiencesComponent {
   data = signal<Experiences | undefined>(undefined);
   currentIndex = signal(0);
+  touchStartX = 0;
+  touchEndX = 0;
 
   constructor(private sanityService: SanityService) {
     this.getComponentData();
@@ -58,6 +59,7 @@ export class ExperiencesComponent {
     this.data.set((await this.sanityService.getDataByType('experiences', true)) as Experiences);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getHtmlFromBlock(block: any): string {
     return this.sanityService.transformBlockToHtml(block);
   }
@@ -87,5 +89,21 @@ export class ExperiencesComponent {
     const total = this.data()!.experiences.length;
     const newIndex = (this.currentIndex() + 1) % total;
     this.currentIndex.set(newIndex);
+  }
+
+  onTouchStart(event: TouchEvent) {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  onTouchMove(event: TouchEvent) {
+    this.touchEndX = event.changedTouches[0].screenX;
+  }
+
+  onTouchEnd() {
+    if (this.touchEndX < this.touchStartX) {
+      this.next();
+    } else if (this.touchEndX > this.touchStartX) {
+      this.prev();
+    }
   }
 }

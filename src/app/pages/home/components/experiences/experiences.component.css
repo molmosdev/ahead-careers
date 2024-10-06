@@ -77,7 +77,6 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: calc(100vw - 20px);
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
@@ -126,6 +125,10 @@
       .carousel-box {
         max-width: calc(100vw - 121px);
       }
+    }
+
+    .arrows {
+      display: none;
     }
   }
 }

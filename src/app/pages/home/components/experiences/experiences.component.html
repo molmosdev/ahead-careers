@@ -3,7 +3,11 @@
     {{ data()!.title }}
   </div>
 
-  <div class="carousel-container">
+  <div
+    class="carousel-container"
+    (touchstart)="onTouchStart($event)"
+    (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd()">
     <div class="carousel-wrapper">
       @for (experience of data()!.experiences; track experience) {
         <div class="carousel-box" [@carouselAnimation]="getPositionState($index)">
