@@ -1,0 +1,15 @@
+:host {
+  .header-bottom {
+    align-items: center;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+
+    .slogan {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      font-size: 45px;
+      font-weight: 600;
+    }
+  }
+}

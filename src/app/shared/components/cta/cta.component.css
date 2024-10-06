@@ -16,7 +16,7 @@
       transform 0.2s;
 
     &:active {
-      transform: scale(0.99);
+      transform: scale(0.97);
     }
 
     &.primary {
