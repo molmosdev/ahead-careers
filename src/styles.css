@@ -42,6 +42,7 @@ p {
 }
 
 .section-title {
+  font-family: 'Poppins', sans-serif;
   color: var(--blue);
   font-size: 2rem;
   font-weight: 600;
