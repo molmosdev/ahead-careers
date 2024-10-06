@@ -133,7 +133,7 @@ export class ExperiencesComponent {
   onTouchEnd() {
     const deltaY = Math.abs(this.touchEndY - this.touchStartY);
 
-    if (deltaY > 10) {
+    if (deltaY > 30) {
       // No hacer nada si el desplazamiento vertical es mayor a 10 píxeles
       return;
     }
