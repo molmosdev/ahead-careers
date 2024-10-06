@@ -41,7 +41,30 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           zIndex: 0,
         })
       ),
-      transition('* => *', [animate('0.5s ease-in-out')]),
+      transition('* => center, center => *', [animate('0.5s ease-in-out')]),
+
+      transition('right => left', [
+        animate('0.5s ease-in-out', style({ opacity: 0 })),
+        animate('0s', style({ transform: 'translateX(-70%) scale(0.7) rotateY(15deg)' })),
+        animate('0.5s ease-in-out', style({ opacity: 1 })),
+      ]),
+      transition('right => void', [animate('0.5s ease-in-out', style({ opacity: 0 }))]),
+
+      transition('left => right, left => void', [
+        animate('0.5s ease-in-out', style({ opacity: 0 })),
+        animate('0s', style({ transform: 'translateX(70%) scale(0.7) rotateY(-15deg)' })),
+        animate('0.5s ease-in-out', style({ opacity: 1 })),
+      ]),
+      transition('left => void', [animate('0.5s ease-in-out', style({ opacity: 0 }))]),
+
+      transition('void => right', [
+        style({ transform: 'translateX(70%) scale(0.7) rotateY(-15deg)', opacity: 0 }),
+        animate('0.5s ease-in-out', style({ opacity: 1 })),
+      ]),
+      transition('void => left', [
+        style({ transform: 'translateX(-70%) scale(0.7) rotateY(15deg)', opacity: 0 }),
+        animate('0.5s ease-in-out', style({ opacity: 1 })),
+      ]),
     ]),
   ],
 })
