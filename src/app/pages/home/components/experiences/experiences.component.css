@@ -77,8 +77,11 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    max-width: calc(100vw - 20px);
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    left: 50%;
 
     .prev-button,
     .next-button {
@@ -110,6 +113,18 @@
 
       i {
         font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    .carousel-wrapper {
+      height: 250px;
+
+      .carousel-box {
+        max-width: calc(100vw - 121px);
       }
     }
   }
