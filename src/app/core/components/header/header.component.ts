@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, signal } from '@angular/core';
 import { CtaComponent } from '../../../shared/components/cta/cta.component';
 import { CtaType } from '../../../shared/components/cta/enums/cta-type';
 
@@ -11,4 +11,11 @@ import { CtaType } from '../../../shared/components/cta/enums/cta-type';
 })
 export class HeaderComponent {
   CtaType = CtaType;
+  scroll = signal(false);
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.scroll.set(scrollPosition > 100);
+  }
 }
