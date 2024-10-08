@@ -5,7 +5,6 @@
   justify-content: center;
   padding-inline: 40px;
   min-height: 420px;
-  opacity: 0;
 
   .value-boxes-wrapper {
     display: grid;
