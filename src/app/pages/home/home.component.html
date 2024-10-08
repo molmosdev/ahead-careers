@@ -1,2 +1,6 @@
-<ac-values acFadeInOnEnterView />
-<ac-experiences acFadeInOnEnterView />
+<ac-values @fadeInOutTrigger />
+@defer (on viewport) {
+  <ac-experiences @fadeInOutTrigger />
+} @placeholder {
+  <div></div>
+}

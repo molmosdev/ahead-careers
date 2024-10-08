@@ -48,6 +48,7 @@
 
   @media (max-width: 768px) {
     padding-inline: 20px;
+    min-height: 850px;
 
     .value-boxes-wrapper {
       grid-template-columns: 1fr;
