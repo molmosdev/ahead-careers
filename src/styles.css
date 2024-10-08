@@ -7,7 +7,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--white);
+  background-color: var(--blue);
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -16,36 +16,4 @@ body {
 .title {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-}
-
-a {
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-  color: var(--blue);
-  user-select: none;
-
-  &.negative {
-    color: var(--white);
-  }
-
-  &:not(.negative) {
-    font-weight: 600;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-p {
-  margin: 0;
-}
-
-.section-title {
-  font-family: 'Poppins', sans-serif;
-  color: var(--blue);
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 1.4rem;
-  text-align: center;
 }
