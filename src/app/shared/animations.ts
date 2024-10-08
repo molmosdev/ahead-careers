@@ -17,7 +17,7 @@ export const opacityTrigger = trigger('opacityTrigger', [
 export const fadeInOutTrigger = trigger('fadeInOutTrigger', [
   transition(':enter', [
     style({ opacity: 0 }),
-    animate('0.2s', style({ opacity: 1 })), // Añade un retraso de 0.2s
+    animate('0.2s 0.3s', style({ opacity: 1 })), // Añade un retraso de 0.2s
   ]),
   transition(':leave', [animate('0.2s', style({ opacity: 0 }))]),
 ]);
