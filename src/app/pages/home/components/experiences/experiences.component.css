@@ -3,6 +3,7 @@
   width: 100%;
   overflow: hidden;
   perspective: 1000px;
+  opacity: 0;
 
   .carousel-wrapper {
     display: flex;
