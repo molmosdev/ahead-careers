@@ -12,7 +12,7 @@ export class FadeInOnEnterViewDirective implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Set the initial opacity to 0
-    this.el.nativeElement.style.opacity = '0';
+    this.setOpacity(0);
 
     // Start the fade-in animation when the element enters the
     inView(this.el.nativeElement, () => {
@@ -24,6 +24,11 @@ export class FadeInOnEnterViewDirective implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.fadeAnimation) {
       this.fadeAnimation.stop();
+      this.setOpacity(0);
     }
+  }
+
+  setOpacity(opacity: number) {
+    this.el.nativeElement.style.opacity = opacity.toString();
   }
 }
