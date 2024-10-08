@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   padding-inline: 40px;
+  min-height: 420px;
 
   .value-boxes-wrapper {
     display: grid;
