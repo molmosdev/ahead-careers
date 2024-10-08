@@ -2,9 +2,9 @@
   user-select: none;
 
   header {
-    background-color: var(--blue);
-    padding-top: 82.44px;
+    padding-top: 74.44px;
     box-sizing: border-box;
+    background-color: var(--blue);
     color: white;
     z-index: 1;
 
@@ -16,7 +16,6 @@
       top: 0;
       left: 0;
       background-color: var(--blue);
-      z-index: 0;
 
       .content {
         display: flex;
@@ -41,7 +40,14 @@
           display: flex;
           gap: 20px;
           align-items: center;
-          transform: translateX(100px);
+          position: relative;
+
+          ac-cta {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+          }
         }
       }
     }
@@ -61,6 +67,7 @@
         font-size: 45px;
         font-weight: 600;
         text-align: center;
+        z-index: 1;
       }
     }
   }
