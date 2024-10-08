@@ -2,10 +2,13 @@
   <div class="top-wrapper">
     <div class="content">
       <img [attr.loading]="'lazy'" class="logo" src="/svg/logo-negative.svg" alt="" />
-      <a class="negative" href="www.google.com">Contáctanos</a>
+      <div class="right" [@moveLeftTrigger]="scrolled()">
+        <a class="negative" href="www.google.com">Contáctanos</a>
+        <ac-cta [@opacityTrigger]="scrolled()" [type]="CtaType.Negative">Ofertas</ac-cta>
+      </div>
     </div>
   </div>
-  <div class="bottom-wrapper">
+  <div class="bottom-wrapper" [@opacityTrigger]="!scrolled()">
     <div class="slogan">‘Shaping your future’</div>
     <ac-cta [type]="CtaType.Negative">Consulta nuestras ofertas</ac-cta>
   </div>

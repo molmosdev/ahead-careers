@@ -5,7 +5,7 @@
 
   .sticky-header-bottom {
     position: sticky;
-    top: 67.44px;
+    top: 76px;
     z-index: 10;
     width: 100%;
     overflow: hidden;
@@ -23,7 +23,7 @@
     }
 
     @media (max-width: 768px) {
-      top: 54px;
+      top: 65px;
     }
   }
 }

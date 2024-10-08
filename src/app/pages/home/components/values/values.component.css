@@ -23,6 +23,15 @@
       background-color: #fcfcfc;
       border-radius: 15px;
       max-width: 400px;
+      transition: 0.2s;
+
+      @media (min-width: 768px) {
+        &:hover {
+          transition: 0.2s;
+          scale: 1.02;
+          border: 1px solid rgba(0, 0, 0, 0.09);
+        }
+      }
 
       .title {
         color: var(--blue);
