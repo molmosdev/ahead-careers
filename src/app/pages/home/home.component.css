@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: 40px;
   align-self: center;
-  padding-bottom: 200px;
+  padding-bottom: 500px;
 
   @media (max-width: 768px) {
     padding: 20px 0;
