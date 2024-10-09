@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   padding-inline: 40px;
-  min-height: 420px;
 
   .value-boxes-wrapper {
     display: grid;
@@ -48,7 +47,6 @@
 
   @media (max-width: 768px) {
     padding-inline: 20px;
-    min-height: 850px;
 
     .value-boxes-wrapper {
       grid-template-columns: 1fr;
