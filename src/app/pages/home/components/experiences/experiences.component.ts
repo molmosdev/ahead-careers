@@ -2,75 +2,17 @@ import { Component, signal } from '@angular/core';
 import { Experiences } from './interfaces/experiences';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { JsonPipe } from '@angular/common';
-import { trigger, state, style, animate, transition, sequence } from '@angular/animations';
+import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
+import { carrouselTrigger, fadeInExperiencesTrigger } from './experiences.animations';
+import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-experiences',
   standalone: true,
-  imports: [JsonPipe],
+  imports: [JsonPipe, PlaceholderComponent],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.css',
-  animations: [
-    trigger('carouselAnimation', [
-      state(
-        'center',
-        style({
-          transform: 'translateX(0%) scale(1)',
-          zIndex: 2,
-        })
-      ),
-      state(
-        'left',
-        style({
-          transform: 'translateX(-70%) scale(0.7) rotateY(15deg)',
-          zIndex: 1,
-        })
-      ),
-      state(
-        'right',
-        style({
-          transform: 'translateX(70%) scale(0.7) rotateY(-15deg)',
-          zIndex: 1,
-        })
-      ),
-      state(
-        'invisible',
-        style({
-          opacity: 0,
-          transform: 'translateX(200%)',
-          zIndex: 0,
-        })
-      ),
-      transition('* => center, center => *', [animate('0.5s ease-in-out')]),
-
-      transition('right => left', [
-        sequence([
-          animate('0.25s ease-in-out', style({ opacity: 0 })),
-          animate('0s 0.1s', style({ transform: 'translateX(-70%) scale(0.7) rotateY(15deg)' })),
-          animate('0.25s ease-in-out', style({ opacity: 1 })),
-        ]),
-      ]),
-      transition('right => void', [animate('0.5s ease-in-out', style({ opacity: 0 }))]),
-
-      transition('left => right, left => void', [
-        sequence([
-          animate('0.25s ease-in-out', style({ opacity: 0 })),
-          animate('0s 0.1s', style({ transform: 'translateX(70%) scale(0.7) rotateY(-15deg)' })),
-          animate('0.25s ease-in-out', style({ opacity: 1 })),
-        ]),
-      ]),
-      transition('left => void', [animate('0.5s ease-in-out', style({ opacity: 0 }))]),
-
-      transition('void => right', [
-        style({ transform: 'translateX(70%) scale(0.7) rotateY(-15deg)', opacity: 0 }),
-        animate('0.25s ease-in-out', style({ opacity: 1 })),
-      ]),
-      transition('void => left', [
-        style({ transform: 'translateX(-70%) scale(0.7) rotateY(15deg)', opacity: 0 }),
-        animate('0.25s ease-in-out', style({ opacity: 1 })),
-      ]),
-    ]),
-  ],
+  animations: [fadeInOutTrigger, fadeInExperiencesTrigger, carrouselTrigger],
 })
 export class ExperiencesComponent {
   data = signal<Experiences | undefined>(undefined);

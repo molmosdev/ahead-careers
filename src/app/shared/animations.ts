@@ -11,13 +11,12 @@ export const opacityTrigger = trigger('opacityTrigger', [
 ]);
 
 /**
- * The fade in and out animation trigger
+ * The fade in and out animation trigger with parameters
  * @returns {AnimationTriggerMetadata} - The animation trigger metadata
  */
 export const fadeInOutTrigger = trigger('fadeInOutTrigger', [
-  transition(':enter', [
-    style({ opacity: 0 }),
-    animate('0.2s 0.3s', style({ opacity: 1 })), // Añade un retraso de 0.2s
-  ]),
-  transition(':leave', [animate('0.2s', style({ opacity: 0 }))]),
+  transition(':enter', [style({ opacity: 0 }), animate('0.5s {{ delay }}', style({ opacity: 1 }))], {
+    params: { delay: '0.2s' },
+  }),
+  transition(':leave', [animate('0.5s', style({ opacity: 0 }))]),
 ]);

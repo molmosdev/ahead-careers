@@ -3,13 +3,16 @@ import { Component, signal } from '@angular/core';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { JsonPipe } from '@angular/common';
 import { Values } from './interfaces/values';
+import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
+import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-values',
   standalone: true,
-  imports: [JsonPipe],
+  imports: [JsonPipe, PlaceholderComponent],
   templateUrl: './values.component.html',
   styleUrl: './values.component.css',
+  animations: [fadeInOutTrigger],
 })
 export class ValuesComponent {
   data = signal<Values | undefined>(undefined);

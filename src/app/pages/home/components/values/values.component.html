@@ -1,9 +1,9 @@
-@if (data()) {
-  <div class="section-title">
+@defer (when data()) {
+  <div class="section-title" [@fadeInOutTrigger]="{ value: '', params: { delay: '0.5s' } }">
     {{ data()?.title }}
   </div>
   @if (data()?.values && (data()?.values)!.length > 0) {
-    <div class="value-boxes-wrapper">
+    <div class="value-boxes-wrapper" [@fadeInOutTrigger]="{ value: '', params: { delay: '0.7s' } }">
       @for (value of data()?.values; track value) {
         <div class="value-box">
           <div class="title">
@@ -14,4 +14,6 @@
       }
     </div>
   }
+} @placeholder {
+  <ac-placeholder [height]="1000" />
 }

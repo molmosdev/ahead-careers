@@ -1,38 +1,42 @@
-@if (data()) {
-  <div class="section-title">
-    {{ data()!.title }}
-  </div>
-
-  <div
-    class="carousel-container"
-    (touchstart)="onTouchStart($event)"
-    (touchmove)="onTouchMove($event)"
-    (touchend)="onTouchEnd()">
-    <div class="carousel-wrapper">
-      @for (experience of data()!.experiences; track experience) {
-        <div class="carousel-box" [@carouselAnimation]="getPositionState($index)">
-          <div class="content" [innerHTML]="getHtmlFromBlock(experience!.content)"></div>
-          <div class="bottom">
-            <div class="author">
-              {{ experience!.author }}
-            </div>
-            <div class="position">
-              {{ experience!.position }}
-            </div>
-            <div class="location">
-              {{ experience!.location }}
+@defer (when data()) {
+  @defer (on viewport) {
+    <div class="section-title" [@fadeInOutTrigger]="{ value: '', params: { delay: '0.5s' } }">
+      {{ data()!.title }}
+    </div>
+    <div
+      class="carousel-container"
+      (touchstart)="onTouchStart($event)"
+      (touchmove)="onTouchMove($event)"
+      (touchend)="onTouchEnd()"
+      @fadeInExperiencesTrigger>
+      <div class="carousel-wrapper">
+        @for (experience of data()!.experiences; track experience) {
+          <div class="carousel-box" [@carrouselTrigger]="getPositionState($index)">
+            <div class="content" [innerHTML]="getHtmlFromBlock(experience!.content)"></div>
+            <div class="bottom">
+              <div class="author">
+                {{ experience!.author }}
+              </div>
+              <div class="position">
+                {{ experience!.position }}
+              </div>
+              <div class="location">
+                {{ experience!.location }}
+              </div>
             </div>
           </div>
-        </div>
-      }
+        }
+      </div>
+      <div class="arrows">
+        <button class="prev-button" (click)="prev()" aria-label="Previous Slide">
+          <i class="icon-arrow-left"></i>
+        </button>
+        <button class="next-button" (click)="next()" aria-label="Next Slide">
+          <i class="icon-arrow-right"></i>
+        </button>
+      </div>
     </div>
-    <div class="arrows">
-      <button class="prev-button" (click)="prev()" aria-label="Previous Slide">
-        <i class="icon-arrow-left"></i>
-      </button>
-      <button class="next-button" (click)="next()" aria-label="Next Slide">
-        <i class="icon-arrow-right"></i>
-      </button>
-    </div>
-  </div>
+  } @placeholder {
+    <ac-placeholder [height]="300" />
+  }
 }
