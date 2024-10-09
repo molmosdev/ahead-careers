@@ -16,21 +16,21 @@ import { trigger, state, style, animate, transition, sequence } from '@angular/a
         'center',
         style({
           transform: 'translateX(0%) scale(1)',
-          zIndex: 10,
+          zIndex: 2,
         })
       ),
       state(
         'left',
         style({
           transform: 'translateX(-70%) scale(0.7) rotateY(15deg)',
-          zIndex: 5,
+          zIndex: 1,
         })
       ),
       state(
         'right',
         style({
           transform: 'translateX(70%) scale(0.7) rotateY(-15deg)',
-          zIndex: 5,
+          zIndex: 1,
         })
       ),
       state(

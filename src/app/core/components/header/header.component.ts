@@ -1,7 +1,7 @@
 import { Component, HostListener, signal } from '@angular/core';
 import { CtaComponent } from '../../../shared/components/cta/cta.component';
 import { CtaType } from '../../../shared/components/cta/enums/cta-type';
-import { fadeInOutTrigger, opacityTrigger } from '../../../shared/animations';
+import { fadeInOutTrigger } from '../../../shared/animations';
 import { moveToTheLeftTrigger } from './header.animations';
 
 @Component({
@@ -10,7 +10,7 @@ import { moveToTheLeftTrigger } from './header.animations';
   imports: [CtaComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
-  animations: [opacityTrigger, fadeInOutTrigger, moveToTheLeftTrigger],
+  animations: [fadeInOutTrigger, moveToTheLeftTrigger],
 })
 export class HeaderComponent {
   CtaType = CtaType;
@@ -18,7 +18,6 @@ export class HeaderComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    this.scrolled.set(scrollPosition > 70);
+    this.scrolled.set(document.documentElement.scrollTop > 200);
   }
 }

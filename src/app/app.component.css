@@ -6,7 +6,7 @@
   .sticky-header-bottom {
     position: sticky;
     top: 76px;
-    z-index: 10;
+    z-index: 3;
     width: 100%;
     overflow: hidden;
     height: 25px;

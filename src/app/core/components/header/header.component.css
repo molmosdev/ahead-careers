@@ -6,7 +6,6 @@
     box-sizing: border-box;
     background-color: var(--blue);
     color: white;
-    z-index: 1;
 
     .top-wrapper {
       width: 100vw;
@@ -16,6 +15,7 @@
       top: 0;
       left: 0;
       background-color: var(--blue);
+      z-index: 3;
 
       .content {
         display: flex;
@@ -67,7 +67,11 @@
         font-size: 45px;
         font-weight: 600;
         text-align: center;
-        z-index: 1;
+      }
+
+      .slogan,
+      ac-cta {
+        z-index: 4;
       }
     }
   }
