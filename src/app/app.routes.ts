@@ -14,7 +14,7 @@ export const routes: Routes = [
       description: 'Bienvenido a Ahead Careers. Explora oportunidades laborales únicas.',
       keywords: 'carreras, oportunidades, trabajo, Ahead Careers, Eric Olmos',
     },
-    title: 'Inicio',
+    title: 'Inicio - Ahead Careers',
   },
   {
     path: '**',
