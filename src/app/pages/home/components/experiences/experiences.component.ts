@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { Experiences } from './interfaces/experiences';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { JsonPipe } from '@angular/common';
 import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
 import { carrouselTrigger, fadeInExperiencesTrigger } from './experiences.animations';
 import { fadeInOutTrigger } from '../../../../shared/animations';
+import { ResponsiveService } from '../../../../core/services/responsive.service';
 
 @Component({
   selector: 'ac-experiences',
@@ -16,74 +17,103 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
 })
 export class ExperiencesComponent {
   data = signal<Experiences | undefined>(undefined);
+  isMobile = computed(() => this.responsiveService.isMobile());
   currentIndex = signal(0);
   touchStartX = 0;
   touchEndX = 0;
   touchStartY = 0;
   touchEndY = 0;
 
-  constructor(private sanityService: SanityService) {
+  constructor(
+    private sanityService: SanityService,
+    private responsiveService: ResponsiveService
+  ) {
     this.getComponentData();
   }
 
+  /**
+   * Gets the data for the component
+   */
   async getComponentData() {
     this.data.set((await this.sanityService.getDataByType('experiences', true)) as Experiences);
   }
 
+  /**
+   * Gets the html from a block
+   * @param block - The block to get the html from
+   * @returns {string} - The html from the block
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getHtmlFromBlock(block: any): string {
     return this.sanityService.transformBlockToHtml(block);
   }
 
+  /**
+   * Selects a specific experience
+   * @param {number} index - The index of the experience
+   */
+  selectExperience(index: number) {
+    this.currentIndex.set(index);
+  }
+
+  /**
+   * Gets the position state of the experience at the given index
+   * @param {number} index - The index of the experience
+   * @returns {string} - The position state of the experience
+   */
   getPositionState(index: number) {
     const total = this.data()?.experiences.length || 0;
     const current = this.currentIndex();
 
     if (index === current) {
       return 'center';
-    } else if ((index + 1) % total === current) {
-      return 'left';
-    } else if ((index - 1 + total) % total === current) {
+    } else if (index === current + 1 && current !== total - 1) {
       return 'right';
+    } else if (index === current - 1 && current !== 0) {
+      return 'left';
+    } else if (index < current) {
+      return 'invisibleLeft';
     } else {
-      return 'invisible';
+      return 'invisibleRight';
     }
   }
 
+  /**
+   * Selects the previous experience
+   */
   prev() {
     const total = this.data()!.experiences.length;
-    const newIndex = (this.currentIndex() - 1 + total) % total;
-    this.currentIndex.set(newIndex);
+    this.currentIndex.set((this.currentIndex() - 1 + total) % total);
   }
 
+  /**
+   * Selects the next experience
+   */
   next() {
     const total = this.data()!.experiences.length;
-    const newIndex = (this.currentIndex() + 1) % total;
-    this.currentIndex.set(newIndex);
+    this.currentIndex.set((this.currentIndex() + 1) % total);
   }
 
+  /**
+   * Handles the touch start event
+   * @param {TouchEvent} event - The touch event
+   */
   onTouchStart(event: TouchEvent) {
-    this.touchStartX = event.changedTouches[0].screenX;
-    this.touchStartY = event.changedTouches[0].screenY;
+    this.touchStartX = event.changedTouches[0].clientX;
+    this.touchStartY = event.changedTouches[0].clientY;
   }
+  /**
+   * Handles the touch end event
+   * @param {TouchEvent} event - The touch event
+   */
+  onTouchEnd(event: TouchEvent) {
+    this.touchEndX = event.changedTouches[0].clientX;
+    this.touchEndY = event.changedTouches[0].clientY;
 
-  onTouchMove(event: TouchEvent) {
-    this.touchEndX = event.changedTouches[0].screenX;
-    this.touchEndY = event.changedTouches[0].screenY;
-  }
+    const deltaX = this.touchEndX - this.touchStartX;
 
-  onTouchEnd() {
-    const deltaY = Math.abs(this.touchEndY - this.touchStartY);
-
-    if (deltaY > 20) {
-      // No hacer nada si el desplazamiento vertical es mayor a 10 píxeles
-      return;
-    }
-
-    if (this.touchEndX < this.touchStartX) {
-      this.next();
-    } else if (this.touchEndX > this.touchStartX) {
-      this.prev();
+    if (Math.abs(deltaX) > 20) {
+      deltaX < 0 ? this.next() : this.prev();
     }
   }
 }
