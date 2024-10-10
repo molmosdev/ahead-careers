@@ -72,10 +72,12 @@
       left: 50%;
       padding-inline: 20px;
       box-sizing: border-box;
+      pointer-events: none;
 
       .prev-button,
       .next-button {
         background-color: var(--blue);
+        pointer-events: all;
         border: none;
         height: 40px;
         width: 40px;

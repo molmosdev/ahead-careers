@@ -57,6 +57,21 @@ export class ExperiencesComponent {
   }
 
   /**
+   * Handles the keydown event and navigates to the previous or next experience
+   * @param {KeyboardEvent} event - The keydown event
+   */
+  handleKeydown(event: KeyboardEvent): void {
+    switch (event.key) {
+      case 'ArrowLeft':
+        this.prev();
+        break;
+      case 'ArrowRight':
+        this.next();
+        break;
+    }
+  }
+
+  /**
    * Gets the position state of the experience at the given index
    * @param {number} index - The index of the experience
    * @returns {string} - The position state of the experience
@@ -67,11 +82,14 @@ export class ExperiencesComponent {
 
     if (index === current) {
       return 'center';
-    } else if (index === current + 1 && current !== total - 1) {
+    } else if (index === (current + 1) % total) {
       return 'right';
-    } else if (index === current - 1 && current !== 0) {
+    } else if (index === (current - 1 + total) % total) {
       return 'left';
-    } else if (index < current) {
+    } else if (
+      (index < current && index !== (current - 1 + total) % total) ||
+      (index > current && index !== (current + 1) % total)
+    ) {
       return 'invisibleLeft';
     } else {
       return 'invisibleRight';

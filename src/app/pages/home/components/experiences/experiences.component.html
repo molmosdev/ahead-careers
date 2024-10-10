@@ -10,7 +10,12 @@
       @fadeInExperiencesTrigger>
       <div class="carousel-wrapper">
         @for (experience of data()!.experiences; track experience) {
-          <div class="carousel-box" [@experienceTrigger]="getPositionState($index)">
+          <div
+            class="carousel-box"
+            [@experienceTrigger]="getPositionState($index)"
+            (click)="selectExperience($index)"
+            (keydown)="handleKeydown($event)"
+            tabindex="0">
             <div class="content" [innerHTML]="getHtmlFromBlock(experience!.content)"></div>
             <div class="bottom">
               <div class="author">
