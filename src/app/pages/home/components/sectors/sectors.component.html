@@ -1,0 +1,9 @@
+@if (sectors()) {
+  <div class="sectors" @fadeInOutTrigger>
+    @for (sector of sectors(); track sector) {
+      <div class="sector">
+        {{ sector }}
+      </div>
+    }
+  </div>
+}

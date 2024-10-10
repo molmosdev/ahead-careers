@@ -1,5 +1,9 @@
+<ac-sectors />
 @if (description()) {
-  <div class="description" @fadeInOutTrigger [innerHTML]="description()"></div>
+  <div
+    class="description"
+    [@fadeInOutTrigger]="{ value: '', params: { delay: '0.5s' } }"
+    [innerHTML]="description()"></div>
 }
 <ac-values />
 <ac-experiences />
