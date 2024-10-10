@@ -1,11 +1,10 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Experiences } from './interfaces/experiences';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { JsonPipe } from '@angular/common';
 import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
 import { experienceTrigger, fadeInExperiencesTrigger } from './experiences.animations';
 import { fadeInOutTrigger } from '../../../../shared/animations';
-import { ResponsiveService } from '../../../../core/services/responsive.service';
 
 @Component({
   selector: 'ac-experiences',
@@ -17,17 +16,13 @@ import { ResponsiveService } from '../../../../core/services/responsive.service'
 })
 export class ExperiencesComponent {
   data = signal<Experiences | undefined>(undefined);
-  isMobile = computed(() => this.responsiveService.isMobile());
   currentIndex = signal(0);
   touchStartX = 0;
   touchEndX = 0;
   touchStartY = 0;
   touchEndY = 0;
 
-  constructor(
-    private sanityService: SanityService,
-    private responsiveService: ResponsiveService
-  ) {
+  constructor(private sanityService: SanityService) {
     this.getComponentData();
   }
 
