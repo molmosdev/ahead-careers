@@ -1,14 +1,18 @@
-import { trigger, state, style, transition, animate, sequence, query, animateChild } from '@angular/animations';
+import { trigger, state, style, transition, animate, query, animateChild } from '@angular/animations';
 
 export const fadeInExperiencesTrigger = trigger('fadeInExperiencesTrigger', [
   transition(':enter', [
     style({ opacity: 0 }),
-    query('@carrouselTrigger', animateChild(), { optional: true }),
+    query('@experienceTrigger', animateChild(), { optional: true }),
     animate('0.5s 0.2s ease-in', style({ opacity: 1 })),
   ]),
 ]);
 
-export const carrouselTrigger = trigger('carrouselTrigger', [
+/**
+ * Animation trigger for the experience, handling transitions between 'left', 'center', 'right', 'invisibleRight', and 'invisibleLeft' states.
+ * @returns {AnimationTriggerMetadata} - The animation trigger for the experience.
+ */
+export const experienceTrigger = trigger('experienceTrigger', [
   state(
     'center',
     style({
@@ -31,39 +35,20 @@ export const carrouselTrigger = trigger('carrouselTrigger', [
     })
   ),
   state(
-    'invisible',
+    'invisibleRight',
     style({
       opacity: 0,
-      transform: 'translateX(200%)',
+      left: '100%',
       zIndex: 0,
     })
   ),
-  transition('* => center, center => *', [animate('0.5s ease-in-out')]),
-
-  transition('right => left', [
-    sequence([
-      animate('0.25s ease-in-out', style({ opacity: 0 })),
-      animate('0s 0.1s', style({ transform: 'translateX(-70%) scale(0.7) rotateY(15deg)' })),
-      animate('0.25s ease-in-out', style({ opacity: 1 })),
-    ]),
-  ]),
-  transition('right => void', [animate('0.5s ease-in-out', style({ opacity: 0 }))]),
-
-  transition('left => right, left => void', [
-    sequence([
-      animate('0.25s ease-in-out', style({ opacity: 0 })),
-      animate('0s 0.1s', style({ transform: 'translateX(70%) scale(0.7) rotateY(-15deg)' })),
-      animate('0.25s ease-in-out', style({ opacity: 1 })),
-    ]),
-  ]),
-  transition('left => void', [animate('0.5s ease-in-out', style({ opacity: 0 }))]),
-
-  transition('void => right', [
-    style({ transform: 'translateX(70%) scale(0.7) rotateY(-15deg)', opacity: 0 }),
-    animate('0.25s ease-in-out', style({ opacity: 1 })),
-  ]),
-  transition('void => left', [
-    style({ transform: 'translateX(-70%) scale(0.7) rotateY(15deg)', opacity: 0 }),
-    animate('0.25s ease-in-out', style({ opacity: 1 })),
-  ]),
+  state(
+    'invisibleLeft',
+    style({
+      opacity: 0,
+      left: '-100%',
+      zIndex: 0,
+    })
+  ),
+  transition('* <=> *', [animate('0.5s ease-in-out')]),
 ]);

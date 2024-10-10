@@ -3,7 +3,7 @@ import { Experiences } from './interfaces/experiences';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { JsonPipe } from '@angular/common';
 import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
-import { carrouselTrigger, fadeInExperiencesTrigger } from './experiences.animations';
+import { experienceTrigger, fadeInExperiencesTrigger } from './experiences.animations';
 import { fadeInOutTrigger } from '../../../../shared/animations';
 import { ResponsiveService } from '../../../../core/services/responsive.service';
 
@@ -13,7 +13,7 @@ import { ResponsiveService } from '../../../../core/services/responsive.service'
   imports: [JsonPipe, PlaceholderComponent],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.css',
-  animations: [fadeInOutTrigger, fadeInExperiencesTrigger, carrouselTrigger],
+  animations: [fadeInOutTrigger, fadeInExperiencesTrigger, experienceTrigger],
 })
 export class ExperiencesComponent {
   data = signal<Experiences | undefined>(undefined);

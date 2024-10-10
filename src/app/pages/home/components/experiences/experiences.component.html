@@ -6,12 +6,11 @@
     <div
       class="carousel-container"
       (touchstart)="onTouchStart($event)"
-      (touchmove)="onTouchMove($event)"
-      (touchend)="onTouchEnd()"
+      (touchend)="onTouchEnd($event)"
       @fadeInExperiencesTrigger>
       <div class="carousel-wrapper">
         @for (experience of data()!.experiences; track experience) {
-          <div class="carousel-box" [@carrouselTrigger]="getPositionState($index)">
+          <div class="carousel-box" [@experienceTrigger]="getPositionState($index)">
             <div class="content" [innerHTML]="getHtmlFromBlock(experience!.content)"></div>
             <div class="bottom">
               <div class="author">
