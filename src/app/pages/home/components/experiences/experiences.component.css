@@ -1,6 +1,7 @@
 :host {
   width: 100%;
   max-width: 1400px;
+  user-select: none;
 
   .carousel-container {
     position: relative;
@@ -30,6 +31,17 @@
         border-radius: 15px;
         backface-visibility: hidden;
         gap: 20px;
+
+        @media (min-width: 768px) {
+          &:not(.selected) {
+            &:hover {
+              transition: 0.2s;
+              scale: 1.02;
+              cursor: pointer;
+              border: 1px solid rgba(0, 0, 0, 0.09);
+            }
+          }
+        }
 
         .content {
           color: #798194;

@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { Experiences } from './interfaces/experiences';
 import { SanityService } from '../../../../core/services/sanity.service';
-import { JsonPipe } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
 import { experienceTrigger, fadeInExperiencesTrigger } from './experiences.animations';
 import { fadeInOutTrigger } from '../../../../shared/animations';
@@ -9,7 +9,7 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
 @Component({
   selector: 'ac-experiences',
   standalone: true,
-  imports: [JsonPipe, PlaceholderComponent],
+  imports: [PlaceholderComponent, NgClass],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.css',
   animations: [fadeInOutTrigger, fadeInExperiencesTrigger, experienceTrigger],

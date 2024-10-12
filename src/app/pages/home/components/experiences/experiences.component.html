@@ -15,6 +15,7 @@
             [@experienceTrigger]="getPositionState($index)"
             (click)="selectExperience($index)"
             (keydown)="handleKeydown($event)"
+            [ngClass]="{ selected: $index === currentIndex() }"
             tabindex="0">
             <div class="content" [innerHTML]="getHtmlFromBlock(experience!.content)"></div>
             <div class="bottom">
