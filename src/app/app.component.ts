@@ -3,11 +3,12 @@ import { Meta, Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, ActivatedRouteSnapshot, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { HeaderComponent } from './core/components/header/header.component';
+import { FooterComponent } from './core/components/footer/footer.component';
 
 @Component({
   selector: 'ac-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

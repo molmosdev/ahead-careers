@@ -1,0 +1,40 @@
+:host {
+  padding-top: 25px;
+  width: 100%;
+  overflow: hidden;
+
+  footer {
+    background-color: var(--blue);
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: white;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -25px;
+      left: -5vw;
+      right: -5vw;
+      height: 25px;
+      border-top-left-radius: 200%;
+      border-top-right-radius: 200%;
+      background-color: var(--blue);
+    }
+
+    .footer-content {
+      width: 100%;
+      max-width: 1400px;
+      padding: 40px;
+      padding-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media (max-width: 768px) {
+        padding-top: 20px;
+      }
+    }
+  }
+}
