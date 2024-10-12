@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
+import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 import { SanityService } from '../../../../core/services/sanity.service';
-import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-sectors',
@@ -8,10 +8,23 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
   imports: [],
   templateUrl: './sectors.component.html',
   styleUrl: './sectors.component.css',
-  animations: [fadeInOutTrigger],
+  animations: [
+    trigger('slider', [
+      transition('* <=> *', [
+        animate(
+          '100s',
+          keyframes([
+            style({ transform: 'translateX(0)', offset: 0 }),
+            style({ transform: 'translateX(-100%)', offset: 1 }),
+          ])
+        ),
+      ]),
+    ]),
+  ],
 })
 export class SectorsComponent {
   sectors = signal<string[]>([]);
+  sliderLoopState = signal<boolean>(true);
 
   constructor(private sanityService: SanityService) {
     this.getComponentData();
