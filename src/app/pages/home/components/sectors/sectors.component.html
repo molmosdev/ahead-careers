@@ -1,17 +1,10 @@
-@defer (when sectors()) {
+@defer (when duplicatedSectors()) {
   <div
     class="sectors"
     @fadeInOutTrigger
     [@slider]="sliderLoopState()"
     (@slider.done)="this.sliderLoopState.set(!this.sliderLoopState())">
-    @for (sector of sectors(); track sector) {
-      <div class="sector">
-        {{ sector }}
-      </div>
-    }
-  </div>
-  <div class="sectors" [@slider]="sliderLoopState()">
-    @for (sector of sectors(); track sector) {
+    @for (sector of duplicatedSectors(); track sector) {
       <div class="sector">
         {{ sector }}
       </div>

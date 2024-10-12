@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { fadeInOutTrigger } from '../../../../shared/animations';
@@ -17,7 +17,7 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
           '100s',
           keyframes([
             style({ transform: 'translateX(0)', offset: 0 }),
-            style({ transform: 'translateX(-100%)', offset: 1 }),
+            style({ transform: 'translateX(-50%)', offset: 1 }),
           ])
         ),
       ]),
@@ -26,6 +26,7 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
 })
 export class SectorsComponent {
   sectors = signal<string[] | undefined>(undefined);
+  duplicatedSectors = computed(() => this.sectors()?.concat(this.sectors()!) || undefined);
   sliderLoopState = signal<boolean>(true);
 
   constructor(private sanityService: SanityService) {
