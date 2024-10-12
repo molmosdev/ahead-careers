@@ -27,15 +27,26 @@
       width: 100%;
       max-width: 1400px;
       padding: 40px;
-      padding-top: 25px;
+      padding-top: 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
 
       .contact {
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        gap: 27px;
+
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: 23px;
+          }
+        }
       }
 
       img {
@@ -47,7 +58,7 @@
   @media (max-width: 768px) {
     footer {
       .footer-content {
-        padding-top: 20px;
+        padding-top: 25px;
         flex-direction: column;
         gap: 25px;
 
