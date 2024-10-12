@@ -1,5 +1,9 @@
 @defer (when sectors()) {
-  <div class="sectors" [@slider]="sliderLoopState()" (@slider.done)="this.sliderLoopState.set(!this.sliderLoopState())">
+  <div
+    class="sectors"
+    @fadeInExperiencesTrigger
+    [@slider]="sliderLoopState()"
+    (@slider.done)="this.sliderLoopState.set(!this.sliderLoopState())">
     @for (sector of sectors(); track sector) {
       <div class="sector">
         {{ sector }}

@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { trigger, transition, style, animate, keyframes } from '@angular/animations';
+import { trigger, transition, style, animate, keyframes, query, animateChild } from '@angular/animations';
 import { SanityService } from '../../../../core/services/sanity.service';
 
 @Component({
@@ -9,6 +9,13 @@ import { SanityService } from '../../../../core/services/sanity.service';
   templateUrl: './sectors.component.html',
   styleUrl: './sectors.component.css',
   animations: [
+    trigger('fadeInExperiencesTrigger', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        query('@slider', animateChild(), { optional: true }),
+        animate('0.5s 0.2s ease-in', style({ opacity: 1 })),
+      ]),
+    ]),
     trigger('slider', [
       transition('* <=> *', [
         animate(
