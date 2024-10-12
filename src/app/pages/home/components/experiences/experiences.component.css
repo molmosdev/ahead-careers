@@ -34,13 +34,8 @@
 
         @media (min-width: 768px) {
           &:not(.selected) {
-            transition: 0.2s;
-
             &:hover {
-              transition: 0.2s;
-              scale: 1.02;
               cursor: pointer;
-              border: 1px solid rgba(0, 0, 0, 0.09);
             }
           }
         }
