@@ -4,7 +4,7 @@
     @fadeInOutTrigger
     [@slider]="sliderLoopState()"
     (@slider.done)="this.sliderLoopState.set(!this.sliderLoopState())">
-    @for (sector of duplicatedSectors(); track sector) {
+    @for (sector of duplicatedSectors(); track sector + $index) {
       <div class="sector">
         {{ sector }}
       </div>
