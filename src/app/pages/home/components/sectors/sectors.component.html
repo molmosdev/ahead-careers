@@ -10,7 +10,7 @@
       </div>
     }
   </div>
-  <div class="sectors" @slider>
+  <div class="sectors" [@slider]="sliderLoopState()">
     @for (sector of sectors(); track sector) {
       <div class="sector">
         {{ sector }}
