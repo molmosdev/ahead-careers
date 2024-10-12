@@ -1,5 +1,6 @@
 :host {
   width: 100%;
+  max-width: 1400px;
 
   .carousel-container {
     position: relative;

@@ -14,8 +14,8 @@
     &::after {
       content: '';
       position: absolute;
-      left: -1vw;
-      right: -1vw;
+      left: -5vw;
+      right: -5vw;
       height: 25px;
       border-bottom-left-radius: 200%;
       border-bottom-right-radius: 200%;
@@ -23,7 +23,7 @@
     }
 
     @media (max-width: 768px) {
-      top: 62px;
+      top: 56px;
     }
   }
 }

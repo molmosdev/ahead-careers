@@ -5,13 +5,14 @@ import { PlaceholderComponent } from '../../shared/components/placeholder/placeh
 import { SanityService } from '../../core/services/sanity.service';
 import { fadeInOutTrigger } from '../../shared/animations';
 import { SectorsComponent } from './components/sectors/sectors.component';
+import { CeoMessageComponent } from './components/ceo-message/ceo-message.component';
 
 @Component({
   selector: 'ac-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [ValuesComponent, ExperiencesComponent, PlaceholderComponent, SectorsComponent],
+  imports: [ValuesComponent, ExperiencesComponent, PlaceholderComponent, SectorsComponent, CeoMessageComponent],
   animations: [fadeInOutTrigger],
 })
 export class HomeComponent {

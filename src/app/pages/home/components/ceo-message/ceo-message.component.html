@@ -1,0 +1,15 @@
+@defer (when ceoMessage()) {
+  @defer (on viewport) {
+    <div class="ceo-message" @fadeInOutTrigger>
+      <div class="message">
+        <div class="message-content" [innerHTML]="ceoMessage()"></div>
+        <div class="ceo-signature">
+          <div class="ceo-name">Eric Olmos</div>
+          <div class="ceo-title">Founder & Senior Consultant</div>
+        </div>
+      </div>
+    </div>
+  } @placeholder {
+    <ac-placeholder [height]="300" />
+  }
+}

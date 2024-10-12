@@ -1,0 +1,34 @@
+:host {
+  width: 100%;
+
+  .ceo-message {
+    background-color: #fcfcfc;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+
+    .message {
+      color: #798194;
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .ceo-signature {
+        .ceo-name {
+          color: var(--blue);
+          font-family: 'Poppins', sans-serif;
+          font-weight: 600;
+        }
+
+        .ceo-title {
+          color: #798194;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
