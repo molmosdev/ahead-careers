@@ -1,6 +1,6 @@
 @defer (when ceoMessage()) {
   @defer (on viewport) {
-    <div class="ceo-message" @fadeInOutTrigger>
+    <div class="ceo-message" [@fadeInOutTrigger]="{ value: '', params: { delay: '0.75s' } }">
       <div class="message">
         <div class="message-content" [innerHTML]="ceoMessage()"></div>
         <div class="ceo-signature">

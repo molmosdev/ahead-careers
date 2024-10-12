@@ -5,12 +5,16 @@
   @if (data()?.values && (data()?.values)!.length > 0) {
     <div class="value-boxes-wrapper" [@fadeInOutTrigger]="{ value: '', params: { delay: '0.7s' } }">
       @for (value of data()?.values; track value) {
-        <div class="value-box">
-          <div class="title">
-            {{ value.title }}
+        @defer (on viewport) {
+          <div class="value-box" @fadeInOutTrigger>
+            <div class="title">
+              {{ value.title }}
+            </div>
+            <div class="description" [innerHTML]="getHtmlFromBlock(value.description)"></div>
           </div>
-          <div class="description" [innerHTML]="getHtmlFromBlock(value.description)"></div>
-        </div>
+        } @placeholder {
+          <ac-placeholder [height]="500" />
+        }
       }
     </div>
   }
