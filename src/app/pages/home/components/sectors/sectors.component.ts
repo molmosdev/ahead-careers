@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { trigger, transition, style, animate, keyframes, query, animateChild } from '@angular/animations';
+import { trigger, transition, style, animate, keyframes, query, animateChild, sequence } from '@angular/animations';
 import { SanityService } from '../../../../core/services/sanity.service';
 
 @Component({
@@ -12,8 +12,10 @@ import { SanityService } from '../../../../core/services/sanity.service';
     trigger('fadeInExperiencesTrigger', [
       transition(':enter', [
         style({ opacity: 0 }),
-        query('@slider', animateChild(), { optional: true }),
-        animate('0.5s 0.2s ease-in', style({ opacity: 1 })),
+        sequence([
+          query('@slider', animateChild(), { optional: true, delay: '1s' }),
+          animate('0.5s ease-in', style({ opacity: 1 })),
+        ]),
       ]),
     ]),
     trigger('slider', [
