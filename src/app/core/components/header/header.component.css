@@ -96,6 +96,8 @@
       }
 
       .bottom-wrapper {
+        padding: 20px 40px 30px 40px;
+
         .slogan {
           font-size: 26px;
         }
