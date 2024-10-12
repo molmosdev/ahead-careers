@@ -17,16 +17,28 @@
       flex-direction: column;
       gap: 20px;
 
-      .ceo-signature {
-        .ceo-name {
-          color: var(--blue);
-          font-family: 'Poppins', sans-serif;
-          font-weight: 600;
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .ceo-signature {
+          .ceo-name {
+            color: var(--blue);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+          }
+
+          .ceo-title {
+            color: #798194;
+            font-size: 0.9rem;
+          }
         }
 
-        .ceo-title {
-          color: #798194;
-          font-size: 0.9rem;
+        a {
+          img {
+            width: 30px;
+          }
         }
       }
     }

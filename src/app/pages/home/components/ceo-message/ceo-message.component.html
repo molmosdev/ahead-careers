@@ -3,9 +3,19 @@
     <div class="ceo-message" [@fadeInOutTrigger]="{ value: '', params: { delay: '0.75s' } }">
       <div class="message">
         <div class="message-content" [innerHTML]="ceoMessage()"></div>
-        <div class="ceo-signature">
-          <div class="ceo-name">Eric Olmos</div>
-          <div class="ceo-title">Founder & Senior Consultant</div>
+        <div class="bottom">
+          <div class="ceo-signature">
+            <div class="ceo-name">Eric Olmos</div>
+            <div class="ceo-title">Founder & Senior Consultant</div>
+          </div>
+          <a
+            class="negative"
+            href="https://www.linkedin.com/company/ahead-careers"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit our LinkedIn page">
+            <img [attr.loading]="'lazy'" class="logo" src="/svg/in-blue.svg" alt="LinkedIn icon" />
+          </a>
         </div>
       </div>
     </div>
