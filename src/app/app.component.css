@@ -10,6 +10,7 @@
     width: 100%;
     overflow: hidden;
     height: 25px;
+    margin-top: -1px;
 
     &::after {
       content: '';
@@ -24,7 +25,6 @@
 
     @media (max-width: 768px) {
       top: 56px;
-      margin-top: -1px;
     }
   }
 }

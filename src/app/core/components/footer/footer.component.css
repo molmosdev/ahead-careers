@@ -14,6 +14,7 @@
     &::after {
       content: '';
       position: absolute;
+      margin-bottom: -1px;
       top: -25px;
       left: -5vw;
       right: -5vw;
