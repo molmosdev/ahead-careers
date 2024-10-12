@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { trigger, transition, style, animate, keyframes, query, animateChild, sequence } from '@angular/animations';
+import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 import { SanityService } from '../../../../core/services/sanity.service';
+import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-sectors',
@@ -9,17 +10,9 @@ import { SanityService } from '../../../../core/services/sanity.service';
   templateUrl: './sectors.component.html',
   styleUrl: './sectors.component.css',
   animations: [
-    trigger('fadeInExperiencesTrigger', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        sequence([
-          query('@slider', animateChild(), { optional: true, delay: '1s' }),
-          animate('0.5s ease-in', style({ opacity: 1 })),
-        ]),
-      ]),
-    ]),
+    fadeInOutTrigger,
     trigger('slider', [
-      transition('* <=> *', [
+      transition('* => *', [
         animate(
           '100s',
           keyframes([
@@ -32,7 +25,7 @@ import { SanityService } from '../../../../core/services/sanity.service';
   ],
 })
 export class SectorsComponent {
-  sectors = signal<string[]>([]);
+  sectors = signal<string[] | undefined>(undefined);
   sliderLoopState = signal<boolean>(true);
 
   constructor(private sanityService: SanityService) {
