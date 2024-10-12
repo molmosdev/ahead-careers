@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   padding-inline: 40px;
+  user-select: none;
 
   .value-boxes-wrapper {
     display: grid;
