@@ -34,6 +34,8 @@
 
         @media (min-width: 768px) {
           &:not(.selected) {
+            transition: 0.2s;
+
             &:hover {
               transition: 0.2s;
               scale: 1.02;
