@@ -27,13 +27,32 @@
       width: 100%;
       max-width: 1400px;
       padding: 40px;
-      padding-top: 30px;
+      padding-top: 25px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
 
-      @media (max-width: 768px) {
+      .contact {
+        display: flex;
+        flex-direction: column;
+      }
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      .footer-content {
         padding-top: 20px;
+        flex-direction: column;
+        gap: 25px;
+
+        .contact {
+          align-items: center;
+        }
       }
     }
   }
