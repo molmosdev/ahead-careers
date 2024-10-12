@@ -1,39 +1,19 @@
 :host {
   width: 100%;
+  overflow: hidden;
+  display: flex;
+  position: relative;
 
-  .sectors {
-    display: flex;
-    gap: 5.5rem;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    width: 100%;
-    height: 60px;
-    position: relative;
-
-    .sector {
-      text-wrap: nowrap;
-      font-size: 1.4rem;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      color: var(--blue);
-    }
-
-    @media (width < 768px) {
-      gap: 2.5rem;
-      height: 40px;
-    }
-
-    @media (width > 768px) {
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100px;
-        pointer-events: none;
-      }
+  @media (min-width: 768px) {
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      pointer-events: none;
+      z-index: 1;
     }
 
     &::before {
@@ -45,5 +25,70 @@
       right: 0;
       background: linear-gradient(to left, white, transparent);
     }
+  }
+}
+
+.sectors {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 60px;
+  position: relative;
+
+  &.first-part {
+    animation: first-slider linear infinite;
+  }
+
+  &.second-part {
+    animation: second-slider linear infinite;
+  }
+
+  @media (min-width: 768px) {
+    &.first-part,
+    &.second-part {
+      animation-duration: 200s;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &.first-part,
+    &.second-part {
+      animation-duration: 400s;
+    }
+
+    height: 40px;
+
+    .sector {
+      margin-right: 4rem;
+    }
+  }
+}
+
+.sector {
+  white-space: nowrap;
+  font-size: 1.4rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin-right: 5.5rem;
+  color: var(--blue);
+}
+
+@keyframes first-slider {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes second-slider {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
   }
 }
