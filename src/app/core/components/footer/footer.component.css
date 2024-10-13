@@ -45,6 +45,11 @@
 
           img {
             width: 23px;
+
+            &:nth-child(2) {
+              scale: 0.4;
+              position: absolute;
+            }
           }
         }
       }
