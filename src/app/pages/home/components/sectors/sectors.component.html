@@ -1,7 +1,7 @@
 @defer (when duplicatedSectors()) {
   <div
     class="sectors"
-    @fadeInOutTrigger
+    @fadeInOut
     [@slider]="sliderLoopState()"
     (@slider.done)="this.sliderLoopState.set(!this.sliderLoopState())">
     @for (sector of duplicatedSectors(); track sector + $index) {

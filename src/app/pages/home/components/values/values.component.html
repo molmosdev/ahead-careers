@@ -1,12 +1,12 @@
 @defer (when data()) {
-  <div class="section-title" [@fadeInOutTrigger]="{ value: '', params: { delay: '0.5s' } }">
+  <div class="section-title" [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }">
     {{ data()?.title }}
   </div>
   @if (data()?.values && (data()?.values)!.length > 0) {
-    <div class="value-boxes-wrapper" [@fadeInOutTrigger]="{ value: '', params: { delay: '0.7s' } }">
+    <div class="value-boxes-wrapper" [@fadeInOut]="{ value: '', params: { delay: '0.7s' } }">
       @for (value of data()?.values; track value) {
         @defer (on viewport) {
-          <div class="value-box" @fadeInOutTrigger>
+          <div class="value-box" @fadeInOut>
             <div class="title">
               {{ value.title }}
             </div>

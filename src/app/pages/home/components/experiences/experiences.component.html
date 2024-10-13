@@ -1,6 +1,6 @@
 @defer (when data()) {
   @defer (on viewport) {
-    <div class="section-title" [@fadeInOutTrigger]="{ value: '', params: { delay: '0.5s' } }">
+    <div class="section-title" [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }">
       {{ data()!.title }}
     </div>
     <div
