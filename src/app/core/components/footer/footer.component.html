@@ -1,24 +1,28 @@
-<footer>
-  <div class="footer-content">
-    <div class="contact">
-      <a
-        class="negative"
-        href="mailto:eolmos&#64;aheadcareers.com"
-        aria-label="Send an email to eolmos@aheadcareers.com">
-        <img [attr.loading]="'lazy'" class="logo" src="/svg/mail.svg" alt="Email icon" />
-      </a>
-      <a class="negative" href="tel:+34611898639" aria-label="Call 611898639">
-        <img [attr.loading]="'lazy'" class="logo" src="/svg/phone.svg" alt="Phone icon" />
-      </a>
-      <a
-        class="negative"
-        href="https://www.linkedin.com/company/ahead-careers"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Visit our LinkedIn page">
-        <img [attr.loading]="'lazy'" class="logo" src="/svg/in.svg" alt="LinkedIn icon" />
-      </a>
+@defer (on viewport) {
+  <footer @fadeInOutTrigger>
+    <div class="footer-content">
+      <div class="contact">
+        <a
+          class="negative"
+          href="mailto:eolmos&#64;aheadcareers.com"
+          aria-label="Send an email to eolmos@aheadcareers.com">
+          <img [attr.loading]="'lazy'" class="logo" src="/svg/mail.svg" alt="Email icon" />
+        </a>
+        <a class="negative" href="tel:+34611898639" aria-label="Call 611898639">
+          <img [attr.loading]="'lazy'" class="logo" src="/svg/phone.svg" alt="Phone icon" />
+        </a>
+        <a
+          class="negative"
+          href="https://www.linkedin.com/company/ahead-careers"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit our LinkedIn page">
+          <img [attr.loading]="'lazy'" class="logo" src="/svg/in.svg" alt="LinkedIn icon" />
+        </a>
+      </div>
+      <img [attr.loading]="'lazy'" class="logo" src="/svg/logo-negative.svg" alt="Ahead Careers logo" />
     </div>
-    <img [attr.loading]="'lazy'" class="logo" src="/svg/logo-negative.svg" alt="Ahead Careers logo" />
-  </div>
-</footer>
+  </footer>
+} @placeholder {
+  <ac-placeholder [height]="160" />
+}
