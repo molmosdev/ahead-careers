@@ -9,13 +9,18 @@
     align-items: center;
     padding: 40px;
     box-sizing: border-box;
+    position: relative;
 
     .message {
       color: #798194;
-      width: 400px;
+      max-width: 400px;
       display: flex;
       flex-direction: column;
       gap: 20px;
+
+      @media (min-width: 768px) {
+        margin-right: 290px;
+      }
 
       .bottom {
         display: flex;
@@ -40,6 +45,24 @@
             width: 30px;
           }
         }
+      }
+    }
+
+    .ceo-image {
+      @media (min-width: 768px) {
+        height: 120%;
+        position: absolute;
+        bottom: 0;
+        left: calc(50% + 90px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      padding-bottom: 0;
+
+      .ceo-image {
+        width: 300px;
       }
     }
   }
