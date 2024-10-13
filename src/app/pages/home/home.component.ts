@@ -6,13 +6,21 @@ import { SanityService } from '../../core/services/sanity.service';
 import { fadeInOutTrigger } from '../../shared/animations';
 import { SectorsComponent } from './components/sectors/sectors.component';
 import { CeoMessageComponent } from './components/ceo-message/ceo-message.component';
+import { MethodologyComponent } from './components/methodology/methodology.component';
 
 @Component({
   selector: 'ac-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [ValuesComponent, ExperiencesComponent, PlaceholderComponent, SectorsComponent, CeoMessageComponent],
+  imports: [
+    ValuesComponent,
+    ExperiencesComponent,
+    PlaceholderComponent,
+    SectorsComponent,
+    CeoMessageComponent,
+    MethodologyComponent,
+  ],
   animations: [fadeInOutTrigger],
 })
 export class HomeComponent {
