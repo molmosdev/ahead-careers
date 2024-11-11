@@ -1,8 +1,8 @@
 @defer (when data()) {
   @defer (on viewport) {
-    <div class="section-title" [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }">
+    <h1 [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }">
       {{ data()?.title }}
-    </div>
+    </h1>
     @if (data()?.methodologySteps && (data()?.methodologySteps)!.length > 0) {
       <div class="steps-wrapper" [@fadeInOut]="{ value: '', params: { delay: '0.7s' } }">
         @for (step of data()?.methodologySteps; track step) {
