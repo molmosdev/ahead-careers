@@ -1,5 +1,15 @@
 :host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5.5rem;
+  padding: 3rem 0;
+
   .description {
+    display: flex;
+    max-width: 80vw;
+    width: 700px;
+    text-align: center;
     color: #798194;
   }
 }

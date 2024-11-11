@@ -1,15 +1,8 @@
-<div class="flex flex-col gap-y-28 pt-11 pb-32 items-center">
-  <div class="flex flex-col items-center content-center gap-10">
-    <ac-sectors />
-    @if (description()) {
-      <div
-        class="description flex text-center max-w-[80%] w-[700px]"
-        [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }"
-        [innerHTML]="description()"></div>
-    }
-  </div>
-  <ac-values />
-  <ac-methodology />
-  <ac-ceo-message />
-  <ac-experiences />
-</div>
+<ac-sectors />
+@if (description()) {
+  <div class="description" [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }" [innerHTML]="description()"></div>
+}
+<ac-values />
+<ac-methodology />
+<ac-ceo-message />
+<ac-experiences />
