@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(./app/styles/colors.css);
 @import url('../node_modules/lucide-static/font/lucide.css');
+@tailwind base;
+@tailwind utilities;
 
 html,
 body {
