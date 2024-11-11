@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(./app/styles/colors.css);
 @import url('../node_modules/lucide-static/font/lucide.css');
-@tailwind base;
-@tailwind utilities;
 
 html,
 body {
@@ -12,6 +10,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 14px;
+  line-height: 1.5rem;
 }
 
 .title {
@@ -42,10 +41,11 @@ p {
   margin: 0;
 }
 
-.section-title {
+h1 {
   font-family: 'Poppins', sans-serif;
   color: var(--blue);
   font-size: 2rem;
+  line-height: 2.5rem;
   font-weight: 600;
   margin-bottom: 1.4rem;
   text-align: center;
