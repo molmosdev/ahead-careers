@@ -5,7 +5,7 @@
     </h1>
     @if (data()?.methodologySteps && (data()?.methodologySteps)!.length > 0) {
       <div class="image-and-steps-wrapper" [@fadeInOut]="{ value: '', params: { delay: '0.7s' } }">
-        <img [attr.loading]="'lazy'" class="methodology-image" src="/webp/methodology.webp" alt="Methodology" />
+        <img class="methodology-image" [height]="690" [width]="460" src="/webp/methodology.webp" alt="Methodology" />
         <div class="steps-wrapper">
           @for (step of data()?.methodologySteps; track step) {
             @defer (on viewport) {
