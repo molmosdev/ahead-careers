@@ -1,6 +1,6 @@
-import { MethodologyStep } from '../methodology-step';
+import { MethodologyStep } from './methodology-step';
 
 export interface Methodology {
   title: string;
-  steps: MethodologyStep[];
+  methodologySteps: MethodologyStep[];
 }

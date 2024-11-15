@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { SanityService } from '../../../../core/services/sanity.service';
-import { Methodology } from '../methodoloy/interfaces/methodology';
+import { Methodology } from './interfaces/methodology';
 import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
 import { fadeInOutTrigger } from '../../../../shared/animations';
 
