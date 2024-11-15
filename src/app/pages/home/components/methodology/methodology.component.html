@@ -4,20 +4,23 @@
       {{ data()?.title }}
     </h1>
     @if (data()?.methodologySteps && (data()?.methodologySteps)!.length > 0) {
-      <div class="steps-wrapper" [@fadeInOut]="{ value: '', params: { delay: '0.7s' } }">
-        @for (step of data()?.methodologySteps; track step) {
-          @defer (on viewport) {
-            <div @fadeInOut class="step" (keypress)="selectedStep.set($index)" tabindex="0">
-              <div class="number">0{{ $index + 1 }}</div>
-              <div class="title">
-                {{ step.title }}
+      <div class="image-and-steps-wrapper" [@fadeInOut]="{ value: '', params: { delay: '0.7s' } }">
+        <img [attr.loading]="'lazy'" class="methodology-image" src="/webp/methodology.webp" alt="Methodology" />
+        <div class="steps-wrapper">
+          @for (step of data()?.methodologySteps; track step) {
+            @defer (on viewport) {
+              <div @fadeInOut class="step" (keypress)="selectedStep.set($index)" tabindex="0">
+                <div class="number">0{{ $index + 1 }}</div>
+                <div class="title">
+                  {{ step.title }}
+                </div>
+                <div class="description" [innerHTML]="getHtmlFromBlock(step.description)"></div>
               </div>
-              <div class="description" [innerHTML]="getHtmlFromBlock(step.description)"></div>
-            </div>
-          } @placeholder {
-            <ac-placeholder [height]="500" />
+            } @placeholder {
+              <ac-placeholder [height]="500" />
+            }
           }
-        }
+        </div>
       </div>
     }
   } @placeholder {

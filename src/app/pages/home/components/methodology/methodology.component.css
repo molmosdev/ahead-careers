@@ -5,10 +5,28 @@
 
   @media (max-width: 768px) {
     padding-inline: 40px;
+
+    .image-and-steps-wrapper {
+      .methodology-image {
+        display: none;
+      }
+    }
   }
 
   @media (min-width: 769px) {
     padding-bottom: 20px;
+
+    .image-and-steps-wrapper {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      height: 690px;
+
+      .methodology-image {
+        height: calc(100% - 1rem);
+        border-radius: 15px;
+      }
+    }
   }
 
   .steps-wrapper {
