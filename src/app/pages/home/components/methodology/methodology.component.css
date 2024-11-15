@@ -59,10 +59,6 @@
       flex-direction: column;
       align-items: flex-start;
 
-      &:hover {
-        cursor: pointer;
-      }
-
       .number {
         color: #798194;
         opacity: 0.5;
