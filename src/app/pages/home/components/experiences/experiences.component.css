@@ -2,6 +2,9 @@
   width: 100%;
   max-width: 1400px;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   .carousel-container {
     position: relative;

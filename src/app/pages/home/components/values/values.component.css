@@ -5,6 +5,7 @@
   justify-content: center;
   padding-inline: 40px;
   user-select: none;
+  gap: 1rem;
 
   .value-boxes-wrapper {
     display: grid;
