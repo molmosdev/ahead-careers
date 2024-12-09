@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('../node_modules/@realm-ui/styles/src/index.css');
 @import url(./app/styles/colors.css);
 @import url('../node_modules/lucide-static/font/lucide.css');
 
@@ -49,4 +50,12 @@ h1 {
   font-weight: 600;
   margin-bottom: 1.4rem;
   text-align: center;
+}
+
+r-button button {
+  font-family: 'Poppins', sans-serif;
+
+  &.secondary {
+    font-weight: 600;
+  }
 }

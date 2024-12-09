@@ -3,4 +3,19 @@
   --white: #fff;
   --light-grey: #f0f0f0;
   --grey: #798194;
+
+  /* realm-ui colors */
+  --app-background: var(--white);
+  --background: var(--white);
+  --foreground: var(--grey);
+  --primary: var(--blue);
+  --primary-foreground: var(--white);
+  --secondary: var(--light-grey);
+  --secondary-foreground: var(--blue);
+  --error: #fff0f0;
+  --error-foreground: #c40000ab;
+  --input-background: var(--light-grey);
+  --input-foreground: var(--grey);
+  --roundness: 2rem;
+  --button-padding-inline: 1.9rem;
 }

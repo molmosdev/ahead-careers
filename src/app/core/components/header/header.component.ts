@@ -1,18 +1,16 @@
 import { Component, HostListener, signal } from '@angular/core';
-import { CtaComponent } from '../../../shared/components/cta/cta.component';
-import { CtaType } from '../../../shared/components/cta/enums/cta-type';
 import { fadeInOutTrigger } from '../../../shared/animations';
 import { moveToTheLeftTrigger } from './header.animations';
+import { Button } from '@realm-ui/angular';
 
 @Component({
   selector: 'ac-header',
-  imports: [CtaComponent],
+  imports: [Button],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   animations: [fadeInOutTrigger, moveToTheLeftTrigger],
 })
 export class HeaderComponent {
-  CtaType = CtaType;
   scrolled = signal(false);
 
   @HostListener('window:scroll', [])
