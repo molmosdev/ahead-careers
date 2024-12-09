@@ -3,7 +3,10 @@ import { Experiences } from './interfaces/experiences';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { NgClass } from '@angular/common';
 import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
-import { experienceTrigger, fadeInExperiencesTrigger } from './experiences.animations';
+import {
+  experienceTrigger,
+  fadeInExperiencesTrigger,
+} from './experiences.animations';
 import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
@@ -29,7 +32,12 @@ export class ExperiencesComponent {
    * Gets the data for the component
    */
   async getComponentData() {
-    this.data.set((await this.sanityService.getDataByType('experiences', true)) as Experiences);
+    this.data.set(
+      (await this.sanityService.getDataByType(
+        'experiences',
+        true
+      )) as Experiences
+    );
   }
 
   /**

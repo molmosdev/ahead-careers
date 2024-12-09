@@ -3,7 +3,12 @@
     <div class="content">
       <img class="logo" src="/svg/logo-negative.svg" alt="" />
       <div class="right">
-        <a class="negative" href="www.google.com" [@moveToTheLeftTrigger]="scrolled()">Contáctanos</a>
+        <a
+          class="negative"
+          href="www.google.com"
+          [@moveToTheLeftTrigger]="scrolled()"
+          >Contáctanos</a
+        >
         @if (scrolled()) {
           <ac-cta [type]="CtaType.Negative" @fadeInOut>Ofertas</ac-cta>
         }

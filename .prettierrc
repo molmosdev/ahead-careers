@@ -1,7 +1,4 @@
-// The values provided below are the defaults.
-// If you don't specify one of these properties,
-// the default value will be applied.
-module.exports = {
+{
   "tabWidth": 2,
   "useTabs": false,
   "singleQuote": true,
@@ -10,5 +7,13 @@ module.exports = {
   "arrowParens": "avoid",
   "trailingComma": "es5",
   "bracketSameLine": true,
-  "printWidth": 120
-};
+  "printWidth": 80,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
+}

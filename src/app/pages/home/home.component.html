@@ -1,6 +1,9 @@
 <ac-sectors />
 @if (description()) {
-  <div class="description" [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }" [innerHTML]="description()"></div>
+  <div
+    class="description"
+    [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }"
+    [innerHTML]="description()"></div>
 }
 <ac-values />
 <ac-methodology />

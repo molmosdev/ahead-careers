@@ -19,7 +19,9 @@ export class ValuesComponent {
   }
 
   async getComponentData() {
-    this.data.set((await this.sanityService.getDataByType('values', true)) as Values);
+    this.data.set(
+      (await this.sanityService.getDataByType('values', true)) as Values
+    );
   }
 
   getHtmlFromBlock(block: any): string {

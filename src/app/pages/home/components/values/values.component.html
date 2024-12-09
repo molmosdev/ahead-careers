@@ -3,14 +3,18 @@
     {{ data()?.title }}
   </h1>
   @if (data()?.values && (data()?.values)!.length > 0) {
-    <div class="value-boxes-wrapper" [@fadeInOut]="{ value: '', params: { delay: '0.7s' } }">
+    <div
+      class="value-boxes-wrapper"
+      [@fadeInOut]="{ value: '', params: { delay: '0.7s' } }">
       @for (value of data()?.values; track value) {
         @defer (on viewport) {
           <div class="value-box" @fadeInOut>
             <div class="title">
               {{ value.title }}
             </div>
-            <div class="description" [innerHTML]="getHtmlFromBlock(value.description)"></div>
+            <div
+              class="description"
+              [innerHTML]="getHtmlFromBlock(value.description)"></div>
           </div>
         } @placeholder {
           <ac-placeholder [height]="500" />

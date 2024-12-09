@@ -22,7 +22,9 @@ export class CeoMessageComponent {
    */
   async getComponentData() {
     this.sanityService.getDataByType('businessDescription').then(data => {
-      this.ceoMessage.set(this.sanityService.transformBlockToHtml(data[0].ceoMessage));
+      this.ceoMessage.set(
+        this.sanityService.transformBlockToHtml(data[0].ceoMessage)
+      );
     });
   }
 }

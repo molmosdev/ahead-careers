@@ -1,4 +1,10 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 export const moveToTheLeftTrigger = trigger('moveToTheLeftTrigger', [
   state('true', style({ transform: 'translateX(-140%)' })),

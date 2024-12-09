@@ -1,4 +1,13 @@
-import { trigger, state, style, transition, animate, query, animateChild, sequence } from '@angular/animations';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+  query,
+  animateChild,
+  sequence,
+} from '@angular/animations';
 
 export const fadeInExperiencesTrigger = trigger('fadeInExperiencesTrigger', [
   transition(':enter', [
@@ -54,29 +63,44 @@ export const experienceTrigger = trigger('experienceTrigger', [
   transition('left => right', [
     sequence([
       animate('0.25s ease-in-out', style({ opacity: 0 })),
-      style({ zIndex: 1, transform: 'translateX(70%) scale(0.7) rotateY(-15deg)' }),
+      style({
+        zIndex: 1,
+        transform: 'translateX(70%) scale(0.7) rotateY(-15deg)',
+      }),
       animate('0.25s ease-in-out', style({ opacity: 1 })),
     ]),
   ]),
   transition('right => left', [
     sequence([
       animate('0.25s ease-in-out', style({ opacity: 0 })),
-      style({ zIndex: 1, transform: 'translateX(-70%) scale(0.7) rotateY(15deg)' }),
+      style({
+        zIndex: 1,
+        transform: 'translateX(-70%) scale(0.7) rotateY(15deg)',
+      }),
       animate('0.25s ease-in-out', style({ opacity: 1 })),
     ]),
   ]),
-  transition('left => invisibleRight, left => invisibleLeft, right => invisibleRight, right => invisibleLeft', [
-    animate('0.2s ease-in-out', style({ opacity: 0 })),
-  ]),
+  transition(
+    'left => invisibleRight, left => invisibleLeft, right => invisibleRight, right => invisibleLeft',
+    [animate('0.2s ease-in-out', style({ opacity: 0 }))]
+  ),
   transition('invisibleRight => left, invisibleLeft => left', [
     sequence([
-      style({ opacity: 0, zIndex: 1, transform: 'translateX(-70%) scale(0.7) rotateY(15deg)' }),
+      style({
+        opacity: 0,
+        zIndex: 1,
+        transform: 'translateX(-70%) scale(0.7) rotateY(15deg)',
+      }),
       animate('0.5s ease-in-out', style({ opacity: 1 })),
     ]),
   ]),
   transition('invisibleRight => right, invisibleLeft => right', [
     sequence([
-      style({ opacity: 0, zIndex: 1, transform: 'translateX(70%) scale(0.7) rotateY(-15deg)' }),
+      style({
+        opacity: 0,
+        zIndex: 1,
+        transform: 'translateX(70%) scale(0.7) rotateY(-15deg)',
+      }),
       animate('0.5s ease-in-out', style({ opacity: 1 })),
     ]),
   ]),

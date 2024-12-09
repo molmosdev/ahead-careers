@@ -1,5 +1,11 @@
 import { Component, computed, signal } from '@angular/core';
-import { trigger, transition, style, animate, keyframes } from '@angular/animations';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  keyframes,
+} from '@angular/animations';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { fadeInOutTrigger } from '../../../../shared/animations';
 
@@ -25,7 +31,9 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
 })
 export class SectorsComponent {
   sectors = signal<string[] | undefined>(undefined);
-  duplicatedSectors = computed(() => this.sectors()?.concat(this.sectors()!) || undefined);
+  duplicatedSectors = computed(
+    () => this.sectors()?.concat(this.sectors()!) || undefined
+  );
   sliderLoopState = signal<boolean>(true);
 
   constructor(private sanityService: SanityService) {
@@ -36,7 +44,10 @@ export class SectorsComponent {
    * Gets the data for the component
    */
   async getComponentData() {
-    const businessDescription = await this.sanityService.getDataByType('businessDescription', true);
+    const businessDescription = await this.sanityService.getDataByType(
+      'businessDescription',
+      true
+    );
     this.sectors.set(businessDescription.sectors);
   }
 }

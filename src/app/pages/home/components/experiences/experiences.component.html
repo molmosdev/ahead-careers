@@ -17,7 +17,9 @@
             (keydown)="handleKeydown($event)"
             [ngClass]="{ selected: $index === currentIndex() }"
             tabindex="0">
-            <div class="content" [innerHTML]="getHtmlFromBlock(experience!.content)"></div>
+            <div
+              class="content"
+              [innerHTML]="getHtmlFromBlock(experience!.content)"></div>
             <div class="bottom">
               <div class="author">
                 {{ experience!.author }}
@@ -33,7 +35,10 @@
         }
       </div>
       <div class="arrows">
-        <button class="prev-button" (click)="prev()" aria-label="Previous Slide">
+        <button
+          class="prev-button"
+          (click)="prev()"
+          aria-label="Previous Slide">
           <i class="icon-arrow-left"></i>
         </button>
         <button class="next-button" (click)="next()" aria-label="Next Slide">

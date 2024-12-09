@@ -23,7 +23,12 @@ export class MethodologyComponent {
    * Gets the data for the component
    */
   async getComponentData() {
-    this.data.set((await this.sanityService.getDataByType('methodology', true)) as Methodology);
+    this.data.set(
+      (await this.sanityService.getDataByType(
+        'methodology',
+        true
+      )) as Methodology
+    );
   }
 
   /**

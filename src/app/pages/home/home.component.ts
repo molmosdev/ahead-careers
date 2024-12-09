@@ -11,7 +11,13 @@ import { MethodologyComponent } from './components/methodology/methodology.compo
   selector: 'ac-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [ValuesComponent, ExperiencesComponent, SectorsComponent, CeoMessageComponent, MethodologyComponent],
+  imports: [
+    ValuesComponent,
+    ExperiencesComponent,
+    SectorsComponent,
+    CeoMessageComponent,
+    MethodologyComponent,
+  ],
   animations: [fadeInOutTrigger],
 })
 export class HomeComponent {
@@ -22,7 +28,9 @@ export class HomeComponent {
 
   async getDescription() {
     this.sanityService.getDataByType('businessDescription').then(data => {
-      this.description.set(this.sanityService.transformBlockToHtml(data[0].description));
+      this.description.set(
+        this.sanityService.transformBlockToHtml(data[0].description)
+      );
     });
   }
 }

@@ -34,7 +34,11 @@
       color: var(--grey);
 
       &:hover {
-        background-color: color-mix(in srgb, var(--white) 10%, var(--light-grey));
+        background-color: color-mix(
+          in srgb,
+          var(--white) 10%,
+          var(--light-grey)
+        );
       }
     }
 

@@ -8,10 +8,12 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
+    loadComponent: () =>
+      import('./pages/home/home.component').then(m => m.HomeComponent),
     data: {
       title: 'Inicio - Ahead Careers',
-      description: 'Bienvenido a Ahead Careers. Explora oportunidades laborales únicas.',
+      description:
+        'Bienvenido a Ahead Careers. Explora oportunidades laborales únicas.',
       keywords: 'carreras, oportunidades, trabajo, Ahead Careers, Eric Olmos',
     },
     title: 'Inicio - Ahead Careers',

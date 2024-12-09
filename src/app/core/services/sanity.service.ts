@@ -15,8 +15,6 @@ export class SanityService {
     useCdn: true,
   });
 
-  constructor() {}
-
   async getDataByType(type: string, singleton = false): Promise<any> {
     const query = `*[_type == "${type}"]`;
     const data = await this.client.fetch(query);
