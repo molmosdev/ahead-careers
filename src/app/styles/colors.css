@@ -16,6 +16,6 @@
   --error-foreground: #c40000ab;
   --input-background: var(--light-grey);
   --input-foreground: var(--grey);
-  --roundness: 2rem;
+  --roundness: 1.5rem;
   --button-padding-inline: 1.9rem;
 }
