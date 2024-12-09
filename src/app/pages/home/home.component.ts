@@ -9,7 +9,6 @@ import { MethodologyComponent } from './components/methodology/methodology.compo
 
 @Component({
   selector: 'ac-home',
-  standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   imports: [ValuesComponent, ExperiencesComponent, SectorsComponent, CeoMessageComponent, MethodologyComponent],

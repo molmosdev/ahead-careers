@@ -4,7 +4,6 @@ import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'ac-cta',
-  standalone: true,
   imports: [NgClass],
   templateUrl: './cta.component.html',
   styleUrl: './cta.component.css',

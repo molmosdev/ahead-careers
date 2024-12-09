@@ -7,7 +7,6 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-values',
-  standalone: true,
   imports: [PlaceholderComponent],
   templateUrl: './values.component.html',
   styleUrl: './values.component.css',

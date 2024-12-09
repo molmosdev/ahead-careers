@@ -8,7 +8,6 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-experiences',
-  standalone: true,
   imports: [PlaceholderComponent, NgClass],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.css',

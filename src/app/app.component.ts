@@ -7,7 +7,6 @@ import { FooterComponent } from './core/components/footer/footer.component';
 
 @Component({
   selector: 'ac-root',
-  standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

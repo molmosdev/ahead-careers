@@ -6,7 +6,6 @@ import { moveToTheLeftTrigger } from './header.animations';
 
 @Component({
   selector: 'ac-header',
-  standalone: true,
   imports: [CtaComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

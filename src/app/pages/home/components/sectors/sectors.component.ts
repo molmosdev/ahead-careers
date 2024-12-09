@@ -5,7 +5,6 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-sectors',
-  standalone: true,
   imports: [],
   templateUrl: './sectors.component.html',
   styleUrl: './sectors.component.css',

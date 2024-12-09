@@ -6,7 +6,6 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-methodology',
-  standalone: true,
   imports: [PlaceholderComponent],
   templateUrl: './methodology.component.html',
   styleUrl: './methodology.component.css',

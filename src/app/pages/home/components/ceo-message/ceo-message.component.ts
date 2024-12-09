@@ -5,7 +5,6 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-ceo-message',
-  standalone: true,
   imports: [PlaceholderComponent],
   templateUrl: './ceo-message.component.html',
   styleUrl: './ceo-message.component.css',

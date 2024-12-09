@@ -4,7 +4,6 @@ import { fadeInOutTrigger } from '../../../shared/animations';
 
 @Component({
   selector: 'ac-footer',
-  standalone: true,
   imports: [PlaceholderComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',
