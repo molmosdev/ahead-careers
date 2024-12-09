@@ -33,12 +33,7 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    height: 40px;
     position: relative;
-
-    @media (min-width: 768px) {
-      height: 60px;
-    }
 
     .sector {
       white-space: nowrap;
