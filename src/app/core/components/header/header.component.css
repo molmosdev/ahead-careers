@@ -15,7 +15,7 @@
       top: 0;
       left: 0;
       background-color: var(--blue);
-      z-index: 3;
+      z-index: 4;
 
       .content {
         display: flex;
