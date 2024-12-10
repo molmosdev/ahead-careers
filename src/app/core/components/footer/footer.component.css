@@ -4,7 +4,6 @@
   overflow: hidden;
 
   footer {
-    background-color: var(--blue);
     width: 100%;
     position: relative;
     display: flex;
@@ -21,12 +20,26 @@
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
+      position: relative;
+
+      &::after {
+        background-color: var(--blue);
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: 50%;
+        width: 100vw;
+        height: 101%;
+        transform: translateX(-50%);
+        z-index: 0;
+      }
 
       .contact {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 18px;
+        z-index: 1;
 
         a {
           display: flex;
@@ -52,6 +65,7 @@
 
       img {
         width: 100px;
+        z-index: 1;
       }
     }
   }
