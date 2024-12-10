@@ -1,1 +1,19 @@
-<p>offers works!</p>
+@for (offer of offers(); track offer.offerId) {
+  <div class="offer">
+    <h2>{{ offer.jobTitle }}</h2>
+    <p><strong>Consultant Name:</strong> {{ offer.consultantName }}</p>
+    <p><strong>Contract Type:</strong> {{ offer.contractType }}</p>
+    <p>
+      <strong>Consultant Selection:</strong> {{ offer.consultantSelection }}
+    </p>
+    <p><strong>Location:</strong> {{ offer.location }}</p>
+    <p><strong>Salary:</strong> {{ offer.salary }}</p>
+    <p><strong>Industry:</strong> {{ offer.industry }}</p>
+    <p>
+      <strong>Consultant Email:</strong>
+      <a href="mailto:{{ offer.consultantEmail }}">{{
+        offer.consultantEmail
+      }}</a>
+    </p>
+  </div>
+}
