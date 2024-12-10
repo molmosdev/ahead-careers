@@ -40,7 +40,7 @@
   }
 
   @media (max-width: 768px) {
-    .bottom-wrapper {
+    .slogan-wrapper {
       padding: 20px 40px 30px 40px;
       gap: 1.4rem;
 
@@ -48,6 +48,11 @@
         font-size: 1.9rem;
         line-height: 2.4rem;
       }
+    }
+
+    .home-wrapper {
+      gap: 3rem;
+      padding: 4rem 0 5rem 0;
     }
   }
 }
