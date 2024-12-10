@@ -2,11 +2,15 @@
   <div class="content">
     <img class="logo" src="/svg/logo-negative.svg" [routerLink]="'/'" alt="" />
     <div class="right">
-      <a href="www.google.com" [@moveToTheLeftTrigger]="scrolled()">
+      <a
+        href="www.google.com"
+        [@moveToTheLeftTrigger]="scrolled() && !isOffersPage()">
         <r-button type="primary" @fadeInOut>Contáctanos</r-button>
       </a>
-      @if (scrolled()) {
-        <r-button type="secondary" @fadeInOut>Ofertas</r-button>
+      @if (scrolled() && !isOffersPage()) {
+        <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
+          >Ofertas</r-button
+        >
       }
     </div>
   </div>
