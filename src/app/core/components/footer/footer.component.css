@@ -28,7 +28,7 @@
         position: absolute;
         top: -1px;
         left: 50%;
-        width: 100vw;
+        width: calc(100vw + 1px);
         height: 101%;
         transform: translateX(-50%);
         z-index: 0;
