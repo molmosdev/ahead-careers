@@ -2,10 +2,11 @@ import { Component, HostListener, signal } from '@angular/core';
 import { fadeInOutTrigger } from '../../../shared/animations';
 import { moveToTheLeftTrigger } from './header.animations';
 import { Button } from '@realm-ui/angular';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'ac-header',
-  imports: [Button],
+  imports: [Button, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   animations: [fadeInOutTrigger, moveToTheLeftTrigger],

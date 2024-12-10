@@ -59,3 +59,34 @@ r-button button {
     font-weight: 600;
   }
 }
+
+.rounded-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 25px;
+  margin-top: -1px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: -5vw;
+    right: -5vw;
+    height: 25px;
+    border-bottom-left-radius: 200%;
+    border-bottom-right-radius: 200%;
+    background-color: var(--blue);
+  }
+
+  &.up::after {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 200%;
+    border-top-right-radius: 200%;
+    margin-bottom: -1px;
+  }
+
+  &.up {
+    margin-bottom: -1px;
+  }
+}

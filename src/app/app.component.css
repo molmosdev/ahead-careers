@@ -2,29 +2,4 @@
   display: flex;
   flex-direction: column;
   background-color: var(--white);
-
-  .sticky-header-bottom {
-    position: sticky;
-    top: 76px;
-    z-index: 3;
-    width: 100%;
-    overflow: hidden;
-    height: 25px;
-    margin-top: -1px;
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: -5vw;
-      right: -5vw;
-      height: 25px;
-      border-bottom-left-radius: 200%;
-      border-bottom-right-radius: 200%;
-      background-color: var(--blue);
-    }
-
-    @media (max-width: 768px) {
-      top: 56px;
-    }
-  }
 }

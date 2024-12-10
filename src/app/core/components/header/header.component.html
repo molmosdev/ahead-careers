@@ -1,19 +1,14 @@
 <header>
-  <div class="top-wrapper">
-    <div class="content">
-      <img class="logo" src="/svg/logo-negative.svg" alt="" />
-      <div class="right">
-        <a href="www.google.com" [@moveToTheLeftTrigger]="scrolled()">
-          <r-button type="primary" @fadeInOut>Contáctanos</r-button>
-        </a>
-        @if (scrolled()) {
-          <r-button type="secondary" @fadeInOut>Ofertas</r-button>
-        }
-      </div>
+  <div class="content">
+    <img class="logo" src="/svg/logo-negative.svg" [routerLink]="'/'" alt="" />
+    <div class="right">
+      <a href="www.google.com" [@moveToTheLeftTrigger]="scrolled()">
+        <r-button type="primary" @fadeInOut>Contáctanos</r-button>
+      </a>
+      @if (scrolled()) {
+        <r-button type="secondary" @fadeInOut>Ofertas</r-button>
+      }
     </div>
   </div>
-  <div class="bottom-wrapper">
-    <div class="slogan">‘Shaping your future’</div>
-    <r-button type="secondary">Consulta nuestras ofertas</r-button>
-  </div>
+  <div class="rounded-section"></div>
 </header>
