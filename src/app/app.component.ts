@@ -1,26 +1,12 @@
-import {
-  Component,
-  computed,
-  HostListener,
-  inject,
-  OnInit,
-} from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
-import {
-  Router,
-  NavigationEnd,
-  ActivatedRouteSnapshot,
-  RouterOutlet,
-} from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Component, computed, HostListener, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
-import {
-  fadeInOutTrigger,
-  fadeInOutVerticalTrigger,
-} from './shared/animations';
+import { fadeInOutTrigger } from './shared/animations';
 import { ViewportService } from './core/services/viewport.service';
 import { OffersButtonComponent } from './shared/components/offers-button/offers-button.component';
+import { RouteService } from './core/services/route.service';
+import { Path } from './shared/enums/path';
 
 @Component({
   selector: 'ac-root',
@@ -32,36 +18,16 @@ import { OffersButtonComponent } from './shared/components/offers-button/offers-
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  animations: [fadeInOutTrigger, fadeInOutVerticalTrigger],
+  animations: [fadeInOutTrigger],
 })
-export class AppComponent implements OnInit {
-  router = inject(Router);
-  meta = inject(Meta);
-  projectTitle = inject(Title);
+export class AppComponent {
   viewportService = inject(ViewportService);
   isMobile = computed(() => this.viewportService.isMobile());
   isScrolled = computed(() => this.viewportService.isScrolled());
-
-  ngOnInit(): void {
-    this.initializeRouterEvents();
-  }
-
-  initializeRouterEvents(): void {
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.setMetaTagsForRoute(this.router.routerState.snapshot.root);
-      });
-  }
-
-  setMetaTagsForRoute(route: ActivatedRouteSnapshot) {
-    this.projectTitle.setTitle(route.data['title']);
-    this.meta.updateTag({
-      name: 'description',
-      content: route.data['description'],
-    });
-    this.meta.updateTag({ name: 'keywords', content: route.data['keywords'] });
-  }
+  routeService = inject(RouteService);
+  isOffersPage = computed(
+    () => this.routeService.currentPath() === Path.Offers
+  );
 
   /* Viewport host listeners */
   @HostListener('window:load', [])

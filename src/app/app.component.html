@@ -1,6 +1,6 @@
 <ac-header />
 <router-outlet />
-@if (isMobile() && isScrolled()) {
-  <ac-offers-button @fadeInOutVertical />
+@if (isMobile() && isScrolled() && !isOffersPage()) {
+  <ac-offers-button @fadeInOut />
 }
 <ac-footer />

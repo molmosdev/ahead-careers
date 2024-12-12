@@ -4,6 +4,8 @@ import { moveToTheLeftTrigger } from './header.animations';
 import { Button } from '@realm-ui/angular';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ViewportService } from '../../services/viewport.service';
+import { RouteService } from '../../services/route.service';
+import { Path } from '../../../shared/enums/path';
 
 @Component({
   selector: 'ac-header',
@@ -14,23 +16,12 @@ import { ViewportService } from '../../services/viewport.service';
 })
 export class HeaderComponent {
   route = inject(ActivatedRoute);
+  routeService = inject(RouteService);
   viewportService = inject(ViewportService);
   isScrolled = computed(() => this.viewportService.isScrolled());
   isMobile = computed(() => this.viewportService.isMobile());
-
-  /**
-   * Gets the current page title from the route data.
-   * @returns The title of the current page
-   */
-  getCurrentPageTitle(): string {
-    let title = '';
-    this.route.firstChild?.data.subscribe(data => {
-      title = data['title'];
-    });
-    return title;
-  }
-
-  isOffersPage(): boolean {
-    return this.getCurrentPageTitle() === 'Ofertas - Ahead Careers';
-  }
+  currentPath = computed(() => this.routeService.currentPath());
+  isOffersPage = computed(
+    () => this.routeService.currentPath() === Path.Offers
+  );
 }
