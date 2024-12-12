@@ -4,6 +4,7 @@
   box-sizing: border-box;
   gap: 2rem;
   padding: 4rem 2rem;
+  min-height: 100dvh;
 
   .offer {
     padding: 25px;
