@@ -1,5 +1,4 @@
 :host {
-  padding-top: 25px;
   width: 100%;
   overflow: hidden;
 
@@ -73,9 +72,9 @@
   @media (max-width: 768px) {
     footer {
       .footer-content {
-        padding-top: 25px;
+        padding-top: 1.786rem;
         flex-direction: column;
-        gap: 25px;
+        gap: 1.786rem;
 
         .contact {
           align-items: center;

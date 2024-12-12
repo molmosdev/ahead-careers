@@ -4,10 +4,12 @@
     <div class="right">
       <a
         href="www.google.com"
-        [@moveToTheLeftTrigger]="scrolled() && !isOffersPage()">
+        [@moveToTheLeftTrigger]="
+          isScrolled() && !isOffersPage() && !isMobile()
+        ">
         <r-button type="primary" @fadeInOut>Contáctanos</r-button>
       </a>
-      @if (scrolled() && !isOffersPage()) {
+      @if (isScrolled() && !isOffersPage() && !isMobile()) {
         <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
           >Ofertas</r-button
         >

@@ -1,8 +1,9 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { fadeInOutTrigger } from '../../../shared/animations';
 import { moveToTheLeftTrigger } from './header.animations';
 import { Button } from '@realm-ui/angular';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ViewportService } from '../../services/viewport.service';
 
 @Component({
   selector: 'ac-header',
@@ -12,14 +13,10 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   animations: [fadeInOutTrigger, moveToTheLeftTrigger],
 })
 export class HeaderComponent {
-  scrolled = signal(false);
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.scrolled.set(document.documentElement.scrollTop > 200);
-  }
-
-  constructor(protected route: ActivatedRoute) {}
+  route = inject(ActivatedRoute);
+  viewportService = inject(ViewportService);
+  isScrolled = computed(() => this.viewportService.isScrolled());
+  isMobile = computed(() => this.viewportService.isMobile());
 
   /**
    * Gets the current page title from the route data.
