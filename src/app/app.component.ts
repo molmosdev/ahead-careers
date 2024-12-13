@@ -25,8 +25,8 @@ export class AppComponent {
   isMobile = computed(() => this.viewportService.isMobile());
   isScrolled = computed(() => this.viewportService.isScrolled());
   routeService = inject(RouteService);
-  isOffersPage = computed(
-    () => this.routeService.currentPath() === Path.Offers
+  isOffersPage = computed(() =>
+    this.routeService.currentPath()!.startsWith(Path.Offers)
   );
 
   /* Viewport host listeners */
