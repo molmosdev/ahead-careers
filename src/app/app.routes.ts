@@ -30,6 +30,17 @@ export const routes: Routes = [
     title: 'Ofertas - Ahead Careers',
   },
   {
+    path: 'offers/:id',
+    loadComponent: () =>
+      import('./pages/offers/offers.component').then(m => m.OffersComponent),
+    data: {
+      title: 'Oferta Detallada - Ahead Careers',
+      description: 'Detalles de la oferta laboral seleccionada.',
+      keywords: 'oferta, trabajo, Ahead Careers, Eric Olmos',
+    },
+    title: 'Oferta Detallada - Ahead Careers',
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',

@@ -5,6 +5,13 @@
   gap: 2rem;
   padding: 4rem 2rem;
   min-height: 100dvh;
+  max-width: 1400px;
+  width: 100%;
+  margin-inline: auto;
+
+  .top-controls {
+    display: flex;
+  }
 
   .offer {
     padding: 25px;
@@ -12,5 +19,9 @@
     border: 1px solid #f0f0f0;
     background-color: #fcfcfc;
     border-radius: 15px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
