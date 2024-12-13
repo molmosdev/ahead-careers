@@ -21,7 +21,7 @@ export class HeaderComponent {
   isScrolled = computed(() => this.viewportService.isScrolled());
   isMobile = computed(() => this.viewportService.isMobile());
   currentPath = computed(() => this.routeService.currentPath());
-  isOffersPage = computed(
-    () => this.routeService.currentPath() === Path.Offers
+  isOffersPage = computed(() =>
+    this.routeService.currentPath()!.startsWith(Path.Offers)
   );
 }
