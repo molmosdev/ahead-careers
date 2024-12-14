@@ -37,6 +37,13 @@ export class AppComponent {
   isSplashScreenVisible = signal<boolean>(true);
 
   constructor() {
+    this.initializeSplashScreen();
+  }
+
+  /**
+   * Initializes the splash screen
+   */
+  initializeSplashScreen(): void {
     setTimeout(() => {
       this.isSplashScreenVisible.set(false);
     }, 1500);
