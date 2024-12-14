@@ -6,6 +6,7 @@ import {
 import {
   provideRouter,
   withComponentInputBinding,
+  withInMemoryScrolling,
   withViewTransitions,
 } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
@@ -19,7 +20,14 @@ registerLocaleData(localeEs);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withComponentInputBinding(), withViewTransitions()),
+    provideRouter(
+      routes,
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'enabled',
+      }),
+      withComponentInputBinding(),
+      withViewTransitions()
+    ),
     provideHttpClient(),
     provideAnimations(),
     { provide: LOCALE_ID, useValue: 'es-ES' },
