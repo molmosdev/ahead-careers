@@ -8,6 +8,7 @@ import { CeoMessageComponent } from './components/ceo-message/ceo-message.compon
 import { MethodologyComponent } from './components/methodology/methodology.component';
 import { Button } from '@realm-ui/angular';
 import { RouterLink } from '@angular/router';
+import { TrackVisibilityDirective } from '../../shared/directives/track-visibility.directive';
 
 @Component({
   selector: 'ac-home',
@@ -21,6 +22,7 @@ import { RouterLink } from '@angular/router';
     MethodologyComponent,
     Button,
     RouterLink,
+    TrackVisibilityDirective,
   ],
   animations: [fadeInOutTrigger],
 })

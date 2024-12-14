@@ -1,17 +1,28 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, Signal, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ViewportService {
-  isScrolled = signal(false);
   isMobile = signal(false);
-
-  setisScrolled(value: boolean): void {
-    this.isScrolled.set(value);
-  }
+  elementsTracker = signal<Record<string, boolean>>({});
 
   setIsMobile(value: boolean): void {
     this.isMobile.set(value);
+  }
+
+  registerElement(id: string): Signal<boolean> {
+    const elements = this.elementsTracker();
+    if (!(id in elements)) {
+      this.elementsTracker.set({ ...elements, [id]: false });
+    }
+    return signal(this.elementsTracker()[id]);
+  }
+
+  updateElementVisibility(id: string, isVisible: boolean): void {
+    const elements = this.elementsTracker();
+    if (id in elements) {
+      this.elementsTracker.set({ ...elements, [id]: isVisible });
+    }
   }
 }

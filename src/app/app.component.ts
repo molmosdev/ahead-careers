@@ -31,13 +31,15 @@ import { SplashScreenComponent } from './shared/components/splash-screen/splash-
 export class AppComponent {
   viewportService = inject(ViewportService);
   isMobile = computed(() => this.viewportService.isMobile());
-  isScrolled = computed(() => this.viewportService.isScrolled());
   routeService = inject(RouteService);
   isHomePage = computed(() => this.routeService.currentPath() === Path.Home);
   isOffersPage = computed(
     () => this.routeService.currentPath() === Path.Offers
   );
   isSplashScreenVisible = signal<boolean>(true);
+  isOffersCtaVisible = computed(
+    () => this.viewportService.elementsTracker()['cta-offers']
+  );
 
   constructor() {
     this.initializeSplashScreen();
@@ -61,12 +63,5 @@ export class AppComponent {
   @HostListener('window:resize', [])
   onWindowResize() {
     this.viewportService.setIsMobile(window.innerWidth < 768);
-  }
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.viewportService.setisScrolled(
-      document.documentElement.scrollTop > 200
-    );
   }
 }

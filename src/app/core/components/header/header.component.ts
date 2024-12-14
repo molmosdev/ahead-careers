@@ -18,8 +18,10 @@ export class HeaderComponent {
   route = inject(ActivatedRoute);
   routeService = inject(RouteService);
   viewportService = inject(ViewportService);
-  isScrolled = computed(() => this.viewportService.isScrolled());
   isMobile = computed(() => this.viewportService.isMobile());
   currentPath = computed(() => this.routeService.currentPath());
   isHomePage = computed(() => this.routeService.currentPath() === Path.Home);
+  isOffersCtaVisible = computed(
+    () => this.viewportService.elementsTracker()['cta-offers']
+  );
 }
