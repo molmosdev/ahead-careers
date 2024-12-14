@@ -1,6 +1,10 @@
 <div class="rounded-section up"></div>
 <div class="offers-button-wrapper">
   <r-button [routerLink]="'/offers'" type="secondary">
-    Consulta nuestras ofertas
+    @if (isHomePage()) {
+      Consulta nuestras ofertas
+    } @else {
+      Otras ofertas
+    }
   </r-button>
 </div>

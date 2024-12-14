@@ -34,6 +34,9 @@ export class AppComponent {
   isScrolled = computed(() => this.viewportService.isScrolled());
   routeService = inject(RouteService);
   isHomePage = computed(() => this.routeService.currentPath() === Path.Home);
+  isOffersPage = computed(
+    () => this.routeService.currentPath() === Path.Offers
+  );
   isSplashScreenVisible = signal<boolean>(true);
 
   constructor() {

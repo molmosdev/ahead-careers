@@ -1,7 +1,7 @@
 <ac-header />
 <router-outlet />
-@if (isMobile() && isScrolled() && isHomePage()) {
-  <ac-offers-button @fadeInOut />
+@if (isMobile() && isScrolled() && !isOffersPage()) {
+  <ac-offers-button [isHomePage]="isHomePage()" @fadeInOut />
 }
 @defer (on timer(1000ms)) {
   <ac-footer />
