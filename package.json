@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
     "@portabletext/to-html": "^2.0.13",
-    "@realm-ui/angular": "^1.0.20",
+    "@realm-ui/angular": "^1.2.1",
     "@realm-ui/styles": "^0.0.20",
     "@sanity/client": "^6.24.1",
     "lucide-static": "^0.468.0",
