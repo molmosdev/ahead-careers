@@ -1,6 +1,6 @@
 @defer (when offers() && offers().length > 0) {
   @for (offer of offers(); track offer.offerId) {
-    <div class="offer" [routerLink]="'/offer/' + offer.offerId">
+    <div class="offer" @fadeInOut [routerLink]="'/offer/' + offer.offerId">
       <h2>{{ offer.jobTitle }}</h2>
       <p><strong>Consultant Name:</strong> {{ offer.consultantName }}</p>
       <p><strong>Contract Type:</strong> {{ offer.contractType }}</p>
