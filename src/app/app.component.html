@@ -3,7 +3,9 @@
 @if (isMobile() && isScrolled() && isHomePage()) {
   <ac-offers-button @fadeInOut />
 }
-<!-- <ac-footer />
+@defer (on timer(1000ms)) {
+  <ac-footer />
+}
 @if (isSplashScreenVisible()) {
   <ac-splash-screen @fadeOut />
-} -->
+}
