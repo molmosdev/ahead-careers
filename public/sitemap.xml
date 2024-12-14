@@ -23,7 +23,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aheadcareers.com/offers/:id</loc>
+    <loc>https://aheadcareers.com/offer/:id</loc>
     <lastmod>2024-12-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

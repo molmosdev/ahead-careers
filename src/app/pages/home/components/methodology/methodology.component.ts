@@ -36,7 +36,6 @@ export class MethodologyComponent {
    * @param block - The block to get the html from
    * @returns {string} - The html from the block
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getHtmlFromBlock(block: any): string {
     return this.sanityService.transformBlockToHtml(block);
   }

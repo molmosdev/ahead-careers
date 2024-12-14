@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, signal } from '@angular/core';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { Values } from './interfaces/values';

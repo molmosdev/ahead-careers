@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable, resource, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { createClient } from '@sanity/client';

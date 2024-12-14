@@ -8,7 +8,6 @@ import {
 import { provideHttpClient } from '@angular/common/http';
 
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
@@ -22,7 +21,6 @@ export const appConfig: ApplicationConfig = {
       withComponentInputBinding(),
       withViewTransitions()
     ),
-    provideClientHydration(),
     provideHttpClient(),
     provideAnimations(),
   ],
