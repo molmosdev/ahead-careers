@@ -9,9 +9,7 @@
       @for (value of data()?.values; track value) {
         @defer (on viewport) {
           <div class="value-box" @fadeInOut>
-            <div class="title">
-              {{ value.title }}
-            </div>
+            <h2>{{ value.title }}</h2>
             <div
               class="description"
               [innerHTML]="getHtmlFromBlock(value.description)"></div>

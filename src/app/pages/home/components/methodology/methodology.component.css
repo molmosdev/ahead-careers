@@ -67,13 +67,9 @@
         font-family: 'Poppins', sans-serif;
       }
 
-      .title {
-        color: var(--blue);
-        font-weight: 600;
-        font-size: 1.2rem;
-        margin-bottom: 5px;
+      h3 {
         position: relative;
-        font-family: 'Poppins', sans-serif;
+        margin-bottom: 5px;
 
         &::after {
           content: '';

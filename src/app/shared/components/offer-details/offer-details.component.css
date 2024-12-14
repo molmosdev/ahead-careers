@@ -1,0 +1,48 @@
+:host {
+  .offer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .offer-details {
+    display: flex;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+    flex-wrap: wrap;
+
+    .detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+  }
+
+  .offer-content {
+    margin: 2rem 0;
+    background-color: rgba(0, 0, 0, 0.01);
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .offer-message {
+    color: var(--blue);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .bottom-controls {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+
+    @media (width < 768px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+}

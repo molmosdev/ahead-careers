@@ -1,5 +1,51 @@
 @if (offer()) {
   <div @fadeInOut>
-    {{ offer() | json }}
+    <div class="offer-header">
+      <h1 class="start">{{ offer()?.jobTitle }} ({{ offer()?.offerId }})</h1>
+      <p>
+        Oferta publicada: {{ offer()?.publicationDate | date: 'dd/MM/yyyy' }}
+      </p>
+    </div>
+    <div class="offer-details">
+      <div class="detail">
+        <h3 class="start">Sector</h3>
+        <p>{{ offer()?.industry }}</p>
+      </div>
+      <div class="detail">
+        <h3 class="start">Ubicación</h3>
+        <p>{{ offer()?.location }}</p>
+      </div>
+      <div class="detail">
+        <h3 class="start">Contrato</h3>
+        @if (offer()?.contractType === 'permanent') {
+          <p>Indefinido</p>
+        } @else {
+          <p>Temporal</p>
+        }
+      </div>
+      <div class="detail">
+        <h3 class="start">Salario</h3>
+        <p>{{ offer()?.salary }}</p>
+      </div>
+    </div>
+    <div
+      class="offer-content"
+      [innerHTML]="getHtmlFromBlock(offer()?.offerContent)"></div>
+    <div class="offer-message">
+      Si estás interesado en esta oferta, adjunta tu CV actualizado y haz click
+      en "Aplicar ahora". Si esta oferta no se adapta a tu perfil pero estás
+      buscando un nuevo puesto de trabajo, por favor contáctanos y lo
+      comentamos. Te garantizamos la confidencialidad.
+    </div>
+    <div class="bottom-controls">
+      <r-button type="secondary">
+        <i class="icon-file-text"></i>
+        Adjunta tu CV actualizado
+      </r-button>
+      <r-button type="primary">
+        <i class="icon-send"></i>
+        Aplicar ahora
+      </r-button>
+    </div>
   </div>
 }

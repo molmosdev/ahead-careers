@@ -22,9 +22,9 @@
                 (keypress)="selectedStep.set($index)"
                 tabindex="0">
                 <div class="number">0{{ $index + 1 }}</div>
-                <div class="title">
+                <h3>
                   {{ step.title }}
-                </div>
+                </h3>
                 <div
                   class="description"
                   [innerHTML]="getHtmlFromBlock(step.description)"></div>
