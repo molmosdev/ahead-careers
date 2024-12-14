@@ -17,5 +17,13 @@
 
   @media (width < 768px) {
     padding: 3rem 2rem;
+
+    .top-controls {
+      gap: 1rem;
+
+      r-button {
+        flex: 1;
+      }
+    }
   }
 }
