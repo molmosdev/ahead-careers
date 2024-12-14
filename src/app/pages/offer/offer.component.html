@@ -1,5 +1,11 @@
 <div class="top-controls">
-  <r-button type="secondary" [routerLink]="'/offers'"> Otras ofertas </r-button>
+  <r-button
+    type="secondary"
+    [routerLink]="'/offers'"
+    r-in-viewport
+    inViewportId="offers-cta-2">
+    Consulta otras ofertas
+  </r-button>
 </div>
 @if (offer()) {
   <ac-offer-details [offer]="offer()" />

@@ -9,11 +9,12 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { fadeInOutTrigger, fadeOutTrigger } from './shared/animations';
-import { ViewportService } from './core/services/viewport.service';
 import { OffersButtonComponent } from './shared/components/offers-button/offers-button.component';
 import { RouteService } from './core/services/route.service';
 import { Path } from './shared/enums/path';
 import { SplashScreenComponent } from './shared/components/splash-screen/splash-screen.component';
+import { InViewportService } from '@realm-ui/angular';
+import { ResponsiveService } from './core/services/responsive.service';
 
 @Component({
   selector: 'ac-root',
@@ -29,16 +30,20 @@ import { SplashScreenComponent } from './shared/components/splash-screen/splash-
   animations: [fadeInOutTrigger, fadeOutTrigger],
 })
 export class AppComponent {
-  viewportService = inject(ViewportService);
-  isMobile = computed(() => this.viewportService.isMobile());
+  responsiveService = inject(ResponsiveService);
+  inViewportService = inject(InViewportService);
+  isMobile = computed(() => this.responsiveService.isMobile());
   routeService = inject(RouteService);
   isHomePage = computed(() => this.routeService.currentPath() === Path.Home);
-  isOffersPage = computed(
-    () => this.routeService.currentPath() === Path.Offers
+  isOfferPage = computed(() =>
+    this.routeService.currentPath()?.startsWith(Path.Offer)
   );
   isSplashScreenVisible = signal<boolean>(true);
   isOffersCtaVisible = computed(
-    () => this.viewportService.elementsTracker()['cta-offers']
+    () => this.inViewportService.elements()['offers-cta']
+  );
+  isOffersCtaVisible2 = computed(
+    () => this.inViewportService.elements()['offers-cta-2']
   );
 
   constructor() {
@@ -57,11 +62,11 @@ export class AppComponent {
   /* Viewport host listeners */
   @HostListener('window:load', [])
   onWindowLoad() {
-    this.viewportService.setIsMobile(window.innerWidth < 768);
+    this.responsiveService.setIsMobile(window.innerWidth < 768);
   }
 
   @HostListener('window:resize', [])
   onWindowResize() {
-    this.viewportService.setIsMobile(window.innerWidth < 768);
+    this.responsiveService.setIsMobile(window.innerWidth < 768);
   }
 }

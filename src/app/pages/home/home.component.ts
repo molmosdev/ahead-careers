@@ -6,9 +6,8 @@ import { fadeInOutTrigger } from '../../shared/animations';
 import { SectorsComponent } from './components/sectors/sectors.component';
 import { CeoMessageComponent } from './components/ceo-message/ceo-message.component';
 import { MethodologyComponent } from './components/methodology/methodology.component';
-import { Button } from '@realm-ui/angular';
+import { Button, InViewportDirective } from '@realm-ui/angular';
 import { RouterLink } from '@angular/router';
-import { TrackVisibilityDirective } from '../../shared/directives/track-visibility.directive';
 
 @Component({
   selector: 'ac-home',
@@ -22,7 +21,7 @@ import { TrackVisibilityDirective } from '../../shared/directives/track-visibili
     MethodologyComponent,
     Button,
     RouterLink,
-    TrackVisibilityDirective,
+    InViewportDirective,
   ],
   animations: [fadeInOutTrigger],
 })

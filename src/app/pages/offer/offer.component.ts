@@ -1,13 +1,13 @@
 import { Component, computed, inject, Input, OnInit } from '@angular/core';
 import { SanityService } from '../../core/services/sanity.service';
-import { Button } from '@realm-ui/angular';
+import { Button, InViewportDirective } from '@realm-ui/angular';
 import { RouterLink } from '@angular/router';
 import { Offer } from '../offers/interfaces/offer.interface';
 import { OfferDetailsComponent } from '../../shared/components/offer-details/offer-details.component';
 
 @Component({
   selector: 'ac-offer',
-  imports: [Button, RouterLink, OfferDetailsComponent],
+  imports: [Button, RouterLink, OfferDetailsComponent, InViewportDirective],
   templateUrl: './offer.component.html',
   styleUrl: './offer.component.css',
 })
