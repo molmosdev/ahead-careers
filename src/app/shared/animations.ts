@@ -22,6 +22,14 @@ export const fadeInOutTrigger: AnimationTriggerMetadata = trigger('fadeInOut', [
 ]);
 
 /**
+ * The fade in animation trigger with delay parameter
+ * @returns {AnimationTriggerMetadata} - The animation trigger metadata
+ */
+export const fadeOutTrigger: AnimationTriggerMetadata = trigger('fadeOut', [
+  transition(':leave', [animate('0.5s', style({ opacity: 0 }))]),
+]);
+
+/**
  * The fade in and out vertical animation trigger with delay parameter
  * @returns {AnimationTriggerMetadata} - The animation trigger metadata
  */

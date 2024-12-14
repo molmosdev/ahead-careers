@@ -8,7 +8,7 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
-import { fadeInOutTrigger } from './shared/animations';
+import { fadeInOutTrigger, fadeOutTrigger } from './shared/animations';
 import { ViewportService } from './core/services/viewport.service';
 import { OffersButtonComponent } from './shared/components/offers-button/offers-button.component';
 import { RouteService } from './core/services/route.service';
@@ -26,7 +26,7 @@ import { SplashScreenComponent } from './shared/components/splash-screen/splash-
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  animations: [fadeInOutTrigger],
+  animations: [fadeInOutTrigger, fadeOutTrigger],
 })
 export class AppComponent {
   viewportService = inject(ViewportService);
