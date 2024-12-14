@@ -39,7 +39,7 @@ export class AppComponent {
   constructor() {
     setTimeout(() => {
       this.isSplashScreenVisible.set(false);
-    }, 1000);
+    }, 1500);
   }
 
   /* Viewport host listeners */
