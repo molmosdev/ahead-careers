@@ -1,84 +1,78 @@
 :host {
-  width: 100%;
   overflow: hidden;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: white;
+  flex-direction: column;
 
-  footer {
+  .footer-content {
     width: 100%;
-    position: relative;
+    max-width: 1400px;
+    padding: 40px;
+    padding-top: 30px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    color: white;
-    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
 
-    .footer-content {
-      width: 100%;
-      max-width: 1400px;
-      padding: 40px;
-      padding-top: 30px;
+    &::after {
+      background-color: var(--blue);
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      width: calc(100vw + 1px);
+      height: 101%;
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+
+    .contact {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      box-sizing: border-box;
-      position: relative;
+      gap: 18px;
+      z-index: 1;
 
-      &::after {
-        background-color: var(--blue);
-        content: '';
-        position: absolute;
-        top: -1px;
-        left: 50%;
-        width: calc(100vw + 1px);
-        height: 101%;
-        transform: translateX(-50%);
-        z-index: 0;
-      }
-
-      .contact {
+      a {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 18px;
-        z-index: 1;
+        transition: 0.2s;
+        padding: 5px;
 
-        a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          transition: 0.2s;
-          padding: 5px;
+        &:hover {
+          transform: scale(1.1);
+        }
 
-          &:hover {
-            transform: scale(1.1);
-          }
+        img {
+          width: 23px;
 
-          img {
-            width: 23px;
-
-            &:nth-child(2) {
-              scale: 0.4;
-              position: absolute;
-            }
+          &:nth-child(2) {
+            scale: 0.4;
+            position: absolute;
           }
         }
       }
+    }
 
-      img {
-        width: 100px;
-        z-index: 1;
-      }
+    img {
+      width: 100px;
+      z-index: 1;
     }
   }
 
   @media (max-width: 768px) {
-    footer {
-      .footer-content {
-        padding-top: 1.786rem;
-        flex-direction: column;
-        gap: 1.786rem;
+    .footer-content {
+      padding-top: 1.786rem;
+      flex-direction: column;
+      gap: 1.786rem;
 
-        .contact {
-          align-items: center;
-        }
+      .contact {
+        align-items: center;
       }
     }
   }

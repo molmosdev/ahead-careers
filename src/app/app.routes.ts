@@ -30,9 +30,9 @@ export const routes: Routes = [
     title: 'Ofertas - Ahead Careers',
   },
   {
-    path: 'offers/:id',
+    path: 'offer/:id',
     loadComponent: () =>
-      import('./pages/offers/offers.component').then(m => m.OffersComponent),
+      import('./pages/offer/offer.component').then(m => m.OfferComponent),
     data: {
       title: 'Oferta Detallada - Ahead Careers',
       description: 'Detalles de la oferta laboral seleccionada.',

@@ -15,12 +15,25 @@ export class SanityService {
     useCdn: true,
   });
 
-  params = signal<{ type: string; singleton: boolean } | undefined>(undefined);
+  params = signal<
+    | {
+        type: string;
+        singleton: boolean;
+        filters: { name: string; value: string }[];
+      }
+    | undefined
+  >(undefined);
   data = resource({
     request: this.params,
     loader: async ({ request: params }) => {
       if (params) {
-        const query = `*[_type == "${params.type}"]`;
+        let query = `*[_type == "${params.type}"]`;
+        if (params.filters && params.filters.length > 0) {
+          const filtersQuery = params.filters
+            .map(filter => `${filter.name} == ${filter.value}`)
+            .join(' && ');
+          query += ` { "${params.type}": ${params.type}[${filtersQuery}] }`;
+        }
         const data = await this.client.fetch(query);
         return params.singleton ? data[0] : data;
       }
