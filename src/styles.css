@@ -99,3 +99,19 @@ r-button {
     margin-bottom: -1px;
   }
 }
+
+ac-home {
+  .description {
+    p {
+      margin: 0;
+    }
+  }
+}
+
+ac-methodology {
+  .description {
+    p {
+      margin: 0;
+    }
+  }
+}
