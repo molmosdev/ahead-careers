@@ -1,4 +1,6 @@
-<h1 class="start">Nuestras ofertas</h1>
+@if (isMobile()) {
+  <h1>Nuestras ofertas</h1>
+}
 <div class="offers-visualizer">
   @defer (when offers() && offers().length > 0) {
     <div class="offers-list">
