@@ -4,7 +4,7 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class ResponsiveService {
-  isMobile = signal(false);
+  isMobile = signal(true);
 
   /**
    * Sets the isMobile signal
