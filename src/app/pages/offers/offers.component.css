@@ -2,26 +2,94 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  gap: 2rem;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
   min-height: 100dvh;
   max-width: 1400px;
   width: 100%;
   margin-inline: auto;
 
+  .offers-visualizer {
+    display: flex;
+
+    .offers-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .offer {
+        padding: 1.5rem 1.7rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        background-color: #f5f5f5;
+        border-radius: 0.8rem;
+
+        .details {
+          display: flex;
+          gap: 1rem;
+
+          p {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+          }
+        }
+      }
+    }
+  }
+
   .top-controls {
     display: flex;
   }
 
-  .offer {
-    padding: 25px;
-    gap: 10px;
-    border: 1px solid #f0f0f0;
-    background-color: #fcfcfc;
-    border-radius: 15px;
+  @media (width > 768px) {
+    .offers-visualizer {
+      gap: 3rem;
 
-    &:hover {
-      cursor: pointer;
+      .offers-list {
+        max-width: 350px;
+
+        .offer {
+          transition: 0.2s;
+          width: 280px;
+
+          &:hover {
+            cursor: pointer;
+            transform: translateX(10px);
+            transition: 0.2s;
+            background-color: color-mix(in srgb, var(--blue) 6%, #f5f5f5);
+          }
+
+          &.selected {
+            transition: 0.2s;
+            background-color: color-mix(
+              in srgb,
+              var(--blue) 8%,
+              var(--light-grey)
+            );
+          }
+        }
+      }
+
+      ac-offer-details {
+        margin-top: -1.6rem;
+      }
+    }
+  }
+
+  @media (width < 768px) {
+    padding: 1.5rem 2rem 3rem 2rem;
+
+    > h1 {
+      text-align: center;
+    }
+
+    .offers-visualizer {
+      width: 100%;
+
+      .offers-list {
+        width: 100%;
+      }
     }
   }
 }

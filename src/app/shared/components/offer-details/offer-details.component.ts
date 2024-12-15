@@ -13,7 +13,7 @@ import { Button } from '@realm-ui/angular';
   animations: [fadeInOutTrigger],
 })
 export class OfferDetailsComponent {
-  offer = input<Offer>();
+  offer = input.required<Offer>();
   sanityService = inject(SanityService);
 
   /**

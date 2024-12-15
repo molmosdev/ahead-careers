@@ -1,23 +1,23 @@
 @if (offer()) {
   <div @fadeInOut>
     <div class="offer-header">
-      <h1 class="start">{{ offer()?.jobTitle }} ({{ offer()?.offerId }})</h1>
+      <h1 class="start">{{ offer().jobTitle }} ({{ offer().offerId }})</h1>
       <p>
-        Oferta publicada: {{ offer()?.publicationDate | date: 'dd/MM/yyyy' }}
+        Oferta publicada: {{ offer().publicationDate | date: 'dd/MM/yyyy' }}
       </p>
     </div>
     <div class="offer-details">
       <div class="detail">
         <h3 class="start">Sector</h3>
-        <p>{{ offer()?.industry }}</p>
+        <p>{{ offer().industry }}</p>
       </div>
       <div class="detail">
         <h3 class="start">Ubicación</h3>
-        <p>{{ offer()?.location }}</p>
+        <p>{{ offer().location }}</p>
       </div>
       <div class="detail">
         <h3 class="start">Contrato</h3>
-        @if (offer()?.contractType === 'permanent') {
+        @if (offer().contractType === 'permanent') {
           <p>Indefinido</p>
         } @else {
           <p>Temporal</p>
@@ -25,12 +25,12 @@
       </div>
       <div class="detail">
         <h3 class="start">Salario</h3>
-        <p>{{ offer()?.salary }}</p>
+        <p>{{ offer().salary }}</p>
       </div>
     </div>
     <div
       class="offer-content"
-      [innerHTML]="getHtmlFromBlock(offer()?.offerContent)"></div>
+      [innerHTML]="getHtmlFromBlock(offer().offerContent)"></div>
     <div class="offer-message">
       Si estás interesado en esta oferta, adjunta tu CV actualizado y haz click
       en "Aplicar ahora". Si esta oferta no se adapta a tu perfil pero estás
