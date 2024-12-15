@@ -1,8 +1,6 @@
-@if (isMobile()) {
-  <h1>Nuestras ofertas</h1>
-}
-<div class="offers-visualizer">
-  @defer (when offers() && offers().length > 0) {
+@defer (when offers() && offers().length > 0) {
+  <div class="offers">
+    <h1 [ngClass]="{ start: !isMobile() }">Nuestras ofertas</h1>
     <div class="offers-list">
       @for (offer of offers(); track offer.offerId) {
         <div
@@ -18,7 +16,11 @@
           <h3 class="start">{{ offer.jobTitle }} ({{ offer.offerId }})</h3>
           <div class="details">
             <p>
-              <i class="icon-badge-euro"></i>
+              <i class="icon-hash"></i>
+              {{ offer.offerId }}
+            </p>
+            <p>
+              <i class="icon-bolt"></i>
               {{ offer.industry }}
             </p>
             <p>
@@ -29,8 +31,8 @@
         </div>
       }
     </div>
-    @if (!isMobile()) {
-      <ac-offer-details [offer]="selectedOffer()" />
-    }
+  </div>
+  @if (!isMobile()) {
+    <ac-offer-details [offer]="selectedOffer()" />
   }
-</div>
+}
