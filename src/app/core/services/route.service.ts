@@ -58,6 +58,21 @@ export class RouteService {
       content: route.data['description'],
     });
     this.meta.updateTag({ name: 'keywords', content: route.data['keywords'] });
+    // Set the Open Graph meta tags
+    this.meta.updateTag({ property: 'og:title', content: route.data['title'] });
+    this.meta.updateTag({
+      property: 'og:description',
+      content: route.data['description'],
+    });
+    this.meta.updateTag({
+      property: 'og:image',
+      content: `https://beta.aheadcareers.com/svg/og-logo.svg`,
+    });
+    this.meta.updateTag({
+      property: 'og:url',
+      content: `https://beta.aheadcareers.com${this.router.url}`,
+    });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
   }
 
   /**

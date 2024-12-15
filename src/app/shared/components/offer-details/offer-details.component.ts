@@ -4,10 +4,11 @@ import { fadeInOutTrigger } from '../../animations';
 import { DatePipe } from '@angular/common';
 import { SanityService } from '../../../core/services/sanity.service';
 import { Button } from '@realm-ui/angular';
+import { SocialButtonsComponent } from './components/social-buttons/social-buttons.component';
 
 @Component({
   selector: 'ac-offer-details',
-  imports: [DatePipe, Button],
+  imports: [DatePipe, Button, SocialButtonsComponent],
   templateUrl: './offer-details.component.html',
   styleUrl: './offer-details.component.css',
   animations: [fadeInOutTrigger],

@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+
+  r-button {
+    --button-padding-inline: 0;
+    width: 2.85rem;
+
+    img {
+      width: 23px;
+
+      &:nth-child(2) {
+        scale: 0.4;
+        position: absolute;
+      }
+    }
+
+    i {
+      font-size: 1.5rem !important;
+    }
+  }
+}

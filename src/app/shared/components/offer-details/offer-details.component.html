@@ -1,4 +1,4 @@
-@if (offer()) {
+@defer (when offer()) {
   <div @fadeInOut>
     <div class="offer-header">
       <h1 class="start">{{ offer().jobTitle }} ({{ offer().offerId }})</h1>
@@ -50,5 +50,6 @@
         Aplicar ahora
       </r-button>
     </div>
+    <ac-social-buttons [offerId]="offer().offerId" />
   </div>
 }
