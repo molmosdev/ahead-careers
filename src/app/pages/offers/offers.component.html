@@ -13,7 +13,7 @@
           @fadeInOut
           [routerLink]="isMobile() ? '/offer/' + offer.offerId : null"
           (click)="!isMobile() && selectOffer(offer)">
-          <h3 class="start">{{ offer.jobTitle }} ({{ offer.offerId }})</h3>
+          <h3 class="start">{{ offer.jobTitle }}</h3>
           <div class="details">
             <p>
               <i class="icon-hash"></i>
