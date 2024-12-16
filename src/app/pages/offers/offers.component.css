@@ -1,7 +1,7 @@
 :host {
   display: flex;
   box-sizing: border-box;
-  padding: 4rem 3rem 2rem 3rem;
+  padding: 4rem 3rem 4.1rem 3rem;
   gap: 3rem;
   min-height: calc(100dvh - 77.44px);
   max-width: 1400px;
@@ -11,6 +11,7 @@
   .offers {
     display: flex;
     flex-direction: column;
+    position: relative;
 
     .offers-list {
       display: flex;
@@ -42,8 +43,9 @@
 
   @media (width > 768px) {
     .offers {
-      position: relative;
-      height: calc(100dvh - 15rem);
+      height: calc(100dvh - 13.5rem);
+      position: sticky;
+      top: calc(4rem + 77.44px);
 
       &::before,
       &::after {
@@ -80,7 +82,7 @@
         height: 100%;
         scrollbar-width: thin;
         margin-top: -1.3rem;
-        padding: 1.3rem 20px 2rem 0;
+        padding: 1.3rem 20px 1.3rem 0;
         position: relative;
 
         .offer {

@@ -35,33 +35,29 @@
         </div>
       </div>
     </div>
-    <div class="offer-body-wrapper" [ngClass]="{ 'list-mode': listMode() }">
-      <div class="offer-body">
-        <div
-          class="offer-content"
-          [innerHTML]="getHtmlFromBlock(offer().offerContent)"></div>
-        <div class="disclaimer">
-          <p>
-            Si estás interesado en esta oferta, adjunta tu CV actualizado y haz
-            click en "Aplicar ahora".
-          </p>
-          <p>
-            Si esta oferta no se adapta a tu perfil pero estás buscando un nuevo
-            puesto de trabajo, por favor contáctanos y lo comentamos. Te
-            garantizamos la confidencialidad.
-          </p>
-        </div>
-        <div class="bottom-controls">
-          <r-button type="secondary">
-            <i class="icon-file-text"></i>
-            Adjunta tu CV actualizado
-          </r-button>
-          <r-button type="primary">
-            <i class="icon-send"></i>
-            Aplicar ahora
-          </r-button>
-        </div>
-      </div>
+    <div
+      class="offer-content"
+      [innerHTML]="getHtmlFromBlock(offer().offerContent)"></div>
+    <div class="disclaimer">
+      <p>
+        Si estás interesado en esta oferta, adjunta tu CV actualizado y haz
+        click en "Aplicar ahora".
+      </p>
+      <p>
+        Si esta oferta no se adapta a tu perfil pero estás buscando un nuevo
+        puesto de trabajo, por favor contáctanos y lo comentamos. Te
+        garantizamos la confidencialidad.
+      </p>
+    </div>
+    <div class="bottom-controls">
+      <r-button type="secondary">
+        <i class="icon-file-text"></i>
+        Adjunta tu CV actualizado
+      </r-button>
+      <r-button type="primary">
+        <i class="icon-send"></i>
+        Aplicar ahora
+      </r-button>
     </div>
   </div>
 }

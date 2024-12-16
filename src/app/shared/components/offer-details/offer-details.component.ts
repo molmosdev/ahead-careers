@@ -1,14 +1,14 @@
 import { Component, inject, input } from '@angular/core';
 import { Offer } from '../../../pages/offers/interfaces/offer.interface';
 import { fadeInOutTrigger } from '../../animations';
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { SanityService } from '../../../core/services/sanity.service';
 import { Button } from '@realm-ui/angular';
 import { SocialButtonsComponent } from './components/social-buttons/social-buttons.component';
 
 @Component({
   selector: 'ac-offer-details',
-  imports: [DatePipe, Button, SocialButtonsComponent, NgClass],
+  imports: [DatePipe, Button, SocialButtonsComponent],
   templateUrl: './offer-details.component.html',
   styleUrl: './offer-details.component.css',
   animations: [fadeInOutTrigger],
@@ -16,7 +16,6 @@ import { SocialButtonsComponent } from './components/social-buttons/social-butto
 export class OfferDetailsComponent {
   offer = input.required<Offer>();
   sanityService = inject(SanityService);
-  listMode = input<boolean>(false);
 
   /**
    * Gets the html from a block
