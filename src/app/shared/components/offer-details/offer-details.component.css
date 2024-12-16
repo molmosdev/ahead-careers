@@ -102,7 +102,7 @@
       }
 
       .offer-body {
-        height: calc(100dvh - 26.2rem);
+        height: calc(100dvh - 27.3rem);
         overflow-y: auto;
         position: relative;
         scrollbar-width: thin;
