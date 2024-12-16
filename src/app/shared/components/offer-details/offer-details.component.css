@@ -78,7 +78,7 @@
       padding-bottom: 1rem;
     }
 
-    .bottom-controls {
+    /*     .bottom-controls {
       position: sticky;
       bottom: 4.1rem;
       background-color: var(--white);
@@ -107,6 +107,6 @@
         background-color: var(--white);
         width: 100%;
       }
-    }
+    } */
   }
 }
