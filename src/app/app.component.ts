@@ -35,15 +35,9 @@ export class AppComponent {
   isMobile = computed(() => this.responsiveService.isMobile());
   routeService = inject(RouteService);
   isHomePage = computed(() => this.routeService.currentPath() === Path.Home);
-  isOfferPage = computed(() =>
-    this.routeService.currentPath()?.startsWith(Path.Offer)
-  );
   isSplashScreenVisible = signal<boolean>(true);
   isOffersCtaVisible = computed(
     () => this.inViewportService.elements()['offers-cta']
-  );
-  isOffersCtaVisible2 = computed(
-    () => this.inViewportService.elements()['offers-cta-2']
   );
 
   constructor() {
