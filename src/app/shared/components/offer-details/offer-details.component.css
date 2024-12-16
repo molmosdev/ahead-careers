@@ -116,7 +116,7 @@
         .bottom-controls {
           position: relative;
           position: sticky;
-          bottom: 0;
+          bottom: 1px;
           background-color: var(--white);
           z-index: 2;
 
