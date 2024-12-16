@@ -45,7 +45,7 @@
     .offers {
       height: calc(100dvh - 13.5rem);
       position: sticky;
-      top: calc(4rem + 77.44px);
+      top: calc(4rem + 74px);
 
       &::before,
       &::after {
