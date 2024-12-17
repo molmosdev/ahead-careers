@@ -11,8 +11,7 @@
               selectedOffer() && selectedOffer().offerId === offer.offerId,
           }"
           @fadeInOut
-          [routerLink]="isMobile() ? '/offer/' + offer.offerId : null"
-          (click)="!isMobile() && selectOffer(offer)">
+          (click)="selectOffer(offer)">
           <h3 class="start">{{ offer.jobTitle }}</h3>
           <div class="details">
             <p>
