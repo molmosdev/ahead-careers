@@ -50,7 +50,6 @@ export class ApplyModalComponent {
   }
 
   applyOffer() {
-    this.applyForm().reset();
     this.show.set(false);
   }
 }

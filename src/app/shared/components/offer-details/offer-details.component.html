@@ -63,5 +63,5 @@
   </div>
 }
 <r-dialog [(show)]="isApplyModalOpen" [clickOutside]="true">
-  <ac-apply-modal [(show)]="isApplyModalOpen" [offer]="offer()" />
+  <ac-apply-modal [(show)]="isApplyModalOpen" [offer]="offer()" *r-lazy />
 </r-dialog>

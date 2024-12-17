@@ -3,7 +3,7 @@ import { Offer } from '../../../pages/offers/interfaces/offer.interface';
 import { fadeInOutTrigger } from '../../animations';
 import { DatePipe } from '@angular/common';
 import { SanityService } from '../../../core/services/sanity.service';
-import { Button, Dialog } from '@realm-ui/angular';
+import { Button, Dialog, LazyContentDirective } from '@realm-ui/angular';
 import { SocialButtonsComponent } from './components/social-buttons/social-buttons.component';
 import { ResponsiveService } from '../../../core/services/responsive.service';
 import { ApplyModalComponent } from './components/apply-modal/apply-modal.component';
@@ -16,6 +16,7 @@ import { ApplyModalComponent } from './components/apply-modal/apply-modal.compon
     SocialButtonsComponent,
     Dialog,
     ApplyModalComponent,
+    LazyContentDirective,
   ],
   templateUrl: './offer-details.component.html',
   styleUrl: './offer-details.component.css',
