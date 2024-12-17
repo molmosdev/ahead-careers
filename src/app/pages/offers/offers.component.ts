@@ -31,10 +31,10 @@ export class OffersComponent {
   }
 
   selectOffer(offer: Offer) {
-    window.scrollTo(0, 0);
     if (this.isMobile()) {
       this.router.navigate(['/offer', offer.offerId]);
     } else {
+      window.scrollTo(0, 0);
       this.selectedOffer.set(offer);
     }
   }
