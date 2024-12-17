@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Button } from '@realm-ui/angular';
 
@@ -8,6 +8,4 @@ import { Button } from '@realm-ui/angular';
   templateUrl: './offers-button.component.html',
   styleUrl: './offers-button.component.css',
 })
-export class OffersButtonComponent {
-  isHomePage = input<boolean>(true);
-}
+export class OffersButtonComponent {}
