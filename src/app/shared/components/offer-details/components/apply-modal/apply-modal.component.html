@@ -16,8 +16,11 @@
 <r-button
   type="primary"
   (click)="applyOffer()"
+  [loading]="loading()"
   [disabled]="applyForm().invalid">
-  <i class="icon-send"></i>
+  @if (!loading()) {
+    <i class="icon-send"></i>
+  }
   Aplicar ahora
 </r-button>
 <p class="privary-message">

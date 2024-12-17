@@ -27,6 +27,7 @@ export class ApplyModalComponent {
     }
     return fileName;
   });
+  loading = signal<boolean>(false);
 
   /**
    * Triggers the file upload dialog
@@ -50,6 +51,9 @@ export class ApplyModalComponent {
   }
 
   applyOffer() {
-    this.show.set(false);
+    this.loading.set(true);
+    setTimeout(() => {
+      this.show.set(false);
+    }, 2000);
   }
 }
