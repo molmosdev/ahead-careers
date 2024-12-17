@@ -1,7 +1,15 @@
-import { Component, computed, input, model, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  model,
+  signal,
+} from '@angular/core';
 import { Button } from '@realm-ui/angular';
 import { Offer } from '../../../../../pages/offers/interfaces/offer.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SanityService } from '../../../../../core/services/sanity.service'; // Importa el servicio
 
 @Component({
   selector: 'ac-apply-modal',
@@ -28,6 +36,7 @@ export class ApplyModalComponent {
     return fileName;
   });
   loading = signal<boolean>(false);
+  sanityService = inject(SanityService);
 
   /**
    * Triggers the file upload dialog
@@ -68,11 +77,33 @@ export class ApplyModalComponent {
 
   /**
    * Applies the offer
+   * @returns {Promise<void>} - The promise
    */
-  applyOffer(): void {
+  async applyOffer(): Promise<void> {
     this.loading.set(true);
-    setTimeout(() => {
+    const file = this.applyForm().value.cv;
+
+    try {
+      const asset = await this.sanityService.uploadFile(file);
+
+      const document = {
+        _type: 'application',
+        cv: {
+          _type: 'file',
+          asset: {
+            _type: 'reference',
+            _ref: asset._id,
+          },
+        },
+        offerId: this.offer().offerId,
+      };
+
+      await this.sanityService.postDocument(document);
       this.show.set(false);
-    }, 2000);
+    } catch (error) {
+      console.error('Error while applying for the offer', error);
+    } finally {
+      this.loading.set(false);
+    }
   }
 }
