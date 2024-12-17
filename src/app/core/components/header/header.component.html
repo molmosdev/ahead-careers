@@ -2,13 +2,25 @@
   <div class="content">
     <img class="logo" src="/svg/logo-negative.svg" [routerLink]="'/'" alt="" />
     <div class="right">
-      <a
-        href="/"
+      <r-button
+        class="contact-button"
+        [routerLink]="
+          !isOffersCtaVisible() && !isMobile() && isHomePage()
+            ? '/contact'
+            : '/'
+        "
+        type="primary"
         [@moveToTheLeftTrigger]="
-          !isOffersCtaVisible() && isHomePage() && !isMobile()
+          !isOffersCtaVisible() && !isMobile() && isHomePage()
+            ? 'true'
+            : 'false'
         ">
-        <r-button type="primary" @fadeInOut>Contáctanos</r-button>
-      </a>
+        @if (isHomePage()) {
+          Contáctanos
+        } @else {
+          Inicio
+        }
+      </r-button>
       @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
         <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
           >Ofertas</r-button

@@ -40,7 +40,7 @@
         position: relative;
         min-height: 2.8rem;
 
-        a {
+        r-button.contact-button {
           position: absolute;
           right: 0;
         }
@@ -74,7 +74,7 @@
           }
         }
 
-        a {
+        r-button.contact-button {
           margin-right: -10px;
         }
       }
