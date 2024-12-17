@@ -41,9 +41,15 @@
     width: 80vw;
     max-width: 350px;
     flex-wrap: wrap;
+    padding: 1rem;
+    text-align: center;
 
     r-button {
       flex: 1;
+    }
+
+    p {
+      margin: 0;
     }
   }
 }

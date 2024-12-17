@@ -35,6 +35,7 @@ h3 {
   color: var(--blue);
   font-weight: 600;
   text-align: center;
+  text-wrap: balance;
 
   &.start {
     text-align: start;

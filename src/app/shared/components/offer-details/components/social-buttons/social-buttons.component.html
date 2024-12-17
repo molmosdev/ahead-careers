@@ -6,20 +6,26 @@
 </r-button>
 <r-dialog [(show)]="isDialogVisible" [clickOutside]="true">
   <div class="dialog-content">
+    <h3>
+      {{ offerJobTitle() }}
+    </h3>
     <r-button type="secondary" (click)="shareOnLinkedIn()">
       <img src="/svg/in-blue.svg" alt="LinkedIn icon" />
-      Compartir en LinkedIn
+      LinkedIn
     </r-button>
     <r-button type="secondary" (click)="shareOnWhatsApp()">
       <div class="whatsapp-icon">
         <img src="/svg/message-bubble-blue.svg" alt="Message Bubble icon" />
         <img src="/svg/phone-blue.svg" alt="Phone icon" />
       </div>
-      Compartir en WhatsApp
+      WhatsApp
     </r-button>
     <r-button type="secondary" (click)="copyToClipboard()">
       <i class="icon-copy"></i>
       Copiar enlace
     </r-button>
+    <p>
+      Comparte esta oferta a través de LinkedIn, WhatsApp o copia el enlace.
+    </p>
   </div>
 </r-dialog>

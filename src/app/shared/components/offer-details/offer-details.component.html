@@ -4,7 +4,7 @@
       <div class="top">
         <h1 class="start">{{ offer().jobTitle }}</h1>
         @if (!isMobile()) {
-          <ac-social-buttons [offerId]="offer().offerId" />
+          <ac-social-buttons [offer]="offer()" />
         }
       </div>
       <p>
@@ -53,7 +53,7 @@
     </div>
     <div class="bottom-controls">
       @if (isMobile()) {
-        <ac-social-buttons [offerId]="offer().offerId" />
+        <ac-social-buttons [offer]="offer()" />
       }
       <r-button type="primary" (click)="isApplyModalOpen.set(true)">
         <i class="icon-send"></i>

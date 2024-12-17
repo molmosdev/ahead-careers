@@ -1,5 +1,6 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { Button, Dialog } from '@realm-ui/angular';
+import { Offer } from '../../../../../pages/offers/interfaces/offer.interface';
 
 @Component({
   selector: 'ac-social-buttons',
@@ -9,7 +10,9 @@ import { Button, Dialog } from '@realm-ui/angular';
 })
 export class SocialButtonsComponent {
   isDialogVisible = signal<boolean>(false);
-  offerId = input.required<number>();
+  offer = input.required<Offer>();
+  offerJobTitle = computed(() => this.offer().jobTitle);
+  offerId = computed(() => this.offer().offerId);
   shareUrl = computed(
     () => `https://beta.aheadcareers.com/offer/${this.offerId()}`
   );
