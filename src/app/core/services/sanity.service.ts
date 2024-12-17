@@ -12,6 +12,7 @@ export class SanityService {
     dataset: environment.SANITY_DATASET,
     apiVersion: new Date().toISOString().split('T')[0],
     useCdn: true,
+    token: environment.SANITY_TOKEN, // Añade el token aquí
   });
 
   params = signal<
@@ -55,6 +56,27 @@ export class SanityService {
       console.log(`Documento con _id ${documentId} eliminado exitosamente.`);
     } catch (error) {
       console.error('Error al eliminar el documento:', error);
+    }
+  }
+
+  async postDocument(document: any): Promise<void> {
+    try {
+      const res = await this.client.create(document);
+      console.log('Documento creado:', res);
+    } catch (error) {
+      console.error('Error al crear el documento:', error);
+    }
+  }
+
+  async uploadFile(file: File): Promise<any> {
+    try {
+      const asset = await this.client.assets.upload('file', file, {
+        filename: file.name,
+      });
+      return asset;
+    } catch (error) {
+      console.error('Error al subir el archivo:', error);
+      throw error;
     }
   }
 }
