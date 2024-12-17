@@ -14,7 +14,7 @@ export class ApplyModalComponent {
   show = model<boolean>(false);
   applyForm = signal<FormGroup>(
     new FormGroup({
-      cv: new FormControl(null, Validators.required),
+      cv: new FormControl(null, [Validators.required, this.fileTypeValidator]),
     })
   );
   cvFileName = signal<string | null>(null);
@@ -50,7 +50,26 @@ export class ApplyModalComponent {
     }
   }
 
-  applyOffer() {
+  /**
+   * Custom validator to check file type
+   * @param {FormControl} control - The form control
+   * @returns {ValidationErrors | null} - The validation result
+   */
+  fileTypeValidator(control: FormControl): Record<string, any> | null {
+    const file = control.value;
+    if (file) {
+      const extension = file.name.slice(-4).toLowerCase();
+      if (extension !== '.pdf') {
+        return { fileType: true };
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Applies the offer
+   */
+  applyOffer(): void {
     this.loading.set(true);
     setTimeout(() => {
       this.show.set(false);
