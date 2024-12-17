@@ -48,4 +48,9 @@ export class ApplyModalComponent {
       this.cvFileName.set(file.name);
     }
   }
+
+  applyOffer() {
+    this.applyForm().reset();
+    this.show.set(false);
+  }
 }
