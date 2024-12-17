@@ -20,8 +20,8 @@ export class OfferComponent implements OnInit {
     const offer: Offer = this.sanityService.data.value()?.offers[0];
     this.routeService.setMetaTagsForRoute({
       data: {
-        title: offer.jobTitle,
-        description: offer.location,
+        title: offer?.jobTitle,
+        description: offer?.location,
       },
     } as any);
     return offer;

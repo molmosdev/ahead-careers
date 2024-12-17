@@ -1,0 +1,22 @@
+<h3>Estás aplicando a la oferta de {{ offer().jobTitle }}</h3>
+<p>
+  Si desea aplicar a esta oferta, adjunte su CV actualizado y haga clic en
+  "Aplicar ahora".
+</p>
+<input
+  type="file"
+  id="cvUpload"
+  accept=".pdf"
+  (change)="onFileSelected($event)"
+  style="display: none" />
+<r-button type="secondary" (click)="triggerFileUpload()">
+  <i class="icon-file-text"></i>
+  {{ truncatedFileName() || 'Adjuntar CV' }}
+</r-button>
+<r-button
+  type="primary"
+  (click)="show.set(false)"
+  [disabled]="applyForm().invalid">
+  <i class="icon-send"></i>
+  Aplicar ahora
+</r-button>

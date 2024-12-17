@@ -55,10 +55,13 @@
       @if (isMobile()) {
         <ac-social-buttons [offerId]="offer().offerId" />
       }
-      <r-button type="primary">
+      <r-button type="primary" (click)="isApplyModalOpen.set(true)">
         <i class="icon-send"></i>
         Aplicar ahora
       </r-button>
     </div>
   </div>
 }
+<r-dialog [(show)]="isApplyModalOpen" [clickOutside]="true">
+  <ac-apply-modal [(show)]="isApplyModalOpen" [offer]="offer()" />
+</r-dialog>

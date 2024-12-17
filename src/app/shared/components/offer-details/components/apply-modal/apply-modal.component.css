@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  max-width: 350px;
+  text-align: center;
+  gap: 1rem;
+
+  p {
+    margin: 0;
+  }
+}

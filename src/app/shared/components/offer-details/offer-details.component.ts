@@ -1,15 +1,22 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { Offer } from '../../../pages/offers/interfaces/offer.interface';
 import { fadeInOutTrigger } from '../../animations';
 import { DatePipe } from '@angular/common';
 import { SanityService } from '../../../core/services/sanity.service';
-import { Button } from '@realm-ui/angular';
+import { Button, Dialog } from '@realm-ui/angular';
 import { SocialButtonsComponent } from './components/social-buttons/social-buttons.component';
 import { ResponsiveService } from '../../../core/services/responsive.service';
+import { ApplyModalComponent } from './components/apply-modal/apply-modal.component';
 
 @Component({
   selector: 'ac-offer-details',
-  imports: [DatePipe, Button, SocialButtonsComponent],
+  imports: [
+    DatePipe,
+    Button,
+    SocialButtonsComponent,
+    Dialog,
+    ApplyModalComponent,
+  ],
   templateUrl: './offer-details.component.html',
   styleUrl: './offer-details.component.css',
   animations: [fadeInOutTrigger],
@@ -19,6 +26,7 @@ export class OfferDetailsComponent {
   sanityService = inject(SanityService);
   responsiveService = inject(ResponsiveService);
   isMobile = computed(() => this.responsiveService.isMobile());
+  isApplyModalOpen = signal<boolean>(false);
 
   /**
    * Gets the html from a block
