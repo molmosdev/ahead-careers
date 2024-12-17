@@ -1,10 +1,25 @@
-<r-button type="secondary" (click)="shareOnLinkedIn()">
-  <img src="/svg/in-blue.svg" alt="LinkedIn icon" />
+<r-button
+  type="secondary"
+  class="share-button"
+  (click)="isDialogVisible.set(true)">
+  <i class="icon-share-2"></i>
 </r-button>
-<r-button type="secondary" (click)="shareOnWhatsApp()">
-  <img src="/svg/message-bubble-blue.svg" alt="Message Bubble icon" />
-  <img src="/svg/phone-blue.svg" alt="Phone icon" />
-</r-button>
-<r-button type="secondary" (click)="copyToClipboard()">
-  <i class="icon-copy"></i>
-</r-button>
+<r-dialog [(show)]="isDialogVisible" [clickOutside]="true">
+  <div class="dialog-content">
+    <r-button type="secondary" (click)="shareOnLinkedIn()">
+      <img src="/svg/in-blue.svg" alt="LinkedIn icon" />
+      <span> Compartir en LinkedIn </span>
+    </r-button>
+    <r-button type="secondary" (click)="shareOnWhatsApp()">
+      <div class="whatsapp-icon">
+        <img src="/svg/message-bubble-blue.svg" alt="Message Bubble icon" />
+        <img src="/svg/phone-blue.svg" alt="Phone icon" />
+      </div>
+      <span> Compartir en WhatsApp </span>
+    </r-button>
+    <r-button type="secondary" (click)="copyToClipboard()">
+      <i class="icon-copy"></i>
+      <span> Copiar enlace </span>
+    </r-button>
+  </div>
+</r-dialog>

@@ -5,15 +5,26 @@
   gap: 1rem;
 
   r-button {
-    --button-padding-inline: 0;
-    width: 2.85rem;
+    &.share-button {
+      --button-padding-inline: 0;
+      width: 2.85rem;
+
+      i {
+        margin-left: -3px;
+      }
+    }
 
     img {
       width: 23px;
+    }
 
-      &:nth-child(2) {
+    .whatsapp-icon {
+      position: relative;
+      img:nth-child(2) {
         scale: 0.4;
         position: absolute;
+        top: 0;
+        left: 0;
       }
     }
 
@@ -22,7 +33,15 @@
     }
   }
 
-  @media (width < 768px) {
+  .dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-sizing: border-box;
+    width: 80vw;
+    max-width: 400px;
+    flex-wrap: wrap;
+
     r-button {
       flex: 1;
     }
