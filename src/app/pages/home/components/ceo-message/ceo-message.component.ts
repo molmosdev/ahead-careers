@@ -1,5 +1,4 @@
-import { Component, signal } from '@angular/core';
-import { SanityService } from '../../../../core/services/sanity.service';
+import { Component, input } from '@angular/core';
 import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
 import { fadeInOutTrigger } from '../../../../shared/animations';
 
@@ -11,20 +10,5 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
   animations: [fadeInOutTrigger],
 })
 export class CeoMessageComponent {
-  ceoMessage = signal<string | undefined>(undefined);
-
-  constructor(private sanityService: SanityService) {
-    this.getComponentData();
-  }
-
-  /**
-   * Gets the data for the component
-   */
-  async getComponentData() {
-    this.sanityService.getDataByType('businessDescription').then(data => {
-      this.ceoMessage.set(
-        this.sanityService.transformBlockToHtml(data[0].ceoMessage)
-      );
-    });
-  }
+  ceoMessage = input.required<string>();
 }

@@ -1,25 +1,31 @@
 <div class="slogan-wrapper">
-  <div class="slogan">‘Shaping your future’</div>
+  @if (businessDescription().slogan) {
+    <div
+      class="slogan"
+      [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }"
+      [innerHTML]="businessDescription().slogan"></div>
+  }
   <r-button
     [routerLink]="'/offers'"
     type="secondary"
     r-in-viewport
     inViewportId="offers-cta"
     [inViewportInitialVisibility]="true"
+    [@fadeInOut]="{ value: '', params: { delay: '0.6s' } }"
     >Consulta nuestras ofertas</r-button
   >
 </div>
 <div class="rounded-section"></div>
 <div class="home-wrapper">
-  <ac-sectors />
-  @if (description()) {
+  <ac-sectors [sectors]="businessDescription().sectors" />
+  @if (businessDescription().description) {
     <div
       class="description"
       [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }"
-      [innerHTML]="description()"></div>
+      [innerHTML]="businessDescription().description"></div>
   }
   <ac-values />
   <ac-methodology />
-  <ac-ceo-message />
+  <ac-ceo-message [ceoMessage]="businessDescription().ceoMessage" />
   <ac-experiences />
 </div>

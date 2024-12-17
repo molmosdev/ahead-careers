@@ -33,7 +33,7 @@ export class OffersComponent {
   selectOffer(offer: Offer) {
     window.scrollTo(0, 0);
     if (this.isMobile()) {
-      this.router.navigate(['/offers', offer.offerId]);
+      this.router.navigate(['/offer', offer.offerId]);
     } else {
       this.selectedOffer.set(offer);
     }

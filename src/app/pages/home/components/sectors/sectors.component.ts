@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import {
   trigger,
   transition,
@@ -6,7 +6,6 @@ import {
   animate,
   keyframes,
 } from '@angular/animations';
-import { SanityService } from '../../../../core/services/sanity.service';
 import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
@@ -30,24 +29,9 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
   ],
 })
 export class SectorsComponent {
-  sectors = signal<string[] | undefined>(undefined);
+  sectors = input.required<string[]>();
   duplicatedSectors = computed(
     () => this.sectors()?.concat(this.sectors()!) || undefined
   );
   sliderLoopState = signal<boolean>(true);
-
-  constructor(private sanityService: SanityService) {
-    this.getComponentData();
-  }
-
-  /**
-   * Gets the data for the component
-   */
-  async getComponentData() {
-    const businessDescription = await this.sanityService.getDataByType(
-      'businessDescription',
-      true
-    );
-    this.sectors.set(businessDescription.sectors);
-  }
 }

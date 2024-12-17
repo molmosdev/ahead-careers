@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { ValuesComponent } from './components/values/values.component';
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { SanityService } from '../../core/services/sanity.service';
@@ -8,6 +8,7 @@ import { CeoMessageComponent } from './components/ceo-message/ceo-message.compon
 import { MethodologyComponent } from './components/methodology/methodology.component';
 import { Button, InViewportDirective } from '@realm-ui/angular';
 import { RouterLink } from '@angular/router';
+import { BusinessDescription } from '../../shared/interfaces/business-description';
 
 @Component({
   selector: 'ac-home',
@@ -25,17 +26,22 @@ import { RouterLink } from '@angular/router';
   ],
   animations: [fadeInOutTrigger],
 })
-export class HomeComponent {
-  description = signal<string | undefined>(undefined);
-  constructor(private sanityService: SanityService) {
-    this.getDescription();
-  }
+export class HomeComponent implements OnInit {
+  sanityService = inject(SanityService);
+  businessDescription = computed<BusinessDescription>(() => {
+    const data = this.sanityService.data.value();
+    return {
+      ...data,
+      ceoMessage: this.sanityService.transformBlockToHtml(data?.ceoMessage),
+      description: this.sanityService.transformBlockToHtml(data?.description),
+    };
+  });
 
-  async getDescription() {
-    this.sanityService.getDataByType('businessDescription').then(data => {
-      this.description.set(
-        this.sanityService.transformBlockToHtml(data[0].description)
-      );
+  ngOnInit(): void {
+    this.sanityService.params.set({
+      type: 'businessDescription',
+      singleton: true,
+      filters: [],
     });
   }
 }
