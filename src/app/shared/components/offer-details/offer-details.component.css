@@ -55,8 +55,12 @@
     }
 
     .bottom-controls {
-      flex-direction: column;
+      justify-content: space-between;
       gap: 1rem;
+
+      & > r-button {
+        flex: 1;
+      }
     }
   }
 }

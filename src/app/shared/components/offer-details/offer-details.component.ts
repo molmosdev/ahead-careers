@@ -1,10 +1,11 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { Offer } from '../../../pages/offers/interfaces/offer.interface';
 import { fadeInOutTrigger } from '../../animations';
 import { DatePipe } from '@angular/common';
 import { SanityService } from '../../../core/services/sanity.service';
 import { Button } from '@realm-ui/angular';
 import { SocialButtonsComponent } from './components/social-buttons/social-buttons.component';
+import { ResponsiveService } from '../../../core/services/responsive.service';
 
 @Component({
   selector: 'ac-offer-details',
@@ -16,6 +17,8 @@ import { SocialButtonsComponent } from './components/social-buttons/social-butto
 export class OfferDetailsComponent {
   offer = input.required<Offer>();
   sanityService = inject(SanityService);
+  responsiveService = inject(ResponsiveService);
+  isMobile = computed(() => this.responsiveService.isMobile());
 
   /**
    * Gets the html from a block

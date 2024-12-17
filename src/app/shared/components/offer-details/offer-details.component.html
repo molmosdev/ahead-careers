@@ -3,7 +3,9 @@
     <div class="offer-header">
       <div class="top">
         <h1 class="start">{{ offer().jobTitle }}</h1>
-        <ac-social-buttons [offerId]="offer().offerId" />
+        @if (!isMobile()) {
+          <ac-social-buttons [offerId]="offer().offerId" />
+        }
       </div>
       <p>
         Oferta publicada: {{ offer().publicationDate | date: 'dd/MM/yyyy' }}
@@ -50,6 +52,9 @@
       </p>
     </div>
     <div class="bottom-controls">
+      @if (isMobile()) {
+        <ac-social-buttons [offerId]="offer().offerId" />
+      }
       <r-button type="primary">
         <i class="icon-send"></i>
         Aplicar ahora
