@@ -9,5 +9,6 @@ export interface Offer {
   industry: string;
   consultantEmail: string;
   publicationDate: string;
+  editionDate: string;
   offerContent: any;
 }

@@ -7,9 +7,7 @@
           <ac-social-buttons [offer]="offer()" />
         }
       </div>
-      <p>
-        Oferta publicada: {{ offer().publicationDate | date: 'dd/MM/yyyy' }}
-      </p>
+      <p>Oferta publicada: {{ offer().editionDate | date: 'dd/MM/yyyy' }}</p>
       <div class="offer-details">
         <div class="detail">
           <h3 class="start">Oferta</h3>
