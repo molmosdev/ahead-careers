@@ -99,6 +99,7 @@ export class ApplyModalComponent {
           },
         },
         offerId: this.offer().offerId,
+        jobTitle: this.offer().jobTitle,
       };
 
       await this.sanityService.postDocument(document);
