@@ -28,6 +28,10 @@ p {
   color: var(--grey);
 }
 
+strong {
+  font-weight: 600;
+}
+
 h1,
 h2,
 h3 {
