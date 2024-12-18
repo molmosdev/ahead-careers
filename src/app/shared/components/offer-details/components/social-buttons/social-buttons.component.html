@@ -6,9 +6,7 @@
 </r-button>
 <r-dialog [(show)]="isDialogVisible" [clickOutside]="true">
   <div class="dialog-content">
-    <h3>
-      {{ offerJobTitle() }}
-    </h3>
+    <h3>{{ offerJobTitle() }} ({{ offerId() }})</h3>
     <r-button type="secondary" (click)="shareOnLinkedIn()">
       <img src="/svg/in-blue.svg" alt="LinkedIn icon" />
       LinkedIn
