@@ -10,12 +10,14 @@ import { Button } from '@realm-ui/angular';
 import { Offer } from '../../../../../pages/offers/interfaces/offer.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SanityService } from '../../../../../core/services/sanity.service'; // Importa el servicio
+import { fadeInOutTrigger } from '../../../../animations';
 
 @Component({
   selector: 'ac-apply-modal',
   imports: [Button],
   templateUrl: './apply-modal.component.html',
   styleUrl: './apply-modal.component.css',
+  animations: [fadeInOutTrigger],
 })
 export class ApplyModalComponent {
   offer = input.required<Offer>();
@@ -37,6 +39,7 @@ export class ApplyModalComponent {
   });
   loading = signal<boolean>(false);
   sanityService = inject(SanityService);
+  applied = signal<boolean>(false);
 
   /**
    * Triggers the file upload dialog
@@ -99,7 +102,7 @@ export class ApplyModalComponent {
       };
 
       await this.sanityService.postDocument(document);
-      this.show.set(false);
+      this.applied.set(true);
     } catch (error) {
       console.error('Error while applying for the offer', error);
     } finally {

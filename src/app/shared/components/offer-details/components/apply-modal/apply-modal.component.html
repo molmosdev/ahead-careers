@@ -1,31 +1,42 @@
-<h3>{{ offer().jobTitle }} ({{ offer().offerId }})</h3>
-<p>
-  Si deseas aplicar a esta oferta, adjunta tu CV actualizado y haz clic en
-  “Enviar candidatura”.
-</p>
-<input
-  type="file"
-  id="cvUpload"
-  accept=".pdf"
-  (change)="onFileSelected($event)"
-  style="display: none" />
-<r-button type="secondary" (click)="triggerFileUpload()">
-  <i class="icon-file-text"></i>
-  {{ truncatedFileName() || 'Adjuntar CV' }}
-</r-button>
-@if (applyForm().get('cv')?.hasError('fileType')) {
-  <p class="error-message">El archivo debe ser un PDF</p>
-}
-<r-button
-  type="primary"
-  (click)="applyOffer()"
-  [loading]="loading()"
-  [disabled]="applyForm().invalid">
-  @if (!loading()) {
-    <i class="icon-send"></i>
+@if (!applied()) {
+  <h3>{{ offer().jobTitle }} ({{ offer().offerId }})</h3>
+  <p>
+    Si deseas aplicar a esta oferta, adjunta tu CV actualizado y haz clic en
+    “Enviar candidatura”.
+  </p>
+  <input
+    type="file"
+    id="cvUpload"
+    accept=".pdf"
+    (change)="onFileSelected($event)"
+    style="display: none" />
+  <r-button type="secondary" (click)="triggerFileUpload()">
+    <i class="icon-file-text"></i>
+    {{ truncatedFileName() || 'Adjuntar CV' }}
+  </r-button>
+  @if (applyForm().get('cv')?.hasError('fileType')) {
+    <p class="error-message">El archivo debe ser un PDF</p>
   }
-  Enviar candidatura
-</r-button>
-<p class="privary-message">
-  Al enviar, aceptas la <a href="">política de privacidad</a> de Ahead Careers
-</p>
+  <r-button
+    type="primary"
+    (click)="applyOffer()"
+    [loading]="loading()"
+    [disabled]="applyForm().invalid">
+    @if (!loading()) {
+      <i class="icon-send"></i>
+    }
+    Enviar candidatura
+  </r-button>
+  <p class="privary-message">
+    Al enviar, aceptas la <a href="">política de privacidad</a> de Ahead Careers
+  </p>
+} @else {
+  <h3 @fadeInOut>
+    ¡Has aplicado a la oferta {{ offer().jobTitle }} ({{ offer().offerId }})!
+  </h3>
+  <p @fadeInOut>
+    Tu candidatura ha sido enviada con éxito y el equipo de Ahead Careers la
+    revisará con la mayor brevedad posible.
+  </p>
+  <p @fadeInOut>¡Gracias por confiar en nosotros!</p>
+}
