@@ -1,6 +1,6 @@
 @defer (when offers() && offers().length > 0) {
   <div class="offers">
-    <h1 [ngClass]="{ start: !isMobile() }">Nuestras ofertas</h1>
+    <h1 @fadeInOut [ngClass]="{ start: !isMobile() }">Nuestras ofertas</h1>
     <div class="offers-list">
       @for (offer of offers(); track offer.offerId) {
         <div
