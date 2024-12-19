@@ -1,9 +1,29 @@
-@if (!applied()) {
+@if (!applied() && applyForm()) {
   <h3>{{ offer().jobTitle }} ({{ offer().offerId }})</h3>
   <p>
-    Si deseas aplicar a esta oferta, adjunta tu CV actualizado y haz clic en
-    “Enviar candidatura”.
+    Si deseas aplicar a esta oferta, rellena los datos, adjunta tu CV
+    actualizado y haz clic en “Enviar candidatura”.
   </p>
+  <r-text
+    label="Nombre"
+    [error]="isInvalidAndNotTouched('firstName')"
+    [value]="applyForm().get('firstName')!.value"
+    (changeEmitter)="setValue('firstName', $event)" />
+  <r-text
+    label="Apellidos"
+    [error]="isInvalidAndNotTouched('lastName')"
+    [value]="applyForm().get('lastName')!.value"
+    (changeEmitter)="setValue('lastName', $event)" />
+  <r-text
+    label="Email"
+    [error]="isInvalidAndNotTouched('email')"
+    [value]="applyForm().get('email')!.value"
+    (changeEmitter)="setValue('email', $event)" />
+  <r-number
+    label="Teléfono"
+    [error]="isInvalidAndNotTouched('phone')"
+    [value]="applyForm().get('phone')!.value"
+    (changeEmitter)="setValue('phone', $event)" />
   <input
     type="file"
     id="cvUpload"

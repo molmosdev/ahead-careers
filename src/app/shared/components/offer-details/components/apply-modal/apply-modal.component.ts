@@ -6,7 +6,7 @@ import {
   model,
   signal,
 } from '@angular/core';
-import { Button } from '@realm-ui/angular';
+import { Button, Text, Number } from '@realm-ui/angular';
 import { Offer } from '../../../../../pages/offers/interfaces/offer.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SanityService } from '../../../../../core/services/sanity.service'; // Importa el servicio
@@ -14,7 +14,7 @@ import { fadeInOutTrigger } from '../../../../animations';
 
 @Component({
   selector: 'ac-apply-modal',
-  imports: [Button],
+  imports: [Button, Text, Number],
   templateUrl: './apply-modal.component.html',
   styleUrl: './apply-modal.component.css',
   animations: [fadeInOutTrigger],
@@ -24,6 +24,13 @@ export class ApplyModalComponent {
   show = model<boolean>(false);
   applyForm = signal<FormGroup>(
     new FormGroup({
+      firstName: new FormControl<string | null>(null, [Validators.required]),
+      lastName: new FormControl<string | null>(null, [Validators.required]),
+      phone: new FormControl<number | null>(null, [Validators.required]),
+      email: new FormControl<string | null>(null, [
+        Validators.required,
+        Validators.email,
+      ]),
       cv: new FormControl(null, [Validators.required, this.fileTypeValidator]),
     })
   );
@@ -58,6 +65,7 @@ export class ApplyModalComponent {
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
       this.applyForm().patchValue({ cv: file });
+      this.applyForm().get('cv')!.markAsTouched();
       this.cvFileName.set(file.name);
     }
   }
@@ -100,6 +108,10 @@ export class ApplyModalComponent {
         },
         offerId: this.offer().offerId,
         jobTitle: this.offer().jobTitle,
+        firstName: this.applyForm().value.firstName,
+        lastName: this.applyForm().value.lastName,
+        phone: this.applyForm().value.phone as number,
+        email: this.applyForm().value.email,
       };
 
       await this.sanityService.postDocument(document);
@@ -109,5 +121,25 @@ export class ApplyModalComponent {
     } finally {
       this.loading.set(false);
     }
+  }
+
+  /**
+   * Checks if a form control is invalid and touched
+   * @param {string} controlName - The name of the control
+   * @returns {boolean} - The result
+   */
+  isInvalidAndNotTouched(controlName: string): boolean {
+    const control = this.applyForm().get(controlName);
+    return control!.invalid && control!.touched;
+  }
+
+  /**
+   * Sets the value of a form control
+   * @param {string} controlName
+   * @param {any} value
+   */
+  setValue(controlName: string, value: any): void {
+    this.applyForm().get(controlName)!.setValue(value);
+    this.applyForm().get(controlName)!.markAsTouched();
   }
 }
