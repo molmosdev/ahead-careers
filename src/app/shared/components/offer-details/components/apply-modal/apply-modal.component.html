@@ -1,26 +1,26 @@
 @if (!applied() && applyForm()) {
   <h3>{{ offer().jobTitle }} ({{ offer().offerId }})</h3>
   <p>
-    Si deseas aplicar a esta oferta, rellena los datos, adjunta tu CV
+    Si deseas aplicar a esta oferta, completa los datos, adjunta tu CV
     actualizado y haz clic en “Enviar candidatura”.
   </p>
   <r-text
-    label="Nombre"
+    label="Nombre *"
     [error]="isInvalidAndNotTouched('firstName')"
     [value]="applyForm().get('firstName')!.value"
     (changeEmitter)="setValue('firstName', $event)" />
   <r-text
-    label="Apellidos"
+    label="Apellidos *"
     [error]="isInvalidAndNotTouched('lastName')"
     [value]="applyForm().get('lastName')!.value"
     (changeEmitter)="setValue('lastName', $event)" />
   <r-text
-    label="Email"
+    label="Email *"
     [error]="isInvalidAndNotTouched('email')"
     [value]="applyForm().get('email')!.value"
     (changeEmitter)="setValue('email', $event)" />
   <r-number
-    label="Teléfono"
+    label="Teléfono *"
     [error]="isInvalidAndNotTouched('phone')"
     [value]="applyForm().get('phone')!.value"
     (changeEmitter)="setValue('phone', $event)" />
@@ -32,16 +32,18 @@
     style="display: none" />
   <r-button type="secondary" (click)="triggerFileUpload()">
     <i class="icon-file-text"></i>
-    {{ truncatedFileName() || 'Adjuntar CV' }}
+    {{ truncatedFileName() || 'Adjuntar CV *' }}
   </r-button>
-  @if (applyForm().get('cv')?.hasError('fileType')) {
-    <p class="error-message">El archivo debe ser un PDF</p>
+  @if (isInvalidAndNotTouched('cv')) {
+    @if (applyForm().get('cv')?.hasError('fileType')) {
+      <p class="error-message">El archivo debe ser un PDF</p>
+    }
+    @if (applyForm().get('cv')?.hasError('required')) {
+      <p class="error-message">Debes adjuntar tu CV</p>
+    }
   }
-  <r-button
-    type="primary"
-    (click)="applyOffer()"
-    [loading]="loading()"
-    [disabled]="applyForm().invalid">
+
+  <r-button type="primary" (click)="applyOffer()" [loading]="loading()">
     @if (!loading()) {
       <i class="icon-send"></i>
     }

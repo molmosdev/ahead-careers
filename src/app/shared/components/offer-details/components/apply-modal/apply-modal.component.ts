@@ -91,6 +91,8 @@ export class ApplyModalComponent {
    * @returns {Promise<void>} - The promise
    */
   async applyOffer(): Promise<void> {
+    this.applyForm().markAllAsTouched();
+    if (this.applyForm().invalid) return;
     this.loading.set(true);
     const file = this.applyForm().value.cv;
 
