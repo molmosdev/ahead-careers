@@ -5,22 +5,22 @@
     actualizado y haz clic en “Enviar candidatura”.
   </p>
   <r-text
-    label="Nombre *"
+    label="Nombre*"
     [error]="isInvalidAndNotTouched('firstName')"
     [value]="applyForm().get('firstName')!.value"
     (changeEmitter)="setValue('firstName', $event)" />
   <r-text
-    label="Apellidos *"
+    label="Apellidos*"
     [error]="isInvalidAndNotTouched('lastName')"
     [value]="applyForm().get('lastName')!.value"
     (changeEmitter)="setValue('lastName', $event)" />
   <r-text
-    label="Email *"
+    label="Email*"
     [error]="isInvalidAndNotTouched('email')"
     [value]="applyForm().get('email')!.value"
     (changeEmitter)="setValue('email', $event)" />
   <r-number
-    label="Teléfono *"
+    label="Teléfono*"
     [error]="isInvalidAndNotTouched('phone')"
     [value]="applyForm().get('phone')!.value"
     (changeEmitter)="setValue('phone', $event)" />
@@ -32,7 +32,7 @@
     style="display: none" />
   <r-button type="secondary" (click)="triggerFileUpload()">
     <i class="icon-file-text"></i>
-    {{ truncatedFileName() || 'Adjuntar CV *' }}
+    {{ truncatedFileName() || 'Adjuntar CV actualizado*' }}
   </r-button>
   @if (isInvalidAndNotTouched('cv')) {
     @if (applyForm().get('cv')?.hasError('fileType')) {
