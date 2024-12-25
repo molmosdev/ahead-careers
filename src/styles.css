@@ -132,3 +132,7 @@ ac-methodology {
 textarea {
   resize: none;
 }
+
+r-tab {
+  flex: 1;
+}
