@@ -8,11 +8,7 @@
   padding: 1rem;
   box-sizing: border-box;
 
-  r-text,
-  r-textarea,
-  r-number,
-  r-button,
-  r-select {
+  * {
     width: 100%;
   }
 
