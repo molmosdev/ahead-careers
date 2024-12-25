@@ -9,6 +9,7 @@
   box-sizing: border-box;
   max-height: calc(100dvh - 100px);
   overflow-y: auto;
+  scrollbar-width: thin;
 
   > * {
     width: 100%;
