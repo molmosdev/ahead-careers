@@ -47,8 +47,8 @@
 }
 <r-textarea
   label="Añade información, si lo necesitas"
-  [value]="requestForm().get('message')!.value"
-  (changeEmitter)="setValue('message', $event)" />
+  [value]="requestForm().get('extraInfo')!.value"
+  (changeEmitter)="setValue('extraInfo', $event)" />
 
 @if (
   selectedRequestType() === RequestType.Candidate ||

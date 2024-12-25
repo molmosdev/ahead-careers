@@ -38,7 +38,7 @@ export class ContactUsModalComponent {
         BusinessRequestReason.Information,
         [Validators.required]
       ),
-      message: new FormControl<string | null>(null),
+      extraInfo: new FormControl<string | null>(null),
       file: new FormControl(null, [
         Validators.required,
         this.fileTypeValidator,
