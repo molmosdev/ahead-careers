@@ -1,4 +1,4 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import {
   Tab,
   Tabs,
@@ -12,12 +12,16 @@ import {
 import { RequestType } from '../../enums/request-type';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BusinessRequestReason } from './enums/business-request-reason.enum';
+import { SanityService } from '../../../core/services/sanity.service';
+import { ContactRequestBody } from './interfaces/contact-request-body';
+import { fadeInOutTrigger } from '../../animations';
 
 @Component({
   selector: 'ac-contact-us-modal',
   imports: [Tabs, Tab, Button, Text, Number, Textarea, Select, Option],
   templateUrl: './contact-us-modal.component.html',
   styleUrl: './contact-us-modal.component.css',
+  animations: [fadeInOutTrigger],
 })
 export class ContactUsModalComponent {
   RequestType = RequestType;
@@ -55,6 +59,9 @@ export class ContactUsModalComponent {
     }
     return fileName;
   });
+  loading = signal<boolean>(false);
+  applied = signal<boolean>(false);
+  sanityService = inject(SanityService);
 
   constructor() {
     effect(() => {
@@ -63,19 +70,29 @@ export class ContactUsModalComponent {
   }
 
   /**
-   * Resets the form fields based on the selected request type
+   * Resets the form fields
    */
   resetFormFields(): void {
-    if (this.selectedRequestType() === RequestType.Candidate) {
-      this.requestForm().get('companyName')!.reset();
-      this.requestForm().get('position')!.reset();
-      this.requestForm()
-        .get('reason')!
-        .setValue(BusinessRequestReason.Information);
-    }
-    this.requestForm().get('file')!.reset();
-    this.requestForm().markAsUntouched();
+    const form = this.requestForm();
+    const isCandidate = this.selectedRequestType() === RequestType.Candidate;
+
+    form.get('companyName')!.reset();
+    form.get('position')!.reset();
+    form.get('reason')!.setValue(BusinessRequestReason.Information);
+    form.get('file')!.reset();
+    form.markAsUntouched();
     this.fileName.set(null);
+
+    if (isCandidate) {
+      form.get('companyName')!.disable();
+      form.get('position')!.disable();
+      form.get('reason')!.disable();
+      form.get('file')!.enable();
+    } else {
+      form.get('companyName')!.enable();
+      form.get('position')!.enable();
+      form.get('reason')!.enable();
+    }
   }
 
   /**
@@ -110,11 +127,20 @@ export class ContactUsModalComponent {
    * @param {any} value
    */
   setValue(controlName: string, value: any, isReason = false): void {
-    this.requestForm().get(controlName)!.setValue(value);
-    this.requestForm().get(controlName)!.markAsTouched();
-    if (isReason) {
-      this.requestForm().get('file')!.reset();
-      this.fileName.set(null);
+    const control = this.requestForm().get(controlName);
+    control!.setValue(value);
+    control!.markAsTouched();
+
+    if (isReason && this.selectedRequestType() === RequestType.Business) {
+      const fileControl = this.requestForm().get('file');
+      fileControl!.reset();
+
+      if (value === BusinessRequestReason.Information) {
+        fileControl!.disable();
+        this.fileName.set(null);
+      } else {
+        fileControl!.enable();
+      }
     }
   }
 
@@ -140,8 +166,68 @@ export class ContactUsModalComponent {
     fileInput.click();
   }
 
-  sendRequest(): void {
+  /**
+   * Sends the request to the server
+   * @returns {Promise<void>} - The result of the request
+   */
+  async sendRequest(): Promise<void> {
     this.requestForm().markAllAsTouched();
     if (this.requestForm().invalid) return;
+    this.loading.set(true);
+
+    let asset = null;
+    let document: ContactRequestBody;
+
+    if (this.requestForm().value.file) {
+      asset = await this.sanityService.uploadFile(
+        this.requestForm().value.file
+      );
+    }
+    try {
+      if (this.selectedRequestType() === RequestType.Candidate) {
+        document = {
+          _type: 'candidateRequest',
+          firstName: this.requestForm().value.firstName,
+          lastName: this.requestForm().value.lastName,
+          phone: this.requestForm().value.phone as number,
+          email: this.requestForm().value.email,
+          extraInfo: this.requestForm().value.extraInfo,
+          cv: {
+            _type: 'file',
+            asset: {
+              _type: 'reference',
+              _ref: asset._id,
+            },
+          },
+        };
+      } else {
+        document = {
+          _type: 'businessRequest',
+          firstName: this.requestForm().value.firstName,
+          lastName: this.requestForm().value.lastName,
+          companyName: this.requestForm().value.companyName,
+          position: this.requestForm().value.position,
+          phone: this.requestForm().value.phone as number,
+          email: this.requestForm().value.email,
+          reason: this.requestForm().value.reason,
+          extraInfo: this.requestForm().value.extraInfo,
+        };
+        if (asset) {
+          document.jobDescription = {
+            _type: 'file',
+            asset: {
+              _type: 'reference',
+              _ref: asset._id,
+            },
+          };
+        }
+      }
+      await this.sanityService.postDocument(document);
+      this.applied.set(true);
+    } catch (error) {
+      console.error('Error while sending the request', error);
+    } finally {
+      this.loading.set(false);
+    }
   }
 }
