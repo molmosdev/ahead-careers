@@ -21,8 +21,8 @@
   <r-text
     label="Cargo*"
     [error]="isInvalidAndNotTouched('position')"
-    [value]="requestForm().get('companyName')!.value"
-    (changeEmitter)="setValue('companyName', $event)" />
+    [value]="requestForm().get('position')!.value"
+    (changeEmitter)="setValue('position', $event)" />
 }
 <r-number
   label="Teléfono*"
