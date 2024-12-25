@@ -9,6 +9,16 @@
   font-size: 14px;
   line-height: 1.5rem;
   overscroll-behavior-block: none;
+
+  &:not(i) {
+    color: var(--grey);
+  }
+}
+
+p {
+  &.error-message {
+    color: var(--error-foreground);
+  }
 }
 
 html,
@@ -21,11 +31,6 @@ body {
 a {
   user-select: none;
   color: var(--blue);
-}
-
-li,
-p {
-  color: var(--grey);
 }
 
 strong {
@@ -122,4 +127,8 @@ ac-methodology {
       margin: 0;
     }
   }
+}
+
+textarea {
+  resize: none;
 }

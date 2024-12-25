@@ -1,0 +1,91 @@
+<r-tabs [(selectedValue)]="selectedRequestType">
+  <r-tab [value]="RequestType.Business"> Empresa </r-tab>
+  <r-tab [value]="RequestType.Candidate"> Candidato </r-tab>
+</r-tabs>
+<r-text
+  label="Nombre*"
+  [error]="isInvalidAndNotTouched('firstName')"
+  [value]="requestForm().get('firstName')!.value"
+  (changeEmitter)="setValue('firstName', $event)" />
+<r-text
+  label="Apellidos*"
+  [error]="isInvalidAndNotTouched('lastName')"
+  [value]="requestForm().get('lastName')!.value"
+  (changeEmitter)="setValue('lastName', $event)" />
+@if (selectedRequestType() === RequestType.Business) {
+  <r-text
+    label="Empresa*"
+    [error]="isInvalidAndNotTouched('companyName')"
+    [value]="requestForm().get('companyName')!.value"
+    (changeEmitter)="setValue('companyName', $event)" />
+  <r-text
+    label="Cargo*"
+    [error]="isInvalidAndNotTouched('position')"
+    [value]="requestForm().get('companyName')!.value"
+    (changeEmitter)="setValue('companyName', $event)" />
+}
+<r-number
+  label="Teléfono*"
+  [error]="isInvalidAndNotTouched('phone')"
+  [value]="requestForm().get('phone')!.value"
+  (changeEmitter)="setValue('phone', $event)" />
+<r-text
+  label="Correo electrónico*"
+  [error]="isInvalidAndNotTouched('email')"
+  [value]="requestForm().get('email')!.value"
+  (changeEmitter)="setValue('email', $event)" />
+@if (selectedRequestType() === RequestType.Business) {
+  <r-select
+    label="Solicitar"
+    (changesEmitter)="setValue('reason', $event, true)"
+    [selectedValue]="requestForm().get('reason')!.value">
+    <r-option [value]="BusinessRequestReason.Information">
+      Información
+    </r-option>
+    <r-option [value]="BusinessRequestReason.Selection"> Selección </r-option>
+  </r-select>
+}
+<r-textarea
+  label="Añade información, si lo necesitas"
+  [value]="requestForm().get('message')!.value"
+  (changeEmitter)="setValue('message', $event)" />
+
+@if (
+  selectedRequestType() === RequestType.Candidate ||
+  (selectedRequestType() === RequestType.Business &&
+    requestForm().get('reason')?.value === BusinessRequestReason.Selection)
+) {
+  <input
+    type="file"
+    id="cvUpload"
+    accept=".pdf"
+    (change)="onFileSelected($event)"
+    style="display: none" />
+  <r-button type="secondary" (click)="triggerFileUpload()">
+    <i class="icon-file-text"></i>
+    @if (selectedRequestType() === RequestType.Candidate) {
+      {{ truncatedFileName() || 'CV actualizado*' }}
+    } @else {
+      {{ truncatedFileName() || 'Descripción del puesto*' }}
+    }
+  </r-button>
+  @if (isInvalidAndNotTouched('file')) {
+    @if (requestForm().get('file')?.hasError('fileType')) {
+      <p class="error-message">El archivo debe ser un PDF</p>
+    }
+    @if (requestForm().get('file')?.hasError('required')) {
+      <p class="error-message">
+        Debes adjuntar
+        @if (selectedRequestType() === RequestType.Candidate) {
+          tu CV actualizado
+        } @else {
+          la descripción del puesto
+        }
+      </p>
+    }
+  }
+}
+<p>
+  Al enviar, aceptas la <a href="">política de privacidad</a> de Ahead Careers
+</p>
+<r-button type="primary" (click)="sendRequest()"> Enviar </r-button>

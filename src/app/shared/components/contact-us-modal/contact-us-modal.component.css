@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 80vw;
+  max-width: 350px;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  r-text,
+  r-textarea,
+  r-number,
+  r-button,
+  r-select {
+    width: 100%;
+  }
+
+  r-textarea {
+    height: 100px;
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+  }
+}

@@ -15,7 +15,7 @@
     [value]="applyForm().get('lastName')!.value"
     (changeEmitter)="setValue('lastName', $event)" />
   <r-text
-    label="Email*"
+    label="Correo electrónico*"
     [error]="isInvalidAndNotTouched('email')"
     [value]="applyForm().get('email')!.value"
     (changeEmitter)="setValue('email', $event)" />
@@ -49,7 +49,7 @@
     }
     Enviar candidatura
   </r-button>
-  <p class="privary-message">
+  <p>
     Al enviar, aceptas la <a href="">política de privacidad</a> de Ahead Careers
   </p>
 } @else {

@@ -10,10 +10,6 @@
 
   p {
     margin: 0;
-
-    &.error-message {
-      color: var(--error-foreground);
-    }
   }
 }
 

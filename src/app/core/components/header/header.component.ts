@@ -2,10 +2,11 @@ import { Component, computed, inject } from '@angular/core';
 import { fadeInOutTrigger } from '../../../shared/animations';
 import { moveToTheLeftTrigger } from './header.animations';
 import { Button, InViewportService } from '@realm-ui/angular';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RouteService } from '../../services/route.service';
 import { Path } from '../../../shared/enums/path';
 import { ResponsiveService } from '../../services/responsive.service';
+import { ContactUsModalService } from '../../services/contact-us-modal.service';
 
 @Component({
   selector: 'ac-header',
@@ -25,4 +26,15 @@ export class HeaderComponent {
   isOffersCtaVisible = computed(
     () => this.inViewportService.elements()['offers-cta']
   );
+  contactUsModalService = inject(ContactUsModalService);
+  isContactUsModalOpen = computed(() => this.contactUsModalService.isOpen());
+  router = inject(Router);
+
+  executeDynamicButton() {
+    if (this.isHomePage()) {
+      this.contactUsModalService.isOpen.set(true);
+    } else {
+      this.router.navigate([Path.Home]);
+    }
+  }
 }

@@ -4,11 +4,7 @@
     <div class="right">
       <r-button
         class="contact-button"
-        [routerLink]="
-          !isOffersCtaVisible() && !isMobile() && isHomePage()
-            ? '/contact'
-            : '/'
-        "
+        (clickEmitter)="executeDynamicButton()"
         type="primary"
         [@moveToTheLeftTrigger]="
           !isOffersCtaVisible() && !isMobile() && isHomePage()

@@ -13,8 +13,14 @@ import { OffersButtonComponent } from './shared/components/offers-button/offers-
 import { RouteService } from './core/services/route.service';
 import { Path } from './shared/enums/path';
 import { SplashScreenComponent } from './shared/components/splash-screen/splash-screen.component';
-import { InViewportService } from '@realm-ui/angular';
+import {
+  Dialog,
+  InViewportService,
+  LazyContentDirective,
+} from '@realm-ui/angular';
 import { ResponsiveService } from './core/services/responsive.service';
+import { ContactUsModalService } from './core/services/contact-us-modal.service';
+import { ContactUsModalComponent } from './shared/components/contact-us-modal/contact-us-modal.component';
 
 @Component({
   selector: 'ac-root',
@@ -24,6 +30,9 @@ import { ResponsiveService } from './core/services/responsive.service';
     FooterComponent,
     OffersButtonComponent,
     SplashScreenComponent,
+    Dialog,
+    ContactUsModalComponent,
+    LazyContentDirective,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -39,6 +48,7 @@ export class AppComponent {
   isOffersCtaVisible = computed(
     () => this.inViewportService.elements()['offers-cta']
   );
+  contactUsModalService = inject(ContactUsModalService);
 
   constructor() {
     this.initializeSplashScreen();
