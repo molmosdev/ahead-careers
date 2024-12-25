@@ -7,6 +7,7 @@ import { Button, Dialog, LazyContentDirective } from '@realm-ui/angular';
 import { SocialButtonsComponent } from './components/social-buttons/social-buttons.component';
 import { ResponsiveService } from '../../../core/services/responsive.service';
 import { ApplyModalComponent } from './components/apply-modal/apply-modal.component';
+import { ContactUsModalService } from '../../../core/services/contact-us-modal.service';
 
 @Component({
   selector: 'ac-offer-details',
@@ -28,6 +29,7 @@ export class OfferDetailsComponent {
   responsiveService = inject(ResponsiveService);
   isMobile = computed(() => this.responsiveService.isMobile());
   isApplyModalOpen = signal<boolean>(false);
+  contactUsModalService = inject(ContactUsModalService);
 
   /**
    * Gets the html from a block
