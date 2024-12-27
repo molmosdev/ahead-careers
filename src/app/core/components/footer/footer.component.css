@@ -32,12 +32,12 @@
 
     .contact {
       display: flex;
-      justify-content: center;
       align-items: center;
       gap: 18px;
       z-index: 1;
+      flex-wrap: wrap;
 
-      a {
+      a:not(.links a) {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -57,6 +57,16 @@
           }
         }
       }
+
+      .links {
+        width: 100%;
+
+        a {
+          color: var(--white);
+          font-family: 'Poppins', sans-serif;
+          text-decoration: none;
+        }
+      }
     }
 
     img {
@@ -73,6 +83,11 @@
 
       .contact {
         align-items: center;
+        justify-content: center;
+
+        .links {
+          text-align: center;
+        }
       }
     }
   }
