@@ -9,6 +9,7 @@
   font-size: 14px;
   line-height: 1.5rem;
   overscroll-behavior-block: none;
+  scrollbar-width: thin;
 
   &:not(i) {
     color: var(--grey);
