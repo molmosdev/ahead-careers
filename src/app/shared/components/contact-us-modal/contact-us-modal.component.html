@@ -25,16 +25,16 @@
       [value]="requestForm().get('position')!.value"
       (changeEmitter)="setValue('position', $event)" />
   }
-  <r-number
-    label="Teléfono*"
-    [error]="isInvalidAndNotTouched('phone')"
-    [value]="requestForm().get('phone')!.value"
-    (changeEmitter)="setValue('phone', $event)" />
   <r-text
     label="Correo electrónico*"
     [error]="isInvalidAndNotTouched('email')"
     [value]="requestForm().get('email')!.value"
     (changeEmitter)="setValue('email', $event)" />
+  <r-number
+    label="Teléfono*"
+    [error]="isInvalidAndNotTouched('phone')"
+    [value]="requestForm().get('phone')!.value"
+    (changeEmitter)="setValue('phone', $event)" />
   @if (selectedRequestType() === RequestType.Business) {
     <r-select
       label="Solicitar"
