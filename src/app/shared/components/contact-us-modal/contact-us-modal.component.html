@@ -1,4 +1,5 @@
 @if (!applied() && requestForm()) {
+  <h3>Contáctanos</h3>
   <r-tabs [(selectedValue)]="selectedRequestType">
     <r-tab [value]="RequestType.Business"> Empresa </r-tab>
     <r-tab [value]="RequestType.Candidate"> Candidato/a </r-tab>
@@ -96,10 +97,21 @@
     Al enviar, aceptas la <a href="">política de privacidad</a> de Ahead Careers
   </p>
 } @else {
-  <h3 @fadeInOut>¡Tu solicitud ha sido enviada con éxito!</h3>
+  <h3 @fadeInOut>
+    @if (selectedRequestType() === RequestType.Business) {
+      @if (
+        requestForm().get('reason')?.value === BusinessRequestReason.Information
+      ) {
+        ¡Tu solicitud de información ha sido enviada con éxito!
+      } @else {
+        ¡Tu solicitud de selección ha sido enviada con éxito!
+      }
+    } @else {
+      ¡Tu CV actualizado ha sido enviado con éxito!
+    }
+  </h3>
   <p @fadeInOut>
-    Tu solicitud ha sido recibida y el equipo de Ahead Careers la revisará con
-    la mayor brevedad posible.
+    El equipo de Ahead Careers lo revisará con la mayor brevedad posible.
   </p>
   <p @fadeInOut>¡Gracias por contactarnos!</p>
 }
