@@ -41,6 +41,19 @@ export const routes: Routes = [
     title: 'Oferta Detallada - Ahead Careers',
   },
   {
+    path: 'privacy-policy',
+    loadComponent: () =>
+      import('./pages/privacy-policy/privacy-policy.component').then(
+        m => m.PrivacyPolicyComponent
+      ),
+    data: {
+      title: 'Política de Privacidad - Ahead Careers',
+      description: 'Política de privacidad de Ahead Careers.',
+      keywords: 'privacidad, Ahead Careers, Eric Olmos',
+    },
+    title: 'Política de Privacidad - Ahead Careers',
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',
