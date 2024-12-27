@@ -137,3 +137,8 @@ textarea {
 r-tab {
   flex: 1;
 }
+
+r-tab span.selected {
+  background-color: var(--blue);
+  color: var(--white);
+}
