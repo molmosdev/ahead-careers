@@ -86,15 +86,15 @@
       }
     }
   }
-  <p>
-    Al enviar, aceptas la <a href="">política de privacidad</a> de Ahead Careers
-  </p>
   <r-button type="primary" (click)="sendRequest()" [loading]="loading()">
     @if (!loading()) {
       <i class="icon-send"></i>
     }
     Enviar
   </r-button>
+  <p>
+    Al enviar, aceptas la <a href="">política de privacidad</a> de Ahead Careers
+  </p>
 } @else {
   <h3 @fadeInOut>¡Tu solicitud ha sido enviada con éxito!</h3>
   <p @fadeInOut>
