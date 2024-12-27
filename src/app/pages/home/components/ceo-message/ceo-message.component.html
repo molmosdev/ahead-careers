@@ -1,27 +1,23 @@
-@defer (when ceoMessage()) {
-  @defer (on viewport) {
-    <div
-      class="ceo-message"
-      [@fadeInOut]="{ value: '', params: { delay: '0.75s' } }">
-      <div class="message">
-        <div class="message-content" [innerHTML]="ceoMessage()"></div>
-        <div class="bottom">
-          <div class="ceo-signature">
-            <div class="ceo-name">Eric Olmos</div>
-            <div class="ceo-title">Founder & Senior Consultant</div>
-          </div>
-          <a
-            href="https://www.linkedin.com/in/eric-olmos-a33756b3/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn profile">
-            <img class="logo" src="/svg/in-blue.svg" alt="LinkedIn icon" />
-          </a>
+@if (ceoMessage()) {
+  <div
+    class="ceo-message"
+    [@fadeInOut]="{ value: '', params: { delay: '0.75s' } }">
+    <div class="message">
+      <div class="message-content" [innerHTML]="ceoMessage()"></div>
+      <div class="bottom">
+        <div class="ceo-signature">
+          <div class="ceo-name">Eric Olmos</div>
+          <div class="ceo-title">Founder & Senior Consultant</div>
         </div>
+        <a
+          href="https://www.linkedin.com/in/eric-olmos-a33756b3/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn profile">
+          <img class="logo" src="/svg/in-blue.svg" alt="LinkedIn icon" />
+        </a>
       </div>
-      <img class="ceo-image" src="/webp/ceo.webp" alt="CEO, Eric Olmos" />
     </div>
-  } @placeholder {
-    <ac-placeholder [height]="300" />
-  }
+    <img class="ceo-image" src="/webp/ceo.webp" alt="CEO, Eric Olmos" />
+  </div>
 }

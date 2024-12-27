@@ -1,52 +1,45 @@
-@defer (when data()) {
-  @defer (on viewport) {
-    <h1 [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }">
-      {{ data()!.title }}
-    </h1>
-    <div
-      class="carousel-container"
-      (touchstart)="onTouchStart($event)"
-      (touchend)="onTouchEnd($event)"
-      @fadeInExperiencesTrigger>
-      <div class="carousel-wrapper">
-        @for (experience of data()!.experiences; track experience) {
+@if (data()) {
+  <h1 [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }">
+    {{ data()!.title }}
+  </h1>
+  <div
+    class="carousel-container"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+    @fadeInExperiencesTrigger>
+    <div class="carousel-wrapper">
+      @for (experience of data()!.experiences; track experience) {
+        <div
+          class="carousel-box"
+          [@experienceTrigger]="getPositionState($index)"
+          (click)="selectExperience($index)"
+          (keydown)="handleKeydown($event)"
+          [ngClass]="{ selected: $index === currentIndex() }"
+          tabindex="0">
           <div
-            class="carousel-box"
-            [@experienceTrigger]="getPositionState($index)"
-            (click)="selectExperience($index)"
-            (keydown)="handleKeydown($event)"
-            [ngClass]="{ selected: $index === currentIndex() }"
-            tabindex="0">
-            <div
-              class="content"
-              [innerHTML]="getHtmlFromBlock(experience!.content)"></div>
-            <div class="bottom">
-              <div class="author">
-                {{ experience!.author }}
-              </div>
-              <div class="position">
-                {{ experience!.position }}
-              </div>
-              <div class="location">
-                {{ experience!.location }}
-              </div>
+            class="content"
+            [innerHTML]="getHtmlFromBlock(experience!.content)"></div>
+          <div class="bottom">
+            <div class="author">
+              {{ experience!.author }}
+            </div>
+            <div class="position">
+              {{ experience!.position }}
+            </div>
+            <div class="location">
+              {{ experience!.location }}
             </div>
           </div>
-        }
-      </div>
-      <div class="arrows">
-        <button
-          class="prev-button"
-          (click)="prev()"
-          aria-label="Previous Slide">
-          <i class="icon-arrow-left"></i>
-        </button>
-        <button class="next-button" (click)="next()" aria-label="Next Slide">
-          <i class="icon-arrow-right"></i>
-        </button>
-      </div>
+        </div>
+      }
     </div>
-  } @placeholder {
-    <ac-placeholder [height]="300" />
-  }
+    <div class="arrows">
+      <button class="prev-button" (click)="prev()" aria-label="Previous Slide">
+        <i class="icon-arrow-left"></i>
+      </button>
+      <button class="next-button" (click)="next()" aria-label="Next Slide">
+        <i class="icon-arrow-right"></i>
+      </button>
+    </div>
+  </div>
 }

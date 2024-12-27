@@ -1,4 +1,4 @@
-@defer (when data()) {
+@if (data()) {
   <h1 [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }">
     {{ data()?.title }}
   </h1>
@@ -7,19 +7,13 @@
       class="value-boxes-wrapper"
       [@fadeInOut]="{ value: '', params: { delay: '0.7s' } }">
       @for (value of data()?.values; track value) {
-        @defer (on viewport) {
-          <div class="value-box" @fadeInOut>
-            <h2>{{ value.title }}</h2>
-            <div
-              class="description"
-              [innerHTML]="getHtmlFromBlock(value.description)"></div>
-          </div>
-        } @placeholder {
-          <ac-placeholder [height]="500" />
-        }
+        <div class="value-box" @fadeInOut>
+          <h2>{{ value.title }}</h2>
+          <div
+            class="description"
+            [innerHTML]="getHtmlFromBlock(value.description)"></div>
+        </div>
       }
     </div>
   }
-} @placeholder {
-  <ac-placeholder [height]="1000" />
 }
