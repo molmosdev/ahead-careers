@@ -65,9 +65,9 @@
     <r-button type="secondary" (click)="triggerFileUpload()">
       <i class="icon-file-text"></i>
       @if (selectedRequestType() === RequestType.Candidate) {
-        {{ truncatedFileName() || 'CV actualizado*' }}
+        {{ truncatedFileName() || 'Adjuntar CV actualizado*' }}
       } @else {
-        {{ truncatedFileName() || 'Descripción del puesto*' }}
+        {{ truncatedFileName() || 'Adjuntar descripción del puesto*' }}
       }
     </r-button>
     @if (isInvalidAndNotTouched('file')) {
