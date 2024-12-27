@@ -94,7 +94,11 @@
     Enviar
   </r-button>
   <p>
-    Al enviar, aceptas la <a href="">política de privacidad</a> de Ahead Careers
+    Al enviar, aceptas la
+    <a [routerLink]="'/privacy-policy'" target="_blank"
+      >política de privacidad</a
+    >
+    de Ahead Careers
   </p>
 } @else {
   <h3 @fadeInOut>

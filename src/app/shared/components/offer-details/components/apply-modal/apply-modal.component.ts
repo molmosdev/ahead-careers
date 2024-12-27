@@ -11,10 +11,11 @@ import { Offer } from '../../../../../pages/offers/interfaces/offer.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SanityService } from '../../../../../core/services/sanity.service'; // Importa el servicio
 import { fadeInOutTrigger } from '../../../../animations';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'ac-apply-modal',
-  imports: [Button, Text, Number],
+  imports: [Button, Text, Number, RouterLink],
   templateUrl: './apply-modal.component.html',
   styleUrl: './apply-modal.component.css',
   animations: [fadeInOutTrigger],

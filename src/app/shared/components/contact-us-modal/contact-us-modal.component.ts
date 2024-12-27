@@ -15,10 +15,21 @@ import { BusinessRequestReason } from './enums/business-request-reason.enum';
 import { SanityService } from '../../../core/services/sanity.service';
 import { ContactRequestBody } from './interfaces/contact-request-body';
 import { fadeInOutTrigger } from '../../animations';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'ac-contact-us-modal',
-  imports: [Tabs, Tab, Button, Text, Number, Textarea, Select, Option],
+  imports: [
+    Tabs,
+    Tab,
+    Button,
+    Text,
+    Number,
+    Textarea,
+    Select,
+    Option,
+    RouterLink,
+  ],
   templateUrl: './contact-us-modal.component.html',
   styleUrl: './contact-us-modal.component.css',
   animations: [fadeInOutTrigger],
