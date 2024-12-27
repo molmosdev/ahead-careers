@@ -2,7 +2,6 @@ import { Component, signal } from '@angular/core';
 import { Experiences } from './interfaces/experiences';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { NgClass } from '@angular/common';
-import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
 import {
   experienceTrigger,
   fadeInExperiencesTrigger,
@@ -11,7 +10,7 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-experiences',
-  imports: [PlaceholderComponent, NgClass],
+  imports: [NgClass],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.css',
   animations: [fadeInOutTrigger, fadeInExperiencesTrigger, experienceTrigger],
