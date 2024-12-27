@@ -1,11 +1,9 @@
 @if (data()) {
-  <h1 [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }">
+  <h1 @fadeInOut>
     {{ data()?.title }}
   </h1>
   @if (data()?.values && (data()?.values)!.length > 0) {
-    <div
-      class="value-boxes-wrapper"
-      [@fadeInOut]="{ value: '', params: { delay: '0.7s' } }">
+    <div @fadeInOut class="value-boxes-wrapper">
       @for (value of data()?.values; track value) {
         <div class="value-box" @fadeInOut>
           <h2>{{ value.title }}</h2>

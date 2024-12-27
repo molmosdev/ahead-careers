@@ -1,7 +1,5 @@
 @if (ceoMessage()) {
-  <div
-    class="ceo-message"
-    [@fadeInOut]="{ value: '', params: { delay: '0.75s' } }">
+  <div class="ceo-message" @fadeInOut>
     <div class="message">
       <div class="message-content" [innerHTML]="ceoMessage()"></div>
       <div class="bottom">

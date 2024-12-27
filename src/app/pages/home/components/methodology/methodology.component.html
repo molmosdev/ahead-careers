@@ -1,11 +1,9 @@
 @if (data()) {
-  <h1 [@fadeInOut]="{ value: '', params: { delay: '0.5s' } }">
+  <h1 @fadeInOut>
     {{ data()?.title }}
   </h1>
   @if (data()?.methodologySteps && (data()?.methodologySteps)!.length > 0) {
-    <div
-      class="image-and-steps-wrapper"
-      [@fadeInOut]="{ value: '', params: { delay: '0.7s' } }">
+    <div @fadeInOut class="image-and-steps-wrapper">
       <img
         class="methodology-image"
         [height]="690"
@@ -14,11 +12,7 @@
         alt="Methodology" />
       <div class="steps-wrapper">
         @for (step of data()?.methodologySteps; track step) {
-          <div
-            @fadeInOut
-            class="step"
-            (keypress)="selectedStep.set($index)"
-            tabindex="0">
+          <div class="step" (keypress)="selectedStep.set($index)" tabindex="0">
             <div class="number">0{{ $index + 1 }}</div>
             <h3 class="start">
               {{ step.title }}
