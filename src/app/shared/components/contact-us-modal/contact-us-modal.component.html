@@ -1,7 +1,7 @@
 @if (!applied() && requestForm()) {
   <r-tabs [(selectedValue)]="selectedRequestType">
     <r-tab [value]="RequestType.Business"> Empresa </r-tab>
-    <r-tab [value]="RequestType.Candidate"> Candidato </r-tab>
+    <r-tab [value]="RequestType.Candidate"> Candidato/a </r-tab>
   </r-tabs>
   <r-text
     label="Nombre*"
