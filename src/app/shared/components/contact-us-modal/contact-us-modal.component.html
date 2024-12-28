@@ -1,21 +1,25 @@
 @if (!applied() && requestForm()) {
   <h3>Contáctanos</h3>
-  <p>
-    @if (selectedRequestType() === RequestType.Business) {
-      @switch (requestForm().get('reason')?.value) {
-        @case (BusinessRequestReason.Information) {
+  @if (selectedRequestType() === RequestType.Business) {
+    @switch (requestForm().get('reason')?.value) {
+      @case (BusinessRequestReason.Information) {
+        <p>
           Si deseas contactarnos, completa los campos y haz clic en “Enviar”.
-        }
-        @case (BusinessRequestReason.Selection) {
+        </p>
+      }
+      @case (BusinessRequestReason.Selection) {
+        <p>
           Si deseas contactarnos, completa los campos, adjunta la DPT y haz clic
           en “Enviar”.
-        }
+        </p>
       }
-    } @else {
+    }
+  } @else {
+    <p>
       Si deseas contactarnos, completa los campos, adjunta tu CV actualizado y
       haz clic en “Enviar”.
-    }
-  </p>
+    </p>
+  }
   <r-tabs [(selectedValue)]="selectedRequestType">
     <r-tab [value]="RequestType.Business"> Empresa </r-tab>
     <r-tab [value]="RequestType.Candidate"> Candidato/a </r-tab>
