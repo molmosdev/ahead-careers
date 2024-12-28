@@ -67,6 +67,17 @@ export const routes: Routes = [
     title: 'Aviso Legal - Ahead Careers',
   },
   {
+    path: 'cookies',
+    loadComponent: () =>
+      import('./pages/cookies/cookies.component').then(m => m.CookiesComponent),
+    data: {
+      title: 'Política de Cookies - Ahead Careers',
+      description: 'Información sobre la política de cookies de Ahead Careers.',
+      keywords: 'cookies, política de cookies, Ahead Careers, Eric Olmos',
+    },
+    title: 'Política de Cookies - Ahead Careers',
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',
