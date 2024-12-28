@@ -7,7 +7,7 @@ export interface ContactRequestBody {
   phone: number;
   email: any;
   reason?: any;
-  extraInfo: any;
+  /*   extraInfo: any; */
   cv?: { _type: string; asset: { _type: string; _ref: string } };
   jobDescription?: {
     _type: string;

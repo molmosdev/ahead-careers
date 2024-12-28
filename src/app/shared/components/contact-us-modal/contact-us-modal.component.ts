@@ -5,7 +5,6 @@ import {
   Button,
   Text,
   Number,
-  Textarea,
   Select,
   Option,
 } from '@realm-ui/angular';
@@ -25,7 +24,7 @@ import { RouterLink } from '@angular/router';
     Button,
     Text,
     Number,
-    Textarea,
+    /*     Textarea, */
     Select,
     Option,
     RouterLink,
@@ -52,7 +51,7 @@ export class ContactUsModalComponent {
       reason: new FormControl<BusinessRequestReason | null>(null, [
         Validators.required,
       ]),
-      extraInfo: new FormControl<string | null>(null),
+      /*       extraInfo: new FormControl<string | null>(null), */
       file: new FormControl(null, [
         Validators.required,
         this.fileTypeValidator,
@@ -201,7 +200,7 @@ export class ContactUsModalComponent {
           lastName: this.requestForm().value.lastName,
           phone: this.requestForm().value.phone as number,
           email: this.requestForm().value.email,
-          extraInfo: this.requestForm().value.extraInfo,
+          /*           extraInfo: this.requestForm().value.extraInfo, */
           cv: {
             _type: 'file',
             asset: {
@@ -220,7 +219,7 @@ export class ContactUsModalComponent {
           phone: this.requestForm().value.phone as number,
           email: this.requestForm().value.email,
           reason: this.requestForm().value.reason,
-          extraInfo: this.requestForm().value.extraInfo,
+          /*           extraInfo: this.requestForm().value.extraInfo, */
         };
         if (asset) {
           document.jobDescription = {
