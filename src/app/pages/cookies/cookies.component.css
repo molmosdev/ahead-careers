@@ -1,0 +1,12 @@
+:host {
+  min-height: 100dvh;
+  padding: 4rem 3rem 4.1rem 3rem;
+  box-sizing: border-box;
+  max-width: 1400px;
+  width: 100%;
+  margin-inline: auto;
+
+  @media (width < 768px) {
+    padding: 1.5rem 2rem 4.5rem 2rem;
+  }
+}
