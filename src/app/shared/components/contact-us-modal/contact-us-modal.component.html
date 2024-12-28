@@ -1,5 +1,20 @@
 @if (!applied() && requestForm()) {
   <h3>Contáctanos</h3>
+  <p>
+    @if (selectedRequestType() === RequestType.Business) {
+      @if (
+        requestForm().get('reason')?.value === BusinessRequestReason.Information
+      ) {
+        Si deseas contactarnos, completa los campos y haz clic en “Enviar”.
+      } @else {
+        Si deseas contactarnos, completa los campos, adjunta la DPT y haz clic
+        en “Enviar”.
+      }
+    } @else {
+      Si deseas contactarnos, completa los campos, adjunta tu CV actualizado y
+      haz clic en “Enviar”.
+    }
+  </p>
   <r-tabs [(selectedValue)]="selectedRequestType">
     <r-tab [value]="RequestType.Business"> Empresa </r-tab>
     <r-tab [value]="RequestType.Candidate"> Candidato/a </r-tab>
