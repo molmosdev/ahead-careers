@@ -49,10 +49,9 @@ export class ContactUsModalComponent {
         Validators.required,
         Validators.email,
       ]),
-      reason: new FormControl<BusinessRequestReason>(
-        BusinessRequestReason.Information,
-        [Validators.required]
-      ),
+      reason: new FormControl<BusinessRequestReason | null>(null, [
+        Validators.required,
+      ]),
       extraInfo: new FormControl<string | null>(null),
       file: new FormControl(null, [
         Validators.required,
@@ -89,7 +88,7 @@ export class ContactUsModalComponent {
 
     form.get('companyName')!.reset();
     form.get('position')!.reset();
-    form.get('reason')!.setValue(BusinessRequestReason.Information);
+    form.get('reason')!.reset();
     form.get('file')!.reset();
     form.markAsUntouched();
     this.fileName.set(null);
