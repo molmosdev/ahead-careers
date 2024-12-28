@@ -54,6 +54,19 @@ export const routes: Routes = [
     title: 'Política de Privacidad - Ahead Careers',
   },
   {
+    path: 'legal-notice',
+    loadComponent: () =>
+      import('./pages/legal-notice/legal-notice.component').then(
+        m => m.LegalNoticeComponent
+      ),
+    data: {
+      title: 'Aviso Legal - Ahead Careers',
+      description: 'Información sobre el aviso legal de Ahead Careers.',
+      keywords: 'aviso legal, Ahead Careers, Eric Olmos',
+    },
+    title: 'Aviso Legal - Ahead Careers',
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',
