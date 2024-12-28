@@ -2,13 +2,14 @@
   <h3>Contáctanos</h3>
   <p>
     @if (selectedRequestType() === RequestType.Business) {
-      @if (
-        requestForm().get('reason')?.value === BusinessRequestReason.Information
-      ) {
-        Si deseas contactarnos, completa los campos y haz clic en “Enviar”.
-      } @else {
-        Si deseas contactarnos, completa los campos, adjunta la DPT y haz clic
-        en “Enviar”.
+      @switch (requestForm().get('reason')?.value) {
+        @case (BusinessRequestReason.Information) {
+          Si deseas contactarnos, completa los campos y haz clic en “Enviar”.
+        }
+        @case (BusinessRequestReason.Selection) {
+          Si deseas contactarnos, completa los campos, adjunta la DPT y haz clic
+          en “Enviar”.
+        }
       }
     } @else {
       Si deseas contactarnos, completa los campos, adjunta tu CV actualizado y
