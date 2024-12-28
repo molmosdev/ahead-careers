@@ -38,7 +38,7 @@
     (changeEmitter)="setValue('phone', $event)" />
   @if (selectedRequestType() === RequestType.Business) {
     <r-select
-      label="Solicitar"
+      label="Solicitar*"
       (changesEmitter)="setValue('reason', $event, true)"
       [selectedValue]="requestForm().get('reason')!.value">
       <r-option [value]="BusinessRequestReason.Information">
@@ -68,7 +68,7 @@
       @if (selectedRequestType() === RequestType.Candidate) {
         {{ truncatedFileName() || 'Adjuntar CV actualizado*' }}
       } @else {
-        {{ truncatedFileName() || 'Adjuntar descripción del puesto*' }}
+        {{ truncatedFileName() || 'Adjuntar Descripción del Puesto*' }}
       }
     </r-button>
     @if (isInvalidAndNotTouched('file')) {
