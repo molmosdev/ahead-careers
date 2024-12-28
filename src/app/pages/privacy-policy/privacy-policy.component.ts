@@ -1,8 +1,8 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { SanityService } from '../../core/services/sanity.service';
-import { PrivacyPolicy } from './interfaces/privacy-policy.interface';
 import { ResponsiveService } from '../../core/services/responsive.service';
 import { NgClass } from '@angular/common';
+import { TitleAndContent } from '../../shared/interfaces/title-and-content';
 
 @Component({
   selector: 'ac-privacy-policy',
@@ -12,7 +12,7 @@ import { NgClass } from '@angular/common';
 })
 export class PrivacyPolicyComponent implements OnInit {
   sanityService = inject(SanityService);
-  privacyPolicy = computed<PrivacyPolicy>(() => {
+  privacyPolicy = computed<TitleAndContent>(() => {
     const data = this.sanityService.data.value();
     return {
       ...data,
