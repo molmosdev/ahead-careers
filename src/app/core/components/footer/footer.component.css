@@ -78,6 +78,10 @@
 
       &.logo {
         margin-left: 86px;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
