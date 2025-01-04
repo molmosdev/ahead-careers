@@ -21,7 +21,7 @@
     [value]="applyForm().get('phone')!.value"
     (changeEmitter)="setValue('phone', $event)" />
   <r-text
-    label="Disponibilidad horaria para entrevista*"
+    label="Disp. horaria para entrevista telefónica*"
     [error]="isInvalidAndNotTouched('availability')"
     [value]="applyForm().get('availability')!.value"
     (changeEmitter)="setValue('availability', $event)" />
