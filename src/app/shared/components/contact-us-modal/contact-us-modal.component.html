@@ -80,7 +80,7 @@
       @if (selectedRequestType() === RequestType.Candidate) {
         {{ truncatedFileName() || 'Adjuntar CV actualizado*' }}
       } @else {
-        {{ truncatedFileName() || 'Adjuntar Descripción del Puesto*' }}
+        {{ truncatedFileName() || 'Adjuntar Job Description*' }}
       }
     </r-button>
     @if (isInvalidAndNotTouched('file')) {
