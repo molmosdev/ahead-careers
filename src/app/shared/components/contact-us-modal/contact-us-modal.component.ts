@@ -91,8 +91,8 @@ export class ContactUsModalComponent {
     form.get('position')!.reset();
     form.get('reason')!.reset();
     form.get('file')!.reset();
-    form.get('callInterview')!.reset();
     form.get('availability')!.reset();
+    form.get('availability')!.disable();
     form.markAsUntouched();
     this.fileName.set(null);
 
@@ -102,14 +102,13 @@ export class ContactUsModalComponent {
       form.get('reason')!.disable();
       form.get('file')!.enable();
       form.get('callInterview')!.enable();
-      form.get('availability')!.enable();
+      form.get('callInterview')!.setValue(false);
     } else {
       form.get('companyName')!.enable();
       form.get('position')!.enable();
       form.get('reason')!.enable();
       form.get('file')!.disable();
       form.get('callInterview')!.disable();
-      form.get('availability')!.disable();
     }
   }
 
