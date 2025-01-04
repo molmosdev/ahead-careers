@@ -8,7 +8,6 @@
   max-height: calc(100dvh - 70px);
   overflow-y: auto;
   scrollbar-width: thin;
-  width: calc(100vw - 4rem);
 
   > * {
     width: 100%;
