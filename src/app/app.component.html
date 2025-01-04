@@ -10,5 +10,5 @@
   <ac-splash-screen @fadeOut />
 }
 <r-dialog [(show)]="contactUsModalService.isOpen" [mobileBottomActive]="true">
-  <ac-contact-us-modal *r-lazy />
+  <ac-contact-us-modal *r-lazy [(show)]="contactUsModalService.isOpen" />
 </r-dialog>

@@ -1,4 +1,5 @@
 @if (!applied() && requestForm()) {
+  <div class="icon-x" (click)="show.set(false)" tabindex="0"></div>
   <h3>Contáctanos</h3>
   <r-tabs [(selectedValue)]="selectedRequestType">
     <r-tab [value]="RequestType.Business"> Empresa </r-tab>

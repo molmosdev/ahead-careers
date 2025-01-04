@@ -1,4 +1,11 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  model,
+  signal,
+} from '@angular/core';
 import {
   Tab,
   Tabs,
@@ -35,6 +42,7 @@ import { BusinessRequestReason } from './enums/business-request-reason.enum';
   animations: [fadeInOutTrigger],
 })
 export class ContactUsModalComponent {
+  show = model<boolean>(false);
   RequestType = RequestType;
   BusinessRequestReason = BusinessRequestReason;
   selectedRequestType = signal<RequestType>(RequestType.Business);
