@@ -4,8 +4,12 @@
   (click)="isDialogVisible.set(true)">
   <i class="icon-share-2"></i>
 </r-button>
-<r-dialog [(show)]="isDialogVisible" [clickOutside]="true">
+<r-dialog
+  [(show)]="isDialogVisible"
+  [clickOutside]="true"
+  [mobileBottomActive]="true">
   <div class="dialog-content">
+    <div class="icon-x" (click)="isDialogVisible.set(false)" tabindex="0"></div>
     <h3>{{ offerJobTitle() }} ({{ offerId() }})</h3>
     <r-button type="secondary" (click)="shareOnLinkedIn()">
       <img src="/svg/in-blue.svg" alt="LinkedIn icon" />

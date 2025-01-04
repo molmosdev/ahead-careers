@@ -1,4 +1,5 @@
 @if (!applied() && applyForm()) {
+  <div class="icon-x" (click)="show.set(false)" tabindex="0"></div>
   <h3>{{ offer().jobTitle }} ({{ offer().offerId }})</h3>
   <r-text
     label="Nombre*"

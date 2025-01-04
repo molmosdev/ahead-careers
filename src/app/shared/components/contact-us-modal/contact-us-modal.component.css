@@ -9,11 +9,12 @@
   overflow-y: auto;
   scrollbar-width: thin;
   position: relative;
+  width: calc(100vw - 4rem);
 
   .icon-x {
     position: absolute;
-    top: 0.4rem;
-    right: 0.5rem;
+    top: 0;
+    right: 0;
     cursor: pointer;
     font-size: 1.35rem;
     background: var(--light-grey);

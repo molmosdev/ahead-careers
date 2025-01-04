@@ -1,15 +1,42 @@
 :host {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: calc(100vw - 4rem);
   max-width: 350px;
   text-align: center;
   gap: 1rem;
   padding: 1rem;
   box-sizing: border-box;
+  position: relative;
+
+  & > * {
+    width: 100%;
+  }
+
+  h3 {
+    max-width: calc(100% - 30px);
+    text-wrap: inherit;
+  }
 
   p {
     margin: 0;
+  }
+
+  .icon-x {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    font-size: 1.35rem;
+    background: var(--light-grey);
+    padding: 0.2rem;
+    border-radius: 100%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

@@ -38,11 +38,30 @@
     flex-direction: column;
     gap: 1rem;
     box-sizing: border-box;
-    width: 80vw;
-    max-width: 350px;
     flex-wrap: wrap;
     padding: 1rem;
     text-align: center;
+    position: relative;
+
+    @media (width > 768px) {
+      max-width: 350px;
+    }
+
+    .icon-x {
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      font-size: 1.35rem;
+      background: var(--light-grey);
+      padding: 0.2rem;
+      border-radius: 100%;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     r-button {
       flex: 1;
