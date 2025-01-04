@@ -7,14 +7,15 @@ import {
   Number,
   Select,
   Option,
+  Switch,
 } from '@realm-ui/angular';
 import { RequestType } from '../../enums/request-type';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BusinessRequestReason } from './enums/business-request-reason.enum';
 import { SanityService } from '../../../core/services/sanity.service';
 import { ContactRequestBody } from './interfaces/contact-request-body';
 import { fadeInOutTrigger } from '../../animations';
 import { RouterLink } from '@angular/router';
+import { BusinessRequestReason } from './enums/business-request-reason.enum';
 
 @Component({
   selector: 'ac-contact-us-modal',
@@ -24,10 +25,10 @@ import { RouterLink } from '@angular/router';
     Button,
     Text,
     Number,
-    /*     Textarea, */
     Select,
     Option,
     RouterLink,
+    Switch,
   ],
   templateUrl: './contact-us-modal.component.html',
   styleUrl: './contact-us-modal.component.css',
@@ -51,7 +52,8 @@ export class ContactUsModalComponent {
       reason: new FormControl<BusinessRequestReason | null>(null, [
         Validators.required,
       ]),
-      /*       extraInfo: new FormControl<string | null>(null), */
+      callInterview: new FormControl<boolean>(false),
+      availability: new FormControl<string | null>(null, [Validators.required]),
       file: new FormControl(null, [
         Validators.required,
         this.fileTypeValidator,
@@ -89,6 +91,8 @@ export class ContactUsModalComponent {
     form.get('position')!.reset();
     form.get('reason')!.reset();
     form.get('file')!.reset();
+    form.get('callInterview')!.reset();
+    form.get('availability')!.reset();
     form.markAsUntouched();
     this.fileName.set(null);
 
@@ -97,10 +101,15 @@ export class ContactUsModalComponent {
       form.get('position')!.disable();
       form.get('reason')!.disable();
       form.get('file')!.enable();
+      form.get('callInterview')!.enable();
+      form.get('availability')!.enable();
     } else {
       form.get('companyName')!.enable();
       form.get('position')!.enable();
       form.get('reason')!.enable();
+      form.get('file')!.disable();
+      form.get('callInterview')!.disable();
+      form.get('availability')!.disable();
     }
   }
 
@@ -135,10 +144,12 @@ export class ContactUsModalComponent {
    * @param {string} controlName
    * @param {any} value
    */
-  setValue(controlName: string, value: any, isReason = false): void {
+  setValue(controlName: string, value: any): void {
     const control = this.requestForm().get(controlName);
     control!.setValue(value);
     control!.markAsTouched();
+    const isReason = controlName === 'reason';
+    const isCallInterview = controlName === 'callInterview';
 
     if (isReason && this.selectedRequestType() === RequestType.Business) {
       const fileControl = this.requestForm().get('file');
@@ -149,6 +160,14 @@ export class ContactUsModalComponent {
         this.fileName.set(null);
       } else {
         fileControl!.enable();
+      }
+    }
+    if (this.selectedRequestType() === RequestType.Candidate) {
+      if (isCallInterview && value) {
+        this.requestForm().get('availability')!.enable();
+      } else if (isCallInterview && !value) {
+        this.requestForm().get('availability')!.reset();
+        this.requestForm().get('availability')!.disable();
       }
     }
   }
@@ -200,7 +219,7 @@ export class ContactUsModalComponent {
           lastName: this.requestForm().value.lastName,
           phone: this.requestForm().value.phone as number,
           email: this.requestForm().value.email,
-          /*           extraInfo: this.requestForm().value.extraInfo, */
+          callInterview: this.requestForm().value.callInterview,
           cv: {
             _type: 'file',
             asset: {
@@ -209,6 +228,9 @@ export class ContactUsModalComponent {
             },
           },
         };
+        if (document.callInterview) {
+          document.availability = this.requestForm().value.availability;
+        }
       } else {
         document = {
           _type: 'businessRequest',
@@ -219,7 +241,6 @@ export class ContactUsModalComponent {
           phone: this.requestForm().value.phone as number,
           email: this.requestForm().value.email,
           reason: this.requestForm().value.reason,
-          /*           extraInfo: this.requestForm().value.extraInfo, */
         };
         if (asset) {
           document.jobDescription = {

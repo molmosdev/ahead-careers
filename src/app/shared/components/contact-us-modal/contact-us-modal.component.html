@@ -1,25 +1,5 @@
 @if (!applied() && requestForm()) {
   <h3>Contáctanos</h3>
-  <!--   @if (selectedRequestType() === RequestType.Business) {
-    @switch (requestForm().get('reason')?.value) {
-      @case (BusinessRequestReason.Information) {
-        <p>
-          Si deseas contactarnos, completa los campos y haz clic en “Enviar”.
-        </p>
-      }
-      @case (BusinessRequestReason.Selection) {
-        <p>
-          Si deseas contactarnos, completa los campos, adjunta la DPT y haz clic
-          en “Enviar”.
-        </p>
-      }
-    }
-  } @else {
-    <p>
-      Si deseas contactarnos, completa los campos, adjunta tu CV actualizado y
-      haz clic en “Enviar”.
-    </p>
-  } -->
   <r-tabs [(selectedValue)]="selectedRequestType">
     <r-tab [value]="RequestType.Business"> Empresa </r-tab>
     <r-tab [value]="RequestType.Candidate"> Candidato/a </r-tab>
@@ -59,19 +39,30 @@
   @if (selectedRequestType() === RequestType.Business) {
     <r-select
       label="Solicitar*"
-      (changesEmitter)="setValue('reason', $event, true)"
+      (changesEmitter)="setValue('reason', $event)"
       [selectedValue]="requestForm().get('reason')!.value">
-      <r-option [value]="BusinessRequestReason.Information">
-        Información
-      </r-option>
-      <r-option [value]="BusinessRequestReason.Selection"> Selección </r-option>
+      @if (selectedRequestType() === RequestType.Business) {
+        <r-option [value]="BusinessRequestReason.Information">
+          Información
+        </r-option>
+        <r-option [value]="BusinessRequestReason.Selection">
+          Selección
+        </r-option>
+      }
     </r-select>
+  } @else {
+    <r-switch
+      label="Solicitar entrevista telefónica"
+      [value]="requestForm().get('callInterview')!.value"
+      (changeEmitter)="setValue('callInterview', $event)" />
+    @if (requestForm().get('callInterview')?.value) {
+      <r-text
+        label="Disponibilidad horaria para entrevista*"
+        [error]="isInvalidAndNotTouched('availability')"
+        [value]="requestForm().get('availability')!.value"
+        (changeEmitter)="setValue('availability', $event)" />
+    }
   }
-  <!--   <r-textarea
-    label="Añadir información adicional"
-    [value]="requestForm().get('extraInfo')!.value"
-    (changeEmitter)="setValue('extraInfo', $event)" /> -->
-
   @if (
     selectedRequestType() === RequestType.Candidate ||
     (selectedRequestType() === RequestType.Business &&
