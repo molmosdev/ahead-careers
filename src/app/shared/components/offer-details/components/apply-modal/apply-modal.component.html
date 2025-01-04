@@ -1,9 +1,5 @@
 @if (!applied() && applyForm()) {
   <h3>{{ offer().jobTitle }} ({{ offer().offerId }})</h3>
-  <!--   <p>
-    Si deseas aplicar a esta oferta, completa los campos, adjunta tu CV
-    actualizado y haz clic en “Enviar candidatura”.
-  </p> -->
   <r-text
     label="Nombre*"
     [error]="isInvalidAndNotTouched('firstName')"
@@ -24,6 +20,11 @@
     [error]="isInvalidAndNotTouched('phone')"
     [value]="applyForm().get('phone')!.value"
     (changeEmitter)="setValue('phone', $event)" />
+  <r-text
+    label="Disponibilidad horaria para entrevista*"
+    [error]="isInvalidAndNotTouched('availability')"
+    [value]="applyForm().get('availability')!.value"
+    (changeEmitter)="setValue('availability', $event)" />
   <input
     type="file"
     id="cvUpload"

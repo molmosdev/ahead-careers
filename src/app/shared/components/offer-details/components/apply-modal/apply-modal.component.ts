@@ -32,6 +32,7 @@ export class ApplyModalComponent {
         Validators.required,
         Validators.email,
       ]),
+      availability: new FormControl<string | null>(null, [Validators.required]),
       cv: new FormControl(null, [Validators.required, this.fileTypeValidator]),
     })
   );
@@ -115,6 +116,7 @@ export class ApplyModalComponent {
         lastName: this.applyForm().value.lastName,
         phone: this.applyForm().value.phone as number,
         email: this.applyForm().value.email,
+        availability: this.applyForm().value.availability,
       };
 
       await this.sanityService.postDocument(document);
