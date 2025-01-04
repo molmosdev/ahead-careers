@@ -22,7 +22,7 @@
     "@angular/router": "^19.0.0",
     "@portabletext/to-html": "^2.0.13",
     "@realm-ui/angular": "^1.3.5",
-    "@realm-ui/styles": "^0.3.8",
+    "@realm-ui/styles": "^0.3.9",
     "@sanity/client": "^6.24.1",
     "lucide-static": "^0.468.0",
     "rxjs": "~7.8.0",
