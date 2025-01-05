@@ -14,7 +14,9 @@
   &:not(i) {
     color: var(--grey);
   }
+}
 
+body {
   &:has(.dialog-open) {
     overflow: hidden;
   }
