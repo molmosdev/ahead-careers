@@ -71,11 +71,11 @@ export class RouteService {
     });
     this.meta.updateTag({
       property: 'og:image',
-      content: `https://beta.aheadcareers.com/svg/og-logo.svg`,
+      content: `https://aheadcareers.com/svg/og-logo.svg`,
     });
     this.meta.updateTag({
       property: 'og:url',
-      content: `https://beta.aheadcareers.com${this.router.url}`,
+      content: `https://aheadcareers.com${this.router.url}`,
     });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
   }

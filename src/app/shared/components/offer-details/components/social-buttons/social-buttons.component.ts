@@ -13,9 +13,7 @@ export class SocialButtonsComponent {
   offer = input.required<Offer>();
   offerJobTitle = computed(() => this.offer().jobTitle);
   offerId = computed(() => this.offer().offerId);
-  shareUrl = computed(
-    () => `https://beta.aheadcareers.com/offer/${this.offerId()}`
-  );
+  shareUrl = computed(() => `https://aheadcareers.com/offer/${this.offerId()}`);
 
   /**
    * Share the offer on LinkedIn
