@@ -78,6 +78,7 @@ ac-cookies,
 ac-legal-notice {
   h3 {
     margin-top: 2rem;
+    text-wrap: initial;
   }
 }
 

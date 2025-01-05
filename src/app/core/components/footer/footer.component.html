@@ -1,7 +1,7 @@
 <div class="rounded-section up"></div>
 <div class="footer-content">
-  <div class="contact">
-    @if (!isBlank()) {
+  @if (!isBlank()) {
+    <div class="contact">
       <a
         href="mailto:eolmos&#64;aheadcareers.com"
         aria-label="Send an email to eolmos@aheadcareers.com">
@@ -21,15 +21,13 @@
         aria-label="Visit our LinkedIn page">
         <img src="/svg/in.svg" alt="LinkedIn icon" />
       </a>
-    }
-  </div>
-  <div class="links">
-    @if (!isBlank()) {
+    </div>
+    <div class="links">
       <a [routerLink]="'/privacy-policy'"> Política de privacidad </a>
       <a [routerLink]="'/legal-notice'"> Aviso legal </a>
       <a [routerLink]="'/cookies'"> Política de cookies </a>
-    }
-  </div>
+    </div>
+  }
   <img
     src="/svg/logo-negative.svg"
     [routerLink]="'/'"

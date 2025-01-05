@@ -88,6 +88,10 @@
 
         &.is-blank {
           pointer-events: none;
+
+          @media (width > 940px) {
+            margin-left: auto;
+          }
         }
       }
     }
