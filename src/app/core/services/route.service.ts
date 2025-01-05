@@ -18,6 +18,7 @@ export class RouteService {
   projectTitle = inject(Title);
   meta = inject(Meta);
   currentPath = signal<string | undefined>(undefined);
+  urlParams = signal<Record<string, any>>({});
   googleAnalyticsService = inject(GoogleAnalyticsService);
 
   constructor() {
@@ -35,6 +36,7 @@ export class RouteService {
         this.googleAnalyticsService.checkIfConsentIsAnswered();
         this.setMetaTagsForRoute(currentRoute.snapshot);
         this.setCurrentPagePath(currentRoute);
+        this.updateUrlParams(currentRoute);
       });
   }
 
@@ -86,6 +88,16 @@ export class RouteService {
     route.url.subscribe(urlSegments => {
       const path = urlSegments.map(segment => segment.path).join('/');
       this.currentPath.set(path);
+    });
+  }
+
+  /**
+   * Update the URL parameters signal with the current route parameters.
+   * @param {ActivatedRoute} route - The current route
+   */
+  updateUrlParams(route: ActivatedRoute): void {
+    route.queryParams.subscribe(params => {
+      this.urlParams.set(params);
     });
   }
 }

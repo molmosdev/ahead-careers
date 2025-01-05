@@ -1,28 +1,35 @@
 <header>
   <div class="content">
-    <img class="logo" src="/svg/logo-negative.svg" [routerLink]="'/'" alt="" />
-    <div class="right">
-      <r-button
-        class="contact-button"
-        (clickEmitter)="executeDynamicButton()"
-        type="primary"
-        [@moveToTheLeftTrigger]="
-          !isOffersCtaVisible() && !isMobile() && isHomePage()
-            ? 'true'
-            : 'false'
-        ">
-        @if (isHomePage()) {
-          Contáctanos
-        } @else {
-          Inicio
+    <img
+      class="logo"
+      src="/svg/logo-negative.svg"
+      [ngClass]="{ 'is-blank': isBlank() }"
+      [routerLink]="'/'"
+      alt="" />
+    @if (!isBlank()) {
+      <div class="right">
+        <r-button
+          class="contact-button"
+          (clickEmitter)="executeDynamicButton()"
+          type="primary"
+          [@moveToTheLeftTrigger]="
+            !isOffersCtaVisible() && !isMobile() && isHomePage()
+              ? 'true'
+              : 'false'
+          ">
+          @if (isHomePage()) {
+            Contáctanos
+          } @else {
+            Inicio
+          }
+        </r-button>
+        @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
+          <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
+            >Nuestras ofertas</r-button
+          >
         }
-      </r-button>
-      @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
-        <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
-          >Nuestras ofertas</r-button
-        >
-      }
-    </div>
+      </div>
+    }
   </div>
   <div class="rounded-section"></div>
 </header>

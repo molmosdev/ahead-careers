@@ -7,10 +7,11 @@ import { RouteService } from '../../services/route.service';
 import { Path } from '../../../shared/enums/path';
 import { ResponsiveService } from '../../services/responsive.service';
 import { ContactUsModalService } from '../../services/contact-us-modal.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'ac-header',
-  imports: [Button, RouterLink],
+  imports: [Button, RouterLink, NgClass],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   animations: [fadeInOutTrigger, moveToTheLeftTrigger],
@@ -18,6 +19,7 @@ import { ContactUsModalService } from '../../services/contact-us-modal.service';
 export class HeaderComponent {
   route = inject(ActivatedRoute);
   routeService = inject(RouteService);
+  isBlank = computed(() => !!this.routeService.urlParams()['_blank']);
   responsiveService = inject(ResponsiveService);
   inViewportService = inject(InViewportService);
   isMobile = computed(() => this.responsiveService.isMobile());

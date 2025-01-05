@@ -29,7 +29,13 @@
         height: 42.45px;
 
         &:hover {
-          cursor: pointer;
+          &:not(.is-blank) {
+            cursor: pointer;
+          }
+        }
+
+        &.is-blank {
+          pointer-events: none;
         }
       }
 

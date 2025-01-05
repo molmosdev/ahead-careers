@@ -1,34 +1,39 @@
 <div class="rounded-section up"></div>
 <div class="footer-content">
   <div class="contact">
-    <a
-      href="mailto:eolmos&#64;aheadcareers.com"
-      aria-label="Send an email to eolmos@aheadcareers.com">
-      <img src="/svg/mail.svg" alt="Email icon" />
-    </a>
-    <a href="tel:+34611898639" aria-label="Call 611898639">
-      <img src="/svg/phone.svg" alt="Phone icon" />
-    </a>
-    <a href="https://wa.me/611898639" aria-label="Open 611898639 in Whatsapp">
-      <img src="/svg/message-bubble.svg" alt="Message Bubble icon" />
-      <img src="/svg/phone.svg" alt="Phone icon" />
-    </a>
-    <a
-      href="https://www.linkedin.com/company/ahead-careers"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Visit our LinkedIn page">
-      <img src="/svg/in.svg" alt="LinkedIn icon" />
-    </a>
+    @if (!isBlank()) {
+      <a
+        href="mailto:eolmos&#64;aheadcareers.com"
+        aria-label="Send an email to eolmos@aheadcareers.com">
+        <img src="/svg/mail.svg" alt="Email icon" />
+      </a>
+      <a href="tel:+34611898639" aria-label="Call 611898639">
+        <img src="/svg/phone.svg" alt="Phone icon" />
+      </a>
+      <a href="https://wa.me/611898639" aria-label="Open 611898639 in Whatsapp">
+        <img src="/svg/message-bubble.svg" alt="Message Bubble icon" />
+        <img src="/svg/phone.svg" alt="Phone icon" />
+      </a>
+      <a
+        href="https://www.linkedin.com/company/ahead-careers"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit our LinkedIn page">
+        <img src="/svg/in.svg" alt="LinkedIn icon" />
+      </a>
+    }
   </div>
   <div class="links">
-    <a [routerLink]="'/privacy-policy'"> Política de privacidad </a>
-    <a [routerLink]="'/legal-notice'"> Aviso legal </a>
-    <a [routerLink]="'/cookies'"> Política de cookies </a>
+    @if (!isBlank()) {
+      <a [routerLink]="'/privacy-policy'"> Política de privacidad </a>
+      <a [routerLink]="'/legal-notice'"> Aviso legal </a>
+      <a [routerLink]="'/cookies'"> Política de cookies </a>
+    }
   </div>
   <img
     src="/svg/logo-negative.svg"
     [routerLink]="'/'"
+    [ngClass]="{ 'is-blank': isBlank() }"
     class="logo"
     alt="Ahead Careers logo" />
 </div>

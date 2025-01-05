@@ -53,7 +53,10 @@
   </r-button>
   <p>
     Al enviar, aceptas la
-    <a [routerLink]="'/privacy-policy'" target="_blank"
+    <a
+      [routerLink]="'/privacy-policy'"
+      target="_blank"
+      [queryParams]="{ _blank: true }"
       >política de privacidad</a
     >
     de Ahead Careers

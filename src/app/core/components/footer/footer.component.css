@@ -6,6 +6,7 @@
   align-items: center;
   color: white;
   flex-direction: column;
+  user-select: none;
 
   .footer-content {
     width: 100%;
@@ -80,7 +81,13 @@
         margin-left: 86px;
 
         &:hover {
-          cursor: pointer;
+          &:not(.is-blank) {
+            cursor: pointer;
+          }
+        }
+
+        &.is-blank {
+          pointer-events: none;
         }
       }
     }
