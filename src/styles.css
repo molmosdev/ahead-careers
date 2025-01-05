@@ -73,6 +73,14 @@ h3 {
   margin: 0;
 }
 
+ac-privacy-policy,
+ac-cookies,
+ac-legal-notice {
+  h3 {
+    margin-top: 2.5rem;
+  }
+}
+
 r-button button {
   font-family: 'Poppins', sans-serif;
 
