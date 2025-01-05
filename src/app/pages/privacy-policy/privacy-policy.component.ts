@@ -1,12 +1,11 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { SanityService } from '../../core/services/sanity.service';
 import { ResponsiveService } from '../../core/services/responsive.service';
-import { NgClass } from '@angular/common';
 import { TitleAndContent } from '../../shared/interfaces/title-and-content';
 
 @Component({
   selector: 'ac-privacy-policy',
-  imports: [NgClass],
+  imports: [],
   templateUrl: './privacy-policy.component.html',
   styleUrl: './privacy-policy.component.css',
 })

@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { SanityService } from '../../core/services/sanity.service';
 import { ResponsiveService } from '../../core/services/responsive.service';
@@ -6,7 +5,7 @@ import { TitleAndContent } from '../../shared/interfaces/title-and-content';
 
 @Component({
   selector: 'ac-legal-notice',
-  imports: [NgClass],
+  imports: [],
   templateUrl: './legal-notice.component.html',
   styleUrl: './legal-notice.component.css',
 })

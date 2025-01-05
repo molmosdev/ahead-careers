@@ -1,5 +1,5 @@
 @if (cookies()) {
-  <h1 [ngClass]="isMobile() ? 'center' : ''">{{ cookies().title }}</h1>
+  <h1>{{ cookies().title }}</h1>
   <p [innerHTML]="cookies().content"></p>
 }
 @if (isConsentAnswered()) {

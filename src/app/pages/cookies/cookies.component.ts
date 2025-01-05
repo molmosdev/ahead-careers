@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { SanityService } from '../../core/services/sanity.service';
 import { ResponsiveService } from '../../core/services/responsive.service';
@@ -8,7 +7,7 @@ import { Button } from '@realm-ui/angular';
 
 @Component({
   selector: 'ac-cookies',
-  imports: [NgClass, Button],
+  imports: [Button],
   templateUrl: './cookies.component.html',
   styleUrl: './cookies.component.css',
 })
