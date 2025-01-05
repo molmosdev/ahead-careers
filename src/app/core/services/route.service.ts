@@ -74,6 +74,14 @@ export class RouteService {
       content: `https://aheadcareers.com/svg/og-logo.svg`,
     });
     this.meta.updateTag({
+      property: 'og:image:width',
+      content: '1200',
+    });
+    this.meta.updateTag({
+      property: 'og:image:height',
+      content: '627',
+    });
+    this.meta.updateTag({
       property: 'og:url',
       content: `https://aheadcareers.com${this.router.url}`,
     });
