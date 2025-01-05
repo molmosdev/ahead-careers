@@ -162,3 +162,8 @@ r-tab span.selected {
 r-switch section .switch-container .switch {
   background-color: var(--blue);
 }
+
+r-switch section .switch-container {
+  background-color: var(--light-grey);
+  border-color: var(--light-grey);
+}
