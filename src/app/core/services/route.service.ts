@@ -71,7 +71,7 @@ export class RouteService {
     });
     this.meta.updateTag({
       property: 'og:image',
-      content: `https://aheadcareers.com/svg/og-logo.svg`,
+      content: `https://www.aheadcareers.com/svg/og-logo.svg`,
     });
     this.meta.updateTag({
       property: 'og:image:width',
@@ -83,7 +83,7 @@ export class RouteService {
     });
     this.meta.updateTag({
       property: 'og:url',
-      content: `https://aheadcareers.com${this.router.url}`,
+      content: `https://www.aheadcareers.com${this.router.url}`,
     });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
   }
