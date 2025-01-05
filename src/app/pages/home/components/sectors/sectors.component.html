@@ -5,7 +5,7 @@
     [@slider]="sliderLoopState()"
     (@slider.done)="this.sliderLoopState.set(!this.sliderLoopState())">
     @for (sector of duplicatedSectors(); track sector + $index) {
-      <h2>
+      <h2 class="center">
         {{ sector }}
       </h2>
     }

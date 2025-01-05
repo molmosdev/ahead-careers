@@ -1,4 +1,4 @@
 @if (privacyPolicy()) {
-  <h1 [ngClass]="isMobile() ? '' : 'start'">{{ privacyPolicy().title }}</h1>
+  <h1 [ngClass]="isMobile() ? 'center' : ''">{{ privacyPolicy().title }}</h1>
   <p [innerHTML]="privacyPolicy().content"></p>
 }

@@ -1,6 +1,6 @@
 @if (!applied() && applyForm()) {
   <div class="icon-x" (click)="show.set(false)" tabindex="0"></div>
-  <h3>{{ offer().jobTitle }} ({{ offer().offerId }})</h3>
+  <h3 class="center">{{ offer().jobTitle }} ({{ offer().offerId }})</h3>
   <r-text
     label="Nombre*"
     [error]="isInvalidAndNotTouched('firstName')"
@@ -59,7 +59,7 @@
     de Ahead Careers
   </p>
 } @else {
-  <h3 @fadeInOut>
+  <h3 class="center" @fadeInOut>
     ¡Has aplicado a la oferta {{ offer().jobTitle }} ({{ offer().offerId }})!
   </h3>
   <p @fadeInOut>

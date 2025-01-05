@@ -1,5 +1,5 @@
 @if (data()) {
-  <h1 @fadeInOut>
+  <h1 class="center" @fadeInOut>
     {{ data()?.title }}
   </h1>
   @if (data()?.methodologySteps && (data()?.methodologySteps)!.length > 0) {
@@ -14,7 +14,7 @@
         @for (step of data()?.methodologySteps; track step) {
           <div class="step" (keypress)="selectedStep.set($index)" tabindex="0">
             <div class="number">0{{ $index + 1 }}</div>
-            <h3 class="start">
+            <h3>
               {{ step.title }}
             </h3>
             <div

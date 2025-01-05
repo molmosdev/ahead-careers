@@ -1,6 +1,6 @@
 @if (!applied() && requestForm()) {
   <div class="icon-x" (click)="show.set(false)" tabindex="0"></div>
-  <h3>Contáctanos</h3>
+  <h3 class="center">Contáctanos</h3>
   <r-tabs [(selectedValue)]="selectedRequestType">
     <r-tab [value]="RequestType.Business"> Empresa </r-tab>
     <r-tab [value]="RequestType.Candidate"> Candidato/a </r-tab>
@@ -113,7 +113,7 @@
     de Ahead Careers
   </p>
 } @else {
-  <h3 @fadeInOut>
+  <h3 class="center" @fadeInOut>
     @if (selectedRequestType() === RequestType.Business) {
       @if (
         requestForm().get('reason')?.value === BusinessRequestReason.Information

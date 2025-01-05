@@ -1,4 +1,4 @@
 @if (legalNotice()) {
-  <h1 [ngClass]="isMobile() ? '' : 'start'">{{ legalNotice().title }}</h1>
+  <h1 [ngClass]="isMobile() ? 'center' : ''">{{ legalNotice().title }}</h1>
   <p [innerHTML]="legalNotice().content"></p>
 }

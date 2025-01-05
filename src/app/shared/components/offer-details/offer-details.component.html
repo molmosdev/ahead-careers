@@ -2,7 +2,7 @@
   <div @fadeInOut>
     <div class="offer-header">
       <div class="top">
-        <h1 class="start">{{ offer().jobTitle }}</h1>
+        <h1>{{ offer().jobTitle }}</h1>
         @if (!isMobile()) {
           <ac-social-buttons [offer]="offer()" />
         }
@@ -10,19 +10,19 @@
       <p>Oferta publicada: {{ offer().editionDate | date: 'dd/MM/yyyy' }}</p>
       <div class="offer-details">
         <div class="detail">
-          <h3 class="start">Oferta</h3>
+          <h3>Oferta</h3>
           <p>{{ offer().offerId }}</p>
         </div>
         <div class="detail">
-          <h3 class="start">Sector</h3>
+          <h3>Sector</h3>
           <p>{{ offer().industry }}</p>
         </div>
         <div class="detail">
-          <h3 class="start">Ubicación</h3>
+          <h3>Ubicación</h3>
           <p>{{ offer().location }}</p>
         </div>
         <div class="detail">
-          <h3 class="start">Contrato</h3>
+          <h3>Contrato</h3>
           @if (offer().contractType === 'permanent') {
             <p>Indefinido</p>
           } @else {
@@ -30,7 +30,7 @@
           }
         </div>
         <div class="detail">
-          <h3 class="start">Salario</h3>
+          <h3>Salario</h3>
           <p>{{ offer().salary }}</p>
         </div>
       </div>
