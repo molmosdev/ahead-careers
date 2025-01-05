@@ -21,6 +21,7 @@ import {
 import { ResponsiveService } from './core/services/responsive.service';
 import { ContactUsModalService } from './core/services/contact-us-modal.service';
 import { ContactUsModalComponent } from './shared/components/contact-us-modal/contact-us-modal.component';
+import { CookiesModalComponent } from './shared/components/cookies-modal/cookies-modal.component';
 
 @Component({
   selector: 'ac-root',
@@ -33,6 +34,7 @@ import { ContactUsModalComponent } from './shared/components/contact-us-modal/co
     Dialog,
     ContactUsModalComponent,
     LazyContentDirective,
+    CookiesModalComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -49,6 +51,7 @@ export class AppComponent {
     () => this.inViewportService.elements()['offers-cta']
   );
   contactUsModalService = inject(ContactUsModalService);
+  isCookiesModalOpen = signal<boolean>(true);
 
   constructor() {
     this.initializeSplashScreen();

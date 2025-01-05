@@ -9,6 +9,14 @@
 @if (isSplashScreenVisible()) {
   <ac-splash-screen @fadeOut />
 }
+<!-- Contact us modal -->
 <r-dialog [(show)]="contactUsModalService.isOpen">
   <ac-contact-us-modal *r-lazy [(show)]="contactUsModalService.isOpen" />
+</r-dialog>
+<!-- Cookies modal -->
+<r-dialog
+  [(show)]="isCookiesModalOpen"
+  [mobileBottomActive]="true"
+  [clickOutside]="false">
+  <ac-cookies-modal *r-lazy [(show)]="isCookiesModalOpen" />
 </r-dialog>
