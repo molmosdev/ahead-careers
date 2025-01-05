@@ -14,7 +14,7 @@
   <ac-contact-us-modal *r-lazy [(show)]="contactUsModalService.isOpen" />
 </r-dialog>
 <!-- Cookies modal -->
-@if (!isLinkPage()) {
+@if (!isLinkPage() && !isConsentAnswered()) {
   <r-dialog
     [(show)]="isCookiesModalOpen"
     [mobileBottomActive]="true"

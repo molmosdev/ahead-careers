@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
@@ -8,7 +8,43 @@ declare let gtag: (command: string, targetId: string, config?: object) => void;
   providedIn: 'root',
 })
 export class GoogleAnalyticsService {
-  constructor(private router: Router) {}
+  isConsentAnswered = signal<boolean>(false);
+  isConsentAccepted = signal<boolean>(false);
+  router = inject(Router);
+
+  constructor() {
+    effect(() => {
+      if (this.isConsentAnswered() && this.isConsentAccepted()) {
+        this.startTracking();
+      }
+    });
+  }
+
+  /**
+   * Check if the user has answered the consent
+   */
+  checkIfConsentIsAnswered(): void {
+    this.isConsentAnswered.set(!!localStorage.getItem('analyticsConsent'));
+    this.isConsentAccepted.set(
+      localStorage.getItem('analyticsConsent') === 'true'
+    );
+  }
+
+  /**
+   * Starts tracking the user's navigation
+   */
+  startTracking(): void {
+    console.log('start tracking');
+    localStorage.setItem('analyticsConsent', 'true');
+    this.loadAnalyticsScript();
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        gtag('config', environment.G_TAG, {
+          page_path: event.urlAfterRedirects,
+        });
+      }
+    });
+  }
 
   /**
    * Loads the Google Analytics script
@@ -23,25 +59,26 @@ export class GoogleAnalyticsService {
     // Add the inline script to the document
     const inlineScript = document.createElement('script');
     inlineScript.text = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-    `;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+      `;
     document.head.appendChild(inlineScript);
   }
 
   /**
-   * Starts tracking the user's navigation
+   * Stops tracking the user's navigation
    */
-  startTracking(): void {
-    this.loadAnalyticsScript();
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        gtag('config', environment.G_TAG, {
-          page_path: event.urlAfterRedirects,
-        });
-      }
-    });
+  stopTracking(): void {
+    console.log('stop tracking');
+    localStorage.setItem('analyticsConsent', 'false');
+    // Remove the script from the document
+    const script = document.querySelector('script[src*="gtag/js"]');
+    script && script.remove();
+    // Remove the inline script from the document
+    const inlineScript = document.querySelector('script:not([src])');
+    inlineScript && inlineScript.remove();
+    this.isConsentAccepted.set(false);
   }
 }

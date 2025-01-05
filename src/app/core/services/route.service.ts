@@ -7,6 +7,7 @@ import {
   Router,
 } from '@angular/router';
 import { filter } from 'rxjs';
+import { GoogleAnalyticsService } from './google-analytics.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class RouteService {
   projectTitle = inject(Title);
   meta = inject(Meta);
   currentPath = signal<string | undefined>(undefined);
+  googleAnalyticsService = inject(GoogleAnalyticsService);
 
   constructor() {
     this.initializeRouterEvents();
@@ -30,6 +32,7 @@ export class RouteService {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         const currentRoute = this.getCurrentRoute(this.route);
+        this.googleAnalyticsService.checkIfConsentIsAnswered();
         this.setMetaTagsForRoute(currentRoute.snapshot);
         this.setCurrentPagePath(currentRoute);
       });

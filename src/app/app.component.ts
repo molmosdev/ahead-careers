@@ -22,6 +22,7 @@ import { ResponsiveService } from './core/services/responsive.service';
 import { ContactUsModalService } from './core/services/contact-us-modal.service';
 import { ContactUsModalComponent } from './shared/components/contact-us-modal/contact-us-modal.component';
 import { CookiesModalComponent } from './shared/components/cookies-modal/cookies-modal.component';
+import { GoogleAnalyticsService } from './core/services/google-analytics.service';
 
 @Component({
   selector: 'ac-root',
@@ -59,6 +60,10 @@ export class AppComponent {
   );
   contactUsModalService = inject(ContactUsModalService);
   isCookiesModalOpen = signal<boolean>(true);
+  googleAnalyticsService = inject(GoogleAnalyticsService);
+  isConsentAnswered = computed(() =>
+    this.googleAnalyticsService.isConsentAnswered()
+  );
 
   constructor() {
     !this.isLinkPage() && this.initializeSplashScreen();
