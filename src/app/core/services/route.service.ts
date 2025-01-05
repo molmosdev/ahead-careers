@@ -64,12 +64,18 @@ export class RouteService {
     });
     this.meta.updateTag({ name: 'keywords', content: route.data['keywords'] });
     // Set the Open Graph meta tags
-    this.meta.updateTag({ property: 'og:title', content: route.data['title'] });
     this.meta.updateTag({
+      name: 'title',
+      property: 'og:title',
+      content: route.data['title'],
+    });
+    this.meta.updateTag({
+      name: 'description',
       property: 'og:description',
       content: route.data['description'],
     });
     this.meta.updateTag({
+      name: 'image',
       property: 'og:image',
       content: `https://www.aheadcareers.com/svg/og-logo.svg`,
     });
