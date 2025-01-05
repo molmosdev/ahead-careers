@@ -34,7 +34,6 @@ export class GoogleAnalyticsService {
    * Starts tracking the user's navigation
    */
   startTracking(): void {
-    console.log('start tracking');
     localStorage.setItem('analyticsConsent', 'true');
     this.loadAnalyticsScript();
     this.router.events.subscribe(event => {
@@ -71,7 +70,6 @@ export class GoogleAnalyticsService {
    * Stops tracking the user's navigation
    */
   stopTracking(): void {
-    console.log('stop tracking');
     localStorage.setItem('analyticsConsent', 'false');
     // Remove the script from the document
     const script = document.querySelector('script[src*="gtag/js"]');
