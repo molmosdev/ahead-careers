@@ -39,6 +39,13 @@
   .offer-content {
     margin: 2rem 0;
   }
+  .disclaimer a {
+    text-decoration: solid underline;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   .bottom-controls {
     display: flex;
