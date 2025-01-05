@@ -20,5 +20,9 @@
     r-button {
       flex: 1;
     }
+
+    @media (width < 768px) {
+      flex-direction: column;
+    }
   }
 }

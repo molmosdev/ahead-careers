@@ -7,10 +7,11 @@ import { RouteService } from '../../services/route.service';
 import { Path } from '../../../shared/enums/path';
 import { ResponsiveService } from '../../services/responsive.service';
 import { ContactUsModalService } from '../../services/contact-us-modal.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'ac-header',
-  imports: [Button, RouterLink],
+  imports: [Button, RouterLink, NgClass],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   animations: [fadeInOutTrigger, moveToTheLeftTrigger],
@@ -23,6 +24,13 @@ export class HeaderComponent {
   isMobile = computed(() => this.responsiveService.isMobile());
   currentPath = computed(() => this.routeService.currentPath());
   isHomePage = computed(() => this.routeService.currentPath() === Path.Home);
+  isLinkPage = computed(() => {
+    return (
+      this.routeService.currentPath() === Path.PrivacyPolicy ||
+      this.routeService.currentPath() === Path.LegalNotice ||
+      this.routeService.currentPath() === Path.Cookies
+    );
+  });
   isOffersCtaVisible = computed(
     () => this.inViewportService.elements()['offers-cta']
   );

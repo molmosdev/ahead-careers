@@ -29,7 +29,13 @@
         height: 42.45px;
 
         &:hover {
-          cursor: pointer;
+          &:not(.link-page) {
+            cursor: pointer;
+          }
+        }
+
+        &.link-page {
+          pointer-events: none;
         }
       }
 

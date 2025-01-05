@@ -80,7 +80,13 @@
         margin-left: 86px;
 
         &:hover {
-          cursor: pointer;
+          &:not(.link-page) {
+            cursor: pointer;
+          }
+        }
+
+        &.link-page {
+          pointer-events: none;
         }
       }
     }

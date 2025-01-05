@@ -46,6 +46,13 @@ export class AppComponent {
   isMobile = computed(() => this.responsiveService.isMobile());
   routeService = inject(RouteService);
   isHomePage = computed(() => this.routeService.currentPath() === Path.Home);
+  isLinkPage = computed(() => {
+    return (
+      this.routeService.currentPath() === Path.PrivacyPolicy ||
+      this.routeService.currentPath() === Path.LegalNotice ||
+      this.routeService.currentPath() === Path.Cookies
+    );
+  });
   isSplashScreenVisible = signal<boolean>(true);
   isOffersCtaVisible = computed(
     () => this.inViewportService.elements()['offers-cta']
@@ -54,7 +61,7 @@ export class AppComponent {
   isCookiesModalOpen = signal<boolean>(true);
 
   constructor() {
-    this.initializeSplashScreen();
+    !this.isLinkPage() && this.initializeSplashScreen();
   }
 
   /**

@@ -1,10 +1,11 @@
 import { Component, inject, model, OnInit } from '@angular/core';
 import { Button } from '@realm-ui/angular';
 import { GoogleAnalyticsService } from '../../../core/services/google-analytics.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'ac-cookies-modal',
-  imports: [Button],
+  imports: [Button, RouterLink],
   templateUrl: './cookies-modal.component.html',
   styleUrl: './cookies-modal.component.css',
 })

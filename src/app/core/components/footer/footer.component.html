@@ -22,13 +22,16 @@
     </a>
   </div>
   <div class="links">
-    <a [routerLink]="'/privacy-policy'"> Política de privacidad </a>
-    <a [routerLink]="'/legal-notice'"> Aviso legal </a>
-    <a [routerLink]="'/cookies'"> Política de cookies </a>
+    <a [routerLink]="'/privacy-policy'" target="_blank">
+      Política de privacidad
+    </a>
+    <a [routerLink]="'/legal-notice'" target="_blank"> Aviso legal </a>
+    <a [routerLink]="'/cookies'" target="_blank"> Política de cookies </a>
   </div>
   <img
     src="/svg/logo-negative.svg"
     [routerLink]="'/'"
     class="logo"
+    [ngClass]="{ 'link-page': isLinkPage() }"
     alt="Ahead Careers logo" />
 </div>

@@ -6,7 +6,7 @@
 @defer (on timer(1000ms)) {
   <ac-footer />
 }
-@if (isSplashScreenVisible()) {
+@if (isSplashScreenVisible() && !isLinkPage()) {
   <ac-splash-screen @fadeOut />
 }
 <!-- Contact us modal -->
@@ -14,9 +14,11 @@
   <ac-contact-us-modal *r-lazy [(show)]="contactUsModalService.isOpen" />
 </r-dialog>
 <!-- Cookies modal -->
-<r-dialog
-  [(show)]="isCookiesModalOpen"
-  [mobileBottomActive]="true"
-  [clickOutside]="false">
-  <ac-cookies-modal *r-lazy [(show)]="isCookiesModalOpen" />
-</r-dialog>
+@if (!isLinkPage()) {
+  <r-dialog
+    [(show)]="isCookiesModalOpen"
+    [mobileBottomActive]="true"
+    [clickOutside]="false">
+    <ac-cookies-modal *r-lazy [(show)]="isCookiesModalOpen" />
+  </r-dialog>
+}

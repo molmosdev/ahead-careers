@@ -1,6 +1,11 @@
 <header>
   <div class="content">
-    <img class="logo" src="/svg/logo-negative.svg" [routerLink]="'/'" alt="" />
+    <img
+      class="logo"
+      [ngClass]="{ 'link-page': isLinkPage() }"
+      src="/svg/logo-negative.svg"
+      [routerLink]="'/'"
+      alt="" />
     <div class="right">
       <r-button
         class="contact-button"
@@ -13,7 +18,7 @@
         ">
         @if (isHomePage()) {
           Contáctanos
-        } @else {
+        } @else if (!isLinkPage()) {
           Inicio
         }
       </r-button>
