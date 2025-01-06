@@ -1,4 +1,14 @@
-<div class="slogan-wrapper">
+<div
+  class="slogan-wrapper"
+  [@fadeInOut]="{
+    value: '',
+    params: {
+      opacityFrom: 1,
+      opacityTo: 1,
+      translateFrom: 'translateY(-10px)',
+      translateTo: 'translateY(0)',
+    },
+  }">
   @if (businessDescription().slogan) {
     <div class="slogan" [innerHTML]="businessDescription().slogan"></div>
   }
@@ -11,7 +21,17 @@
     >Consulta nuestras ofertas</r-button
   >
 </div>
-<div class="rounded-section"></div>
+<div
+  class="rounded-section"
+  [@fadeInOut]="{
+    value: '',
+    params: {
+      opacityFrom: 1,
+      opacityTo: 1,
+      translateFrom: 'translateY(-10px)',
+      translateTo: 'translateY(0)',
+    },
+  }"></div>
 <div class="home-wrapper">
   <ac-sectors [sectors]="businessDescription().sectors" />
   @if (businessDescription().description) {

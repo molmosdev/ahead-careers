@@ -15,14 +15,14 @@ export const fadeInOutTrigger = trigger('fadeInOut', [
     ':enter',
     [
       style({
-        opacity: 0,
+        opacity: '{{opacityFrom}}',
         scale: '{{ scaleFrom }}',
         transform: '{{ translateFrom }}',
       }),
       animate(
         '{{ duration }}',
         style({
-          opacity: 1,
+          opacity: '{{opacityTo}}',
           scale: '{{ scaleTo }}',
           transform: '{{ translateTo }}',
         })
@@ -30,6 +30,8 @@ export const fadeInOutTrigger = trigger('fadeInOut', [
     ],
     {
       params: {
+        opacityFrom: 0,
+        opacityTo: 1,
         scaleFrom: 1,
         scaleTo: 1,
         translateFrom: '',
@@ -44,7 +46,7 @@ export const fadeInOutTrigger = trigger('fadeInOut', [
       animate(
         '{{ duration }}',
         style({
-          opacity: 0,
+          opacity: '{{opacityFrom}}',
           scale: '{{ scaleFrom }}',
           transform: '{{ translateFrom }}',
         })
@@ -52,6 +54,7 @@ export const fadeInOutTrigger = trigger('fadeInOut', [
     ],
     {
       params: {
+        opacityFrom: 0,
         scaleFrom: 1,
         translateFrom: '',
         duration: '0.5s',
