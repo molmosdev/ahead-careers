@@ -1,5 +1,5 @@
 export enum Path {
-  Home = 'home',
+  Home = '',
   Offers = 'offers',
   Offer = 'offer/',
   PrivacyPolicy = 'privacy-policy',

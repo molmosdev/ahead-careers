@@ -36,7 +36,7 @@ export class HeaderComponent {
     if (this.isHomePage()) {
       this.contactUsModalService.isOpen.set(true);
     } else {
-      this.router.navigate([Path.Home]);
+      this.router.navigateByUrl(Path.Home);
     }
   }
 }
