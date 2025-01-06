@@ -9,7 +9,7 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: 'offers',
-    renderMode: RenderMode.Server,
+    renderMode: RenderMode.Prerender,
   },
   {
     path: 'offer/:id',
