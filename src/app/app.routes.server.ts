@@ -9,7 +9,7 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: 'offers',
-    renderMode: RenderMode.Prerender,
+    renderMode: RenderMode.Server,
   },
   {
     path: 'offer/:id',
@@ -21,19 +21,19 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: 'privacy-policy',
-    renderMode: RenderMode.Prerender,
+    renderMode: RenderMode.Server,
   },
   {
     path: 'legal-notice',
-    renderMode: RenderMode.Prerender,
+    renderMode: RenderMode.Server,
   },
   {
     path: 'cookies',
-    renderMode: RenderMode.Prerender,
+    renderMode: RenderMode.Server,
   },
   {
     path: '**',
-    renderMode: RenderMode.Prerender,
+    renderMode: RenderMode.Client,
   },
 ];
 
