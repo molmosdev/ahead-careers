@@ -21,7 +21,10 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: 'privacy-policy',
-    renderMode: RenderMode.Client,
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: async () => {
+      return [{ _blank: 'true' }];
+    },
   },
   {
     path: 'legal-notice',
