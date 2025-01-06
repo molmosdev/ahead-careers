@@ -9,6 +9,7 @@
     "test": "ng test",
     "format": "prettier --write .",
     "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
     "serve:ssr:ahead-careers": "node dist/ahead-careers/server/server.mjs"
   },
   "private": true,
