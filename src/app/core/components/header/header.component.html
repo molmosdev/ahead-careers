@@ -8,21 +8,24 @@
       alt="" />
     @if (!isBlank()) {
       <div class="right">
-        <r-button
-          class="contact-button"
-          (clickEmitter)="executeDynamicButton()"
-          type="primary"
-          [@moveToTheLeftTrigger]="
-            !isOffersCtaVisible() && !isMobile() && isHomePage()
-              ? 'true'
-              : 'false'
-          ">
-          @if (isHomePage()) {
-            Contáctanos
-          } @else {
-            Inicio
-          }
-        </r-button>
+        @defer (on timer(100ms)) {
+          <r-button
+            @fadeInOut
+            class="contact-button"
+            (clickEmitter)="executeDynamicButton()"
+            type="primary"
+            [@moveToTheLeftTrigger]="
+              !isOffersCtaVisible() && !isMobile() && isHomePage()
+                ? 'true'
+                : 'false'
+            ">
+            @if (isHomePage()) {
+              Contáctanos
+            } @else {
+              Inicio
+            }
+          </r-button>
+        }
         @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
           <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
             >Nuestras ofertas</r-button

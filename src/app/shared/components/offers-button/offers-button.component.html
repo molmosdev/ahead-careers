@@ -1,6 +1,8 @@
-<div class="gradient"></div>
-<div class="content">
-  <r-button [routerLink]="'/offers'" type="primary">
-    Consulta nuestras ofertas
-  </r-button>
-</div>
+@defer (on timer(100ms)) {
+  <div class="gradient"></div>
+  <div class="content">
+    <r-button [routerLink]="'/offers'" type="primary">
+      Consulta nuestras ofertas
+    </r-button>
+  </div>
+}
