@@ -21,15 +21,15 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: 'privacy-policy',
-    renderMode: RenderMode.Server,
+    renderMode: RenderMode.Client,
   },
   {
     path: 'legal-notice',
-    renderMode: RenderMode.Server,
+    renderMode: RenderMode.Prerender,
   },
   {
     path: 'cookies',
-    renderMode: RenderMode.Server,
+    renderMode: RenderMode.Prerender,
   },
   {
     path: '**',
