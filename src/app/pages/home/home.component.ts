@@ -2,7 +2,6 @@ import { Component, computed, inject, OnInit } from '@angular/core';
 import { ValuesComponent } from './components/values/values.component';
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { SanityService } from '../../core/services/sanity.service';
-import { fadeInOutTrigger } from '../../shared/animations';
 import { SectorsComponent } from './components/sectors/sectors.component';
 import { CeoMessageComponent } from './components/ceo-message/ceo-message.component';
 import { MethodologyComponent } from './components/methodology/methodology.component';
@@ -24,7 +23,6 @@ import { BusinessDescription } from '../../shared/interfaces/business-descriptio
     RouterLink,
     InViewportDirective,
   ],
-  animations: [fadeInOutTrigger],
 })
 export class HomeComponent implements OnInit {
   sanityService = inject(SanityService);
