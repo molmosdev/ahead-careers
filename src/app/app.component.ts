@@ -12,7 +12,6 @@ import { fadeInOutTrigger, fadeOutTrigger } from './shared/animations';
 import { OffersButtonComponent } from './shared/components/offers-button/offers-button.component';
 import { RouteService } from './core/services/route.service';
 import { Path } from './shared/enums/path';
-import { SplashScreenComponent } from './shared/components/splash-screen/splash-screen.component';
 import {
   Dialog,
   InViewportService,
@@ -31,7 +30,6 @@ import { GoogleAnalyticsService } from './core/services/google-analytics.service
     HeaderComponent,
     FooterComponent,
     OffersButtonComponent,
-    SplashScreenComponent,
     Dialog,
     ContactUsModalComponent,
     LazyContentDirective,

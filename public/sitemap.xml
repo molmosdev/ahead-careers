@@ -6,20 +6,38 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://aheadcareers.com/</loc>
-    <lastmod>2024-12-13</lastmod>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://aheadcareers.com/offers</loc>
-    <lastmod>2024-12-13</lastmod>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aheadcareers.com/offer/:id</loc>
-    <lastmod>2024-12-13</lastmod>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aheadcareers.com/privacy-policy</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aheadcareers.com/legal-notice</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aheadcareers.com/cookies</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
