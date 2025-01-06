@@ -1,11 +1,4 @@
 import { Component, computed, input, signal } from '@angular/core';
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-  keyframes,
-} from '@angular/animations';
 import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
@@ -13,20 +6,7 @@ import { fadeInOutTrigger } from '../../../../shared/animations';
   imports: [],
   templateUrl: './sectors.component.html',
   styleUrl: './sectors.component.css',
-  animations: [
-    fadeInOutTrigger,
-    trigger('slider', [
-      transition('* => *', [
-        animate(
-          '100s',
-          keyframes([
-            style({ transform: 'translateX(0)', offset: 0 }),
-            style({ transform: 'translateX(-50%)', offset: 1 }),
-          ])
-        ),
-      ]),
-    ]),
-  ],
+  animations: [fadeInOutTrigger],
 })
 export class SectorsComponent {
   sectors = input.required<string[]>();

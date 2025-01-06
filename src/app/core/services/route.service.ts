@@ -67,30 +67,12 @@ export class RouteService {
     this.meta.updateTag({
       name: 'title',
       property: 'og:title',
-      content: route.data['title'],
+      content: route.data['title'] + ' (' + route.data['description'] + ')',
     });
     this.meta.updateTag({
       name: 'description',
       property: 'og:description',
       content: route.data['description'],
-    });
-    this.meta.addTag({
-      name: 'image',
-      property: 'og:image',
-      content: `https://www.aheadcareers.com/svg/og-logo.svg`,
-    });
-    /*     this.meta.updateTag({
-      name: 'image',
-      property: 'og:image',
-      content: `https://www.aheadcareers.com/svg/og-logo.svg`,
-    }); */
-    this.meta.updateTag({
-      property: 'og:image:width',
-      content: '1200',
-    });
-    this.meta.updateTag({
-      property: 'og:image:height',
-      content: '627',
     });
     this.meta.updateTag({
       property: 'og:url',

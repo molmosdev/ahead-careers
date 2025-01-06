@@ -1,5 +1,6 @@
 import { effect, inject, Injectable, signal } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
 
 declare let gtag: (command: string, targetId: string, config?: object) => void;
@@ -11,6 +12,7 @@ export class GoogleAnalyticsService {
   isConsentAnswered = signal<boolean>(false);
   isConsentAccepted = signal<boolean>(false);
   router = inject(Router);
+  cookieService = inject(CookieService);
 
   constructor() {
     effect(() => {
@@ -24,17 +26,20 @@ export class GoogleAnalyticsService {
    * Check if the user has answered the consent
    */
   checkIfConsentIsAnswered(): void {
-    this.isConsentAnswered.set(!!localStorage.getItem('analyticsConsent'));
-    this.isConsentAccepted.set(
-      localStorage.getItem('analyticsConsent') === 'true'
-    );
+    const consentCookie = this.cookieService.get('analyticsConsent');
+    this.isConsentAnswered.set(!!consentCookie);
+    this.isConsentAccepted.set(consentCookie === 'true');
   }
 
   /**
    * Starts tracking the user's navigation
    */
   startTracking(): void {
-    localStorage.setItem('analyticsConsent', 'true');
+    this.cookieService.set('analyticsConsent', 'true', {
+      path: '/',
+      secure: true,
+      sameSite: 'Lax',
+    });
     this.loadAnalyticsScript();
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -49,34 +54,36 @@ export class GoogleAnalyticsService {
    * Loads the Google Analytics script
    */
   loadAnalyticsScript(): void {
-    // Add the script to the document
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${environment.G_TAG}`;
     document.head.appendChild(script);
 
-    // Add the inline script to the document
     const inlineScript = document.createElement('script');
     inlineScript.text = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-      `;
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+    `;
     document.head.appendChild(inlineScript);
   }
 
   /**
    * Stops tracking the user's navigation
    */
-  stopTracking(): void {
-    localStorage.setItem('analyticsConsent', 'false');
-    // Remove the script from the document
-    const script = document.querySelector('script[src*="gtag/js"]');
-    script && script.remove();
-    // Remove the inline script from the document
-    const inlineScript = document.querySelector('script:not([src])');
-    inlineScript && inlineScript.remove();
+  stopTracking(removeScript = false): void {
+    this.cookieService.set('analyticsConsent', 'false', {
+      path: '/',
+      secure: true,
+      sameSite: 'Lax',
+    });
+    if (removeScript) {
+      const script = document.querySelector('script[src*="gtag/js"]');
+      script && script.remove();
+      const inlineScript = document.querySelector('script:not([src])');
+      inlineScript && inlineScript.remove();
+    }
     this.isConsentAccepted.set(false);
   }
 }

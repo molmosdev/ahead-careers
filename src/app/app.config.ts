@@ -14,6 +14,10 @@ import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import {
+  provideClientHydration,
+  withEventReplay,
+} from '@angular/platform-browser';
 
 registerLocaleData(localeEs);
 
@@ -31,5 +35,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimations(),
     { provide: LOCALE_ID, useValue: 'es-ES' },
+    provideClientHydration(withEventReplay()),
   ],
 };

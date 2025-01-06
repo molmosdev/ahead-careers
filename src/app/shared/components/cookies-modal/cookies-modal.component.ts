@@ -11,13 +11,13 @@ import { RouterLink } from '@angular/router';
 })
 export class CookiesModalComponent {
   show = model<boolean>(false);
-  analyticsService = inject(GoogleAnalyticsService);
+  googleAnalyticsService = inject(GoogleAnalyticsService);
 
   /**
    * Accept cookies and start tracking
    */
   acceptCookies(): void {
-    this.analyticsService.startTracking();
+    this.googleAnalyticsService.startTracking();
     this.show.set(false);
   }
 
@@ -25,7 +25,7 @@ export class CookiesModalComponent {
    * Reject cookies and stop tracking
    */
   rejectCookies(): void {
-    localStorage.setItem('analyticsConsent', 'false');
+    this.googleAnalyticsService.stopTracking();
     this.show.set(false);
   }
 }

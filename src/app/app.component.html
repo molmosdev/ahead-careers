@@ -15,10 +15,12 @@
 </r-dialog>
 <!-- Cookies modal -->
 @if (!isLinkPage() && !isConsentAnswered()) {
-  <r-dialog
-    [(show)]="isCookiesModalOpen"
-    [mobileBottomActive]="true"
-    [clickOutside]="false">
-    <ac-cookies-modal *r-lazy [(show)]="isCookiesModalOpen" />
-  </r-dialog>
+  @defer (on timer(500ms)) {
+    <r-dialog
+      [(show)]="isCookiesModalOpen"
+      [mobileBottomActive]="true"
+      [clickOutside]="false">
+      <ac-cookies-modal *r-lazy [(show)]="isCookiesModalOpen" />
+    </r-dialog>
+  }
 }

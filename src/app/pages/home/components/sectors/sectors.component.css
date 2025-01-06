@@ -31,17 +31,27 @@
 
   .sectors {
     display: flex;
-    justify-content: start;
     align-items: center;
     position: relative;
+    gap: 6rem;
+    animation: slide-left 60s linear infinite;
+    width: max-content;
+  }
 
-    h2 {
-      margin-right: 5.5rem;
-      white-space: nowrap;
+  .sectors h2 {
+    white-space: nowrap;
+  }
 
-      @media (max-width: 768px) {
-        margin-right: 4rem;
-      }
-    }
+  .sectors::after {
+    content: attr(data-content);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
