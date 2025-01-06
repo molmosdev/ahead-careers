@@ -1,4 +1,4 @@
-<div class="slogan-wrapper" @fadeInOut>
+<div class="slogan-wrapper">
   @if (businessDescription().slogan) {
     <div class="slogan" [innerHTML]="businessDescription().slogan"></div>
   }
@@ -11,7 +11,7 @@
     >Consulta nuestras ofertas</r-button
   >
 </div>
-<div class="rounded-section" @fadeInOut></div>
+<div class="rounded-section"></div>
 <div class="home-wrapper">
   <ac-sectors [sectors]="businessDescription().sectors" />
   @if (businessDescription().description) {

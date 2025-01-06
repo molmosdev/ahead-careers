@@ -12,6 +12,7 @@
     gap: 2rem;
     background-color: var(--blue);
     color: var(--white);
+    min-height: 204px;
 
     .slogan {
       font-family: 'Poppins', sans-serif;
