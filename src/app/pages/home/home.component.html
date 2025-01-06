@@ -1,12 +1,4 @@
-<div
-  class="slogan-wrapper"
-  [@fadeInOut]="{
-    value: '',
-    params: {
-      translateFrom: 'translateY(-10px)',
-      translateTo: 'translateY(0)',
-    },
-  }">
+<div class="slogan-wrapper" @fadeInOut>
   @if (businessDescription().slogan) {
     <div class="slogan" [innerHTML]="businessDescription().slogan"></div>
   }
@@ -19,15 +11,7 @@
     >Consulta nuestras ofertas</r-button
   >
 </div>
-<div
-  class="rounded-section"
-  [@fadeInOut]="{
-    value: '',
-    params: {
-      translateFrom: 'translateY(-10px)',
-      translateTo: 'translateY(0)',
-    },
-  }"></div>
+<div class="rounded-section" @fadeInOut></div>
 <div class="home-wrapper">
   <ac-sectors [sectors]="businessDescription().sectors" />
   @if (businessDescription().description) {
