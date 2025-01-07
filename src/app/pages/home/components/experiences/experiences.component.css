@@ -117,15 +117,15 @@
 
         @media (width < 768px) {
           min-width: 80%;
-          padding-inline: 20%;
+          padding-inline: 1rem;
 
-          /*           &:first-child {
+          &:first-child {
             margin-left: 20%;
           }
 
           &:last-child {
             margin-right: 20%;
-          } */
+          }
         }
 
         .content {
