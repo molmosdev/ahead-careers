@@ -61,7 +61,7 @@ export class ExperiencesComponent implements OnInit {
 
     this.isScrolling.set(true); // Activate scrolling flag
     container.scrollBy({
-      left: size,
+      left: size / 2,
       behavior: 'smooth',
     });
 
@@ -89,7 +89,7 @@ export class ExperiencesComponent implements OnInit {
 
     this.isScrolling.set(true); // Activate scrolling flag
     container.scrollBy({
-      left: -size,
+      left: -size / 2,
       behavior: 'smooth',
     });
 
