@@ -1,4 +1,4 @@
 @defer (when privacyPolicy()) {
   <h1>{{ privacyPolicy().title }}</h1>
-  <p [innerHTML]="privacyPolicy().content"></p>
+  <p @fadeInOut [innerHTML]="privacyPolicy().content"></p>
 }
