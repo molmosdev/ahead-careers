@@ -41,6 +41,10 @@
       scrollbar-width: none;
       padding-bottom: 1rem;
 
+      @media (width > 768px) {
+        pointer-events: none;
+      }
+
       .experience {
         scroll-snap-align: center;
         display: flex;
