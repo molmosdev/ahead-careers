@@ -19,12 +19,12 @@
       --button-padding-inline: 0;
 
       &.left {
-        left: -2rem;
+        left: 2rem;
         z-index: 10;
       }
 
       &.right {
-        right: -2rem;
+        right: 2rem;
         z-index: 10;
       }
 
