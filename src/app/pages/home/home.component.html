@@ -4,15 +4,16 @@
       @fadeInOut
       class="slogan"
       [innerHTML]="businessDescription().slogan"></div>
+    <r-button
+      @fadeInOut
+      [routerLink]="'/offers'"
+      type="secondary"
+      r-in-viewport
+      inViewportId="offers-cta"
+      [inViewportInitialVisibility]="true"
+      >Consulta nuestras ofertas</r-button
+    >
   }
-  <r-button
-    [routerLink]="'/offers'"
-    type="secondary"
-    r-in-viewport
-    inViewportId="offers-cta"
-    [inViewportInitialVisibility]="true"
-    >Consulta nuestras ofertas</r-button
-  >
 </div>
 <div class="rounded-section"></div>
 <div class="home-wrapper">
