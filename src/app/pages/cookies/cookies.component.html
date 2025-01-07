@@ -1,13 +1,13 @@
 @defer (when cookies()) {
-  <h1 @fadeInOut>{{ cookies().title }}</h1>
-  <p @fadeInOut [innerHTML]="cookies().content"></p>
-  <h3 @fadeInOut>Gestión de cookies</h3>
-  <p @fadeInOut>
+  <h1>{{ cookies().title }}</h1>
+  <p [innerHTML]="cookies().content"></p>
+  <h3>Gestión de cookies</h3>
+  <p>
     Puedes gestionar las cookies directamente en el apartado "Estado de tu
     consentimiento" o a través de la configuración de tu navegador. Aquí tienes
     enlaces a las guías de los navegadores más comunes:
   </p>
-  <ul @fadeInOut>
+  <ul>
     <li>
       <a
         href="https://support.google.com/chrome/answer/95647"
@@ -41,7 +41,7 @@
       >
     </li>
   </ul>
-  @if (isConsentAnswered()) {
+  @defer (when isConsentAnswered()) {
     <h3 @fadeInOut>Estado de tu consentimiento</h3>
     <p @fadeInOut>
       Has
