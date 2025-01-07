@@ -1,11 +1,11 @@
 @if (data()) {
-  <h1 class="center" @fadeInOut>
+  <h1 class="center">
     {{ data()?.title }}
   </h1>
   @if (data()?.values && (data()?.values)!.length > 0) {
-    <div @fadeInOut class="value-boxes-wrapper">
+    <div class="value-boxes-wrapper">
       @for (value of data()?.values; track value.title + $index) {
-        <div class="value-box" @fadeInOut>
+        <div class="value-box">
           <h2 class="center">{{ value.title }}</h2>
           <div
             class="description"

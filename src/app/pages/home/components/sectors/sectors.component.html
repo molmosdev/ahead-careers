@@ -1,5 +1,5 @@
 @if (duplicatedSectors()) {
-  <div class="sectors" @fadeInOut>
+  <div class="sectors">
     @for (sector of duplicatedSectors(); track sector + $index) {
       <h2 class="center">
         {{ sector }}
