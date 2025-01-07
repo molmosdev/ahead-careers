@@ -13,20 +13,26 @@
 
     r-button {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 20%;
       z-index: 1;
       width: 2.8rem;
       --button-padding-inline: 0;
 
       &.left {
-        left: 0;
+        left: 0.5rem;
       }
 
       &.right {
-        right: 0;
+        right: 0.5rem;
       }
     }
+
+    @media (width < 768px) {
+      r-button {
+        display: none;
+      }
+    }
+
     .experiences {
       overflow-x: scroll;
       scroll-snap-type: x mandatory;
@@ -35,23 +41,35 @@
       scrollbar-width: none;
 
       .experience {
-        scroll-snap-align: start;
+        scroll-snap-align: center;
         display: flex;
-        justify-content: center;
         flex-direction: column;
         align-items: start;
         text-align: center;
         gap: 20px;
-        min-width: 100%;
         max-width: 350px;
         box-sizing: border-box;
-        padding-inline: 4rem;
 
         @media (min-width: 768px) {
+          padding-inline: 4rem;
+          min-width: 100%;
           &:not(.selected) {
             &:hover {
               cursor: pointer;
             }
+          }
+        }
+
+        @media (width < 768px) {
+          min-width: 80%;
+          padding-inline: 1rem;
+
+          &:first-child {
+            margin-left: calc(20vw);
+          }
+
+          &:last-child {
+            margin-right: calc(20vw);
           }
         }
 

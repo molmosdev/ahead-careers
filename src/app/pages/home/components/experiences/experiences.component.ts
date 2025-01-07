@@ -39,15 +39,21 @@ export class ExperiencesComponent implements OnInit {
   }
 
   scrollForward() {
-    this.experiencesContainer()?.nativeElement.scrollBy({
-      left: 350,
+    const container = this.experiencesContainer()?.nativeElement;
+    const size = container.clientWidth;
+    console.log(size);
+    container.scrollBy({
+      left: size,
       behavior: 'smooth',
     });
   }
 
   scrollBackward() {
-    this.experiencesContainer()?.nativeElement.scrollBy({
-      left: -350,
+    const container = this.experiencesContainer()?.nativeElement;
+    const size = container.clientWidth;
+    console.log(size);
+    container.scrollBy({
+      left: -size,
       behavior: 'smooth',
     });
   }
