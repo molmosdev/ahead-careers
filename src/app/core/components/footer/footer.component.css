@@ -76,22 +76,29 @@
     img {
       width: 100px;
       z-index: 1;
+    }
 
-      &.logo {
-        margin-left: 86px;
+    &:not(.is-blank) {
+      img {
+        &.logo {
+          @media (width > 940px) {
+            margin-left: 86px;
+          }
 
-        &:hover {
-          &:not(.is-blank) {
+          &:hover {
             cursor: pointer;
           }
         }
+      }
+      .copy-and-credits {
+        width: 100%;
+      }
+    }
 
-        &.is-blank {
+    &.is-blank {
+      img {
+        &.logo {
           pointer-events: none;
-
-          @media (width > 940px) {
-            margin-left: auto;
-          }
         }
       }
     }
@@ -101,7 +108,6 @@
         color: var(--white);
       }
       z-index: 1;
-      width: 100%;
       text-align: center;
       scale: 0.8;
       display: flex;

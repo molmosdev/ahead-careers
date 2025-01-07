@@ -1,5 +1,5 @@
 <div class="rounded-section up"></div>
-<div class="footer-content">
+<div class="footer-content" [ngClass]="{ 'is-blank': isBlank() }">
   @if (!isBlank()) {
     <div class="contact">
       <a
@@ -35,7 +35,6 @@
   <img
     src="/svg/logo-negative.svg"
     [routerLink]="'/'"
-    [ngClass]="{ 'is-blank': isBlank() }"
     class="logo"
     alt="Ahead Careers logo" />
   <div class="copy-and-credits">
