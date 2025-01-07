@@ -1,67 +1,71 @@
 @defer (when cookies()) {
-  <h1>{{ cookies().title }}</h1>
-  <p [innerHTML]="cookies().content"></p>
-  <h3>Gestión de cookies</h3>
-  <p>
-    Puedes gestionar las cookies directamente en el apartado "Estado de tu
-    consentimiento" o a través de la configuración de tu navegador. Aquí tienes
-    enlaces a las guías de los navegadores más comunes:
-  </p>
-  <ul>
-    <li>
-      <a
-        href="https://support.google.com/chrome/answer/95647"
-        target="_blank"
-        rel="noopener noreferrer">
-        Google Chrome</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://support.mozilla.org/es/kb/Borrar%20cookies"
-        target="_blank"
-        rel="noopener noreferrer">
-        Mozilla Firefox</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://support.apple.com/es-es/guide/safari/sfri11471/mac"
-        target="_blank"
-        rel="noopener noreferrer">
-        Safari</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://support.microsoft.com/es-es/windows/administrar-cookies-en-microsoft-edge-ver-permitir-bloquear-eliminar-y-usar-168dab11-0753-043d-7c16-ede5947fc64d"
-        target="_blank"
-        rel="noopener noreferrer">
-        Microsoft Edge</a
-      >
-    </li>
-  </ul>
   @defer (on timer(500ms)) {
-    @if (isConsentAnswered()) {
-      <h3 @fadeInOut>Estado de tu consentimiento</h3>
-      <p @fadeInOut>
-        Has
-        @if (isConsentAccepted()) {
-          aceptado
-        } @else {
-          rechazado
-        }
-        las cookies. Puedes cambiar tu configuración en cualquier momento.
+    <section @fadeInOut>
+      <h1>{{ cookies().title }}</h1>
+      <p [innerHTML]="cookies().content"></p>
+      <h3>Gestión de cookies</h3>
+      <p>
+        Puedes gestionar las cookies directamente en el apartado "Estado de tu
+        consentimiento" o a través de la configuración de tu navegador. Aquí
+        tienes enlaces a las guías de los navegadores más comunes:
       </p>
-      @if (isConsentAccepted()) {
-        <r-button @fadeInOut type="secondary" (clickEmitter)="declineCookies()">
-          Rechazar cookies
-        </r-button>
-      } @else {
-        <r-button @fadeInOut type="primary" (clickEmitter)="acceptCookies()">
-          Aceptar cookies
-        </r-button>
+      <ul>
+        <li>
+          <a
+            href="https://support.google.com/chrome/answer/95647"
+            target="_blank"
+            rel="noopener noreferrer">
+            Google Chrome</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://support.mozilla.org/es/kb/Borrar%20cookies"
+            target="_blank"
+            rel="noopener noreferrer">
+            Mozilla Firefox</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://support.apple.com/es-es/guide/safari/sfri11471/mac"
+            target="_blank"
+            rel="noopener noreferrer">
+            Safari</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://support.microsoft.com/es-es/windows/administrar-cookies-en-microsoft-edge-ver-permitir-bloquear-eliminar-y-usar-168dab11-0753-043d-7c16-ede5947fc64d"
+            target="_blank"
+            rel="noopener noreferrer">
+            Microsoft Edge</a
+          >
+        </li>
+      </ul>
+      @if (isConsentAnswered()) {
+        <h3>Estado de tu consentimiento</h3>
+        <p>
+          Has
+          @if (isConsentAccepted()) {
+            aceptado
+          } @else {
+            rechazado
+          }
+          las cookies. Puedes cambiar tu configuración en cualquier momento.
+        </p>
+        <div class="consent-buttons">
+          @if (isConsentAccepted()) {
+            <r-button type="secondary" (clickEmitter)="declineCookies()">
+              Rechazar cookies
+            </r-button>
+          } @else {
+            <r-button type="primary" (clickEmitter)="acceptCookies()">
+              Aceptar cookies
+            </r-button>
+          }
+        </div>
       }
-    }
+    </section>
   }
 }
