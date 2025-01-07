@@ -4,9 +4,6 @@
   <ac-offers-button @fadeInOut />
 }
 <ac-footer />
-@if (isSplashScreenVisible() && !isLinkPage()) {
-  <ac-splash-screen @fadeOut />
-}
 <!-- Contact us modal -->
 <r-dialog [(show)]="contactUsModalService.isOpen">
   <ac-contact-us-modal *r-lazy [(show)]="contactUsModalService.isOpen" />

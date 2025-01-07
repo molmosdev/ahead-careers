@@ -22,7 +22,6 @@ import { ContactUsModalService } from './core/services/contact-us-modal.service'
 import { ContactUsModalComponent } from './shared/components/contact-us-modal/contact-us-modal.component';
 import { CookiesModalComponent } from './shared/components/cookies-modal/cookies-modal.component';
 import { GoogleAnalyticsService } from './core/services/google-analytics.service';
-import { SplashScreenComponent } from './shared/components/splash-screen/splash-screen.component';
 
 @Component({
   selector: 'ac-root',
@@ -35,7 +34,6 @@ import { SplashScreenComponent } from './shared/components/splash-screen/splash-
     ContactUsModalComponent,
     LazyContentDirective,
     CookiesModalComponent,
-    SplashScreenComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
