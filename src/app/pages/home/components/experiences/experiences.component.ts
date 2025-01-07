@@ -1,5 +1,6 @@
 import {
   Component,
+  computed,
   ElementRef,
   inject,
   OnInit,
@@ -22,8 +23,17 @@ import { Button } from '@realm-ui/angular';
 export class ExperiencesComponent implements OnInit {
   sanityService = inject(SanityService);
   data = signal<Experiences | undefined>(undefined);
+  index = signal(0);
   experiencesContainer = viewChild<ElementRef>('experiencesContainer');
+  isScrolling = signal(false);
+  canScrollBackward = computed(() => this.index() > 0);
+  canScrollForward = computed(
+    () => this.index() < this.data()!.experiences.length - 1
+  );
 
+  /**
+   * Initializes the component and fetches data from the Sanity service.
+   */
   async ngOnInit(): Promise<void> {
     const data: Experiences = await this.sanityService.getDataByType(
       'experiences',
@@ -38,23 +48,59 @@ export class ExperiencesComponent implements OnInit {
     });
   }
 
-  scrollForward() {
+  /**
+   * Scrolls the experiences container forward by one container width.
+   * Prevents rapid consecutive clicks by using a scrolling flag.
+   */
+  scrollForward(): void {
+    if (this.isScrolling()) return; // Prevent rapid consecutive clicks
+
     const container = this.experiencesContainer()?.nativeElement;
     const size = container.clientWidth;
-    console.log(size);
+
+    this.isScrolling.set(true); // Activate scrolling flag
     container.scrollBy({
       left: size,
       behavior: 'smooth',
     });
+
+    container.addEventListener(
+      'scrollend',
+      () => {
+        if (this.canScrollForward()) {
+          this.index.set(this.index() + 1); // Increment index if possible
+        }
+        this.isScrolling.set(false); // Deactivate scrolling flag
+      },
+      { once: true }
+    );
   }
 
-  scrollBackward() {
+  /**
+   * Scrolls the experiences container backward by one container width.
+   * Prevents rapid consecutive clicks by using a scrolling flag.
+   */
+  scrollBackward(): void {
+    if (this.isScrolling()) return; // Prevent rapid consecutive clicks
+
     const container = this.experiencesContainer()?.nativeElement;
     const size = container.clientWidth;
-    console.log(size);
+
+    this.isScrolling.set(true); // Activate scrolling flag
     container.scrollBy({
       left: -size,
       behavior: 'smooth',
     });
+
+    container.addEventListener(
+      'scrollend',
+      () => {
+        if (this.canScrollBackward()) {
+          this.index.set(this.index() - 1); // Decrement index if possible
+        }
+        this.isScrolling.set(false); // Deactivate scrolling flag
+      },
+      { once: true }
+    );
   }
 }

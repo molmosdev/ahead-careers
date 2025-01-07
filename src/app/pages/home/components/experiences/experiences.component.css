@@ -8,7 +8,7 @@
   .slider {
     position: relative;
     max-width: 100vw;
-    width: 800px;
+    width: 700px;
     margin-inline: auto;
 
     r-button {
@@ -19,17 +19,55 @@
       --button-padding-inline: 0;
 
       &.left {
-        left: 0.5rem;
+        left: -5rem;
       }
 
       &.right {
-        right: 0.5rem;
+        right: -5rem;
+      }
+
+      .icon-chevron-left,
+      .icon-chevron-right {
+        font-size: 1.5rem;
+        color: var(--white);
       }
     }
 
     @media (width < 768px) {
       r-button {
         display: none;
+      }
+    }
+
+    @media (width > 768px) {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 1) 0%,
+          transparent 100%
+        );
+        z-index: 2;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20%;
+        height: 100%;
+        background: linear-gradient(
+          270deg,
+          rgba(255, 255, 255, 1) 0%,
+          transparent 100%
+        );
+        z-index: 2;
       }
     }
 
@@ -43,6 +81,7 @@
 
       @media (width > 768px) {
         pointer-events: none;
+        position: relative;
       }
 
       .experience {
@@ -55,9 +94,18 @@
         max-width: 350px;
         box-sizing: border-box;
 
-        @media (min-width: 768px) {
-          padding-inline: 4rem;
-          min-width: 100%;
+        @media (width > 768px) {
+          min-width: 70%;
+          padding-inline: 2rem;
+
+          &:first-child {
+            margin-left: 30%;
+          }
+
+          &:last-child {
+            margin-right: 30%;
+          }
+
           &:not(.selected) {
             &:hover {
               cursor: pointer;
@@ -70,11 +118,11 @@
           padding-inline: 1rem;
 
           &:first-child {
-            margin-left: 20vw;
+            margin-left: 20%;
           }
 
           &:last-child {
-            margin-right: 20vw;
+            margin-right: 20%;
           }
         }
 

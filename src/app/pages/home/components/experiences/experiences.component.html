@@ -3,13 +3,16 @@
     {{ data()!.title }}
   </h1>
   <div class="slider">
-    <r-button
-      aria-label="Scroll backward"
-      class="left"
-      type="secondary"
-      (clickEmitter)="scrollBackward()">
-      <div class="icon-chevron-left"></div>
-    </r-button>
+    @if (canScrollBackward()) {
+      <r-button
+        [@fadeInOut]="{ value: '', params: { dureation: '0.1s' } }"
+        aria-label="Scroll backward"
+        class="left"
+        type="primary"
+        (clickEmitter)="scrollBackward()">
+        <div class="icon-chevron-left"></div>
+      </r-button>
+    }
     <div class="experiences" #experiencesContainer>
       @for (experience of data()!.experiences; track experience) {
         <div class="experience">
@@ -28,12 +31,15 @@
         </div>
       }
     </div>
-    <r-button
-      class="right"
-      type="secondary"
-      aria-label="Scroll forward"
-      (clickEmitter)="scrollForward()">
-      <div class="icon-chevron-right"></div>
-    </r-button>
+    @if (canScrollForward()) {
+      <r-button
+        [@fadeInOut]="{ value: '', params: { dureation: '0.1s' } }"
+        class="right"
+        type="primary"
+        aria-label="Scroll forward"
+        (clickEmitter)="scrollForward()">
+        <div class="icon-chevron-right"></div>
+      </r-button>
+    }
   </div>
 }
