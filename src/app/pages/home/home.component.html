@@ -1,6 +1,9 @@
 <div class="slogan-wrapper">
   @if (businessDescription().slogan) {
-    <div class="slogan" [innerHTML]="businessDescription().slogan"></div>
+    <div
+      @fadeInOut
+      class="slogan"
+      [innerHTML]="businessDescription().slogan"></div>
   }
   <r-button
     [routerLink]="'/offers'"
