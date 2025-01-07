@@ -11,7 +11,7 @@
         src="/webp/methodology.webp"
         alt="Methodology" />
       <div class="steps-wrapper">
-        @for (step of data()?.methodologySteps; track step) {
+        @for (step of data()?.methodologySteps; track step.title + $index) {
           <div class="step" (keypress)="selectedStep.set($index)" tabindex="0">
             <div class="number">0{{ $index + 1 }}</div>
             <h3>

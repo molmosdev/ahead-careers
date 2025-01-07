@@ -4,7 +4,7 @@
   </h1>
   @if (data()?.values && (data()?.values)!.length > 0) {
     <div @fadeInOut class="value-boxes-wrapper">
-      @for (value of data()?.values; track value) {
+      @for (value of data()?.values; track value.title + $index) {
         <div class="value-box" @fadeInOut>
           <h2 class="center">{{ value.title }}</h2>
           <div

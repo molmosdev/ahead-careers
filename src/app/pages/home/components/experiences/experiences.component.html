@@ -13,7 +13,10 @@
       <div class="icon-chevron-left"></div>
     </r-button>
     <div class="experiences" #experiencesContainer>
-      @for (experience of data()!.experiences; track experience) {
+      @for (
+        experience of data()!.experiences;
+        track experience.author + $index
+      ) {
         <div class="experience">
           <div class="content" [innerHTML]="experience.content"></div>
           <div class="bottom">
