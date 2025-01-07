@@ -1,25 +1,27 @@
 @if (cookies()) {
   <h1>{{ cookies().title }}</h1>
   <p [innerHTML]="cookies().content"></p>
-  @if (isConsentAnswered()) {
-    <h3>Estado de tu consentimiento</h3>
-    <p>
-      Has
+  @defer (on timer(1000s)) {
+    @if (isConsentAnswered()) {
+      <h3>Estado de tu consentimiento</h3>
+      <p>
+        Has
+        @if (isConsentAccepted()) {
+          aceptado
+        } @else {
+          rechazado
+        }
+        las cookies. Puedes cambiar tu configuración en cualquier momento.
+      </p>
       @if (isConsentAccepted()) {
-        aceptado
+        <r-button type="secondary" (clickEmitter)="declineCookies()">
+          Rechazar cookies
+        </r-button>
       } @else {
-        rechazado
+        <r-button type="primary" (clickEmitter)="acceptCookies()">
+          Aceptar cookies
+        </r-button>
       }
-      las cookies. Puedes cambiar tu configuración en cualquier momento.
-    </p>
-    @if (isConsentAccepted()) {
-      <r-button type="secondary" (clickEmitter)="declineCookies()">
-        Rechazar cookies
-      </r-button>
-    } @else {
-      <r-button type="primary" (clickEmitter)="acceptCookies()">
-        Aceptar cookies
-      </r-button>
     }
   }
 }
