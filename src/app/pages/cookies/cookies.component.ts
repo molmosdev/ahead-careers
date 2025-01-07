@@ -4,12 +4,14 @@ import { ResponsiveService } from '../../core/services/responsive.service';
 import { TitleAndContent } from '../../shared/interfaces/title-and-content';
 import { GoogleAnalyticsService } from '../../core/services/google-analytics.service';
 import { Button } from '@realm-ui/angular';
+import { fadeInOutTrigger } from '../../shared/animations';
 
 @Component({
   selector: 'ac-cookies',
   imports: [Button],
   templateUrl: './cookies.component.html',
   styleUrl: './cookies.component.css',
+  animations: [fadeInOutTrigger],
 })
 export class CookiesComponent implements OnInit {
   sanityService = inject(SanityService);
