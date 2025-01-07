@@ -1,7 +1,7 @@
 @if (cookies()) {
   <section class="fade-in">
-    <h1>{{ cookies().title }}</h1>
-    <p [innerHTML]="cookies().content"></p>
+    <h1>{{ cookies()?.title }}</h1>
+    <p [innerHTML]="cookies()?.content"></p>
     <h3>Gestión de cookies</h3>
     <p>
       Puedes gestionar las cookies directamente en el apartado "Estado de tu

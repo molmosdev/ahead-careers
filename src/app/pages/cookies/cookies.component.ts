@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { SanityService } from '../../core/services/sanity.service';
 import { ResponsiveService } from '../../core/services/responsive.service';
 import { TitleAndContent } from '../../shared/interfaces/title-and-content';
@@ -13,13 +13,7 @@ import { Button } from '@realm-ui/angular';
 })
 export class CookiesComponent implements OnInit {
   sanityService = inject(SanityService);
-  cookies = computed<TitleAndContent>(() => {
-    const data = this.sanityService.data.value();
-    return {
-      ...data,
-      content: this.sanityService.transformBlockToHtml(data?.content),
-    };
-  });
+  cookies = signal<TitleAndContent | undefined>(undefined);
   responsiveService = inject(ResponsiveService);
   isMobile = computed(() => this.responsiveService.isMobile());
   googleAnalyticsService = inject(GoogleAnalyticsService);
@@ -30,11 +24,14 @@ export class CookiesComponent implements OnInit {
     this.googleAnalyticsService.isConsentAccepted()
   );
 
-  ngOnInit(): void {
-    this.sanityService.params.set({
-      type: 'cookies',
-      singleton: true,
-      filters: [],
+  async ngOnInit(): Promise<void> {
+    const data: TitleAndContent = await this.sanityService.getDataByType(
+      'cookies',
+      true
+    );
+    this.cookies.set({
+      ...data,
+      content: this.sanityService.transformBlockToHtml(data?.content),
     });
   }
 
