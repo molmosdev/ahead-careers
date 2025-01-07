@@ -1,9 +1,9 @@
 <div class="slogan-wrapper">
-  @if (businessDescription().slogan) {
+  @if (businessDescription()?.slogan) {
     <div
-      @fadeInOut
       class="slogan"
-      [innerHTML]="businessDescription().slogan"></div>
+      @fadeInOut
+      [innerHTML]="businessDescription()!.slogan"></div>
     <r-button
       @fadeInOut
       [routerLink]="'/offers'"
@@ -17,15 +17,19 @@
 </div>
 <div class="rounded-section"></div>
 <div class="home-wrapper">
-  <ac-sectors [sectors]="businessDescription().sectors" />
-  @if (businessDescription().description) {
+  @if (businessDescription()?.sectors) {
+    <ac-sectors [sectors]="businessDescription()!.sectors" />
+  }
+  @if (businessDescription()?.description) {
     <div
-      class="description"
       @fadeInOut
-      [innerHTML]="businessDescription().description"></div>
+      class="description"
+      [innerHTML]="businessDescription()!.description"></div>
   }
   <ac-values />
   <ac-methodology />
-  <ac-ceo-message [ceoMessage]="businessDescription().ceoMessage" />
+  @if (businessDescription()?.ceoMessage) {
+    <ac-ceo-message [ceoMessage]="businessDescription()!.ceoMessage" />
+  }
   <ac-experiences />
 </div>

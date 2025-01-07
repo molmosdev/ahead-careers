@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ValuesComponent } from './components/values/values.component';
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { SanityService } from '../../core/services/sanity.service';
@@ -28,20 +28,17 @@ import { BusinessDescription } from '../../shared/interfaces/business-descriptio
 })
 export class HomeComponent implements OnInit {
   sanityService = inject(SanityService);
-  businessDescription = computed<BusinessDescription>(() => {
-    const data = this.sanityService.data.value();
-    return {
+  businessDescription = signal<BusinessDescription | undefined>(undefined);
+
+  async ngOnInit(): Promise<void> {
+    const data: BusinessDescription = await this.sanityService.getDataByType(
+      'businessDescription',
+      true
+    );
+    this.businessDescription.set({
       ...data,
       ceoMessage: this.sanityService.transformBlockToHtml(data?.ceoMessage),
       description: this.sanityService.transformBlockToHtml(data?.description),
-    };
-  });
-
-  ngOnInit(): void {
-    this.sanityService.params.set({
-      type: 'businessDescription',
-      singleton: true,
-      filters: [],
     });
   }
 }
