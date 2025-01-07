@@ -12,10 +12,11 @@ import { SanityService } from '../../../../core/services/sanity.service';
 import { fadeInOutTrigger } from '../../../../shared/animations';
 import { Experiences } from './interfaces/experiences';
 import { Button } from '@realm-ui/angular';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'ac-experiences',
-  imports: [Button],
+  imports: [Button, NgClass],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.css',
   animations: [fadeInOutTrigger],
@@ -53,7 +54,7 @@ export class ExperiencesComponent implements OnInit {
    * Prevents rapid consecutive clicks by using a scrolling flag.
    */
   scrollForward(): void {
-    if (this.isScrolling()) return; // Prevent rapid consecutive clicks
+    if (this.isScrolling() || !this.canScrollForward()) return; // Prevent rapid consecutive clicks and scrolling beyond the end
 
     const container = this.experiencesContainer()?.nativeElement;
     const size = container.clientWidth;
@@ -81,7 +82,7 @@ export class ExperiencesComponent implements OnInit {
    * Prevents rapid consecutive clicks by using a scrolling flag.
    */
   scrollBackward(): void {
-    if (this.isScrolling()) return; // Prevent rapid consecutive clicks
+    if (this.isScrolling() || !this.canScrollBackward()) return; // Prevent rapid consecutive clicks and scrolling beyond the start
 
     const container = this.experiencesContainer()?.nativeElement;
     const size = container.clientWidth;

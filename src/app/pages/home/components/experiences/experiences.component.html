@@ -3,16 +3,15 @@
     {{ data()!.title }}
   </h1>
   <div class="slider">
-    @if (canScrollBackward()) {
-      <r-button
-        [@fadeInOut]="{ value: '', params: { dureation: '0.1s' } }"
-        aria-label="Scroll backward"
-        class="left"
-        type="primary"
-        (clickEmitter)="scrollBackward()">
-        <div class="icon-chevron-left"></div>
-      </r-button>
-    }
+    <r-button
+      [@fadeInOut]="{ value: '', params: { dureation: '0.1s' } }"
+      aria-label="Scroll backward"
+      class="left"
+      [ngClass]="{ hidden: !canScrollBackward() }"
+      [type]="canScrollBackward() ? 'primary' : 'secondary'"
+      (clickEmitter)="scrollBackward()">
+      <div class="icon-chevron-left"></div>
+    </r-button>
     <div class="experiences" #experiencesContainer>
       @for (experience of data()!.experiences; track experience) {
         <div class="experience">
@@ -31,15 +30,14 @@
         </div>
       }
     </div>
-    @if (canScrollForward()) {
-      <r-button
-        [@fadeInOut]="{ value: '', params: { dureation: '0.1s' } }"
-        class="right"
-        type="primary"
-        aria-label="Scroll forward"
-        (clickEmitter)="scrollForward()">
-        <div class="icon-chevron-right"></div>
-      </r-button>
-    }
+    <r-button
+      [@fadeInOut]="{ value: '', params: { dureation: '0.1s' } }"
+      class="right"
+      [type]="canScrollForward() ? 'primary' : 'secondary'"
+      [ngClass]="{ hidden: !canScrollForward() }"
+      aria-label="Scroll forward"
+      (clickEmitter)="scrollForward()">
+      <div class="icon-chevron-right"></div>
+    </r-button>
   </div>
 }
