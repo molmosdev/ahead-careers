@@ -41,25 +41,27 @@
       >
     </li>
   </ul>
-  @defer (when isConsentAnswered()) {
-    <h3 @fadeInOut>Estado de tu consentimiento</h3>
-    <p @fadeInOut>
-      Has
+  @defer (on timer(2000ms)) {
+    @if (isConsentAnswered()) {
+      <h3 @fadeInOut>Estado de tu consentimiento</h3>
+      <p @fadeInOut>
+        Has
+        @if (isConsentAccepted()) {
+          aceptado
+        } @else {
+          rechazado
+        }
+        las cookies. Puedes cambiar tu configuración en cualquier momento.
+      </p>
       @if (isConsentAccepted()) {
-        aceptado
+        <r-button @fadeInOut type="secondary" (clickEmitter)="declineCookies()">
+          Rechazar cookies
+        </r-button>
       } @else {
-        rechazado
+        <r-button @fadeInOut type="primary" (clickEmitter)="acceptCookies()">
+          Aceptar cookies
+        </r-button>
       }
-      las cookies. Puedes cambiar tu configuración en cualquier momento.
-    </p>
-    @if (isConsentAccepted()) {
-      <r-button @fadeInOut type="secondary" (clickEmitter)="declineCookies()">
-        Rechazar cookies
-      </r-button>
-    } @else {
-      <r-button @fadeInOut type="primary" (clickEmitter)="acceptCookies()">
-        Aceptar cookies
-      </r-button>
     }
   }
 }
