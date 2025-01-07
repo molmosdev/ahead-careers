@@ -1,11 +1,7 @@
 <div class="slogan-wrapper">
   @if (businessDescription()?.slogan) {
-    <div
-      class="slogan"
-      @fadeInOut
-      [innerHTML]="businessDescription()!.slogan"></div>
+    <div class="slogan" [innerHTML]="businessDescription()!.slogan"></div>
     <r-button
-      @fadeInOut
       [routerLink]="'/offers'"
       type="secondary"
       r-in-viewport
@@ -16,22 +12,19 @@
   }
 </div>
 <div class="rounded-section"></div>
-@defer (on timer(100ms)) {
-  <div class="home-wrapper">
-    @if (businessDescription()?.sectors) {
-      <ac-sectors [sectors]="businessDescription()!.sectors" />
-    }
-    @if (businessDescription()?.description) {
-      <div
-        @fadeInOut
-        class="description"
-        [innerHTML]="businessDescription()!.description"></div>
-    }
-    <ac-values />
-    <ac-methodology />
-    @if (businessDescription()?.ceoMessage) {
-      <ac-ceo-message [ceoMessage]="businessDescription()!.ceoMessage" />
-    }
-    <ac-experiences />
-  </div>
-}
+<div class="home-wrapper">
+  @if (businessDescription()?.sectors) {
+    <ac-sectors [sectors]="businessDescription()!.sectors" />
+  }
+  @if (businessDescription()?.description) {
+    <div
+      class="description"
+      [innerHTML]="businessDescription()!.description"></div>
+  }
+  <ac-values />
+  <ac-methodology />
+  @if (businessDescription()?.ceoMessage) {
+    <ac-ceo-message [ceoMessage]="businessDescription()!.ceoMessage" />
+  }
+  <ac-experiences />
+</div>
