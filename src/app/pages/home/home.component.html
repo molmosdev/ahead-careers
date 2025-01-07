@@ -16,20 +16,22 @@
   }
 </div>
 <div class="rounded-section"></div>
-<div class="home-wrapper">
-  @if (businessDescription()?.sectors) {
-    <ac-sectors [sectors]="businessDescription()!.sectors" />
-  }
-  @if (businessDescription()?.description) {
-    <div
-      @fadeInOut
-      class="description"
-      [innerHTML]="businessDescription()!.description"></div>
-  }
-  <ac-values />
-  <ac-methodology />
-  @if (businessDescription()?.ceoMessage) {
-    <ac-ceo-message [ceoMessage]="businessDescription()!.ceoMessage" />
-  }
-  <ac-experiences />
-</div>
+@defer (on timer(100ms)) {
+  <div class="home-wrapper">
+    @if (businessDescription()?.sectors) {
+      <ac-sectors [sectors]="businessDescription()!.sectors" />
+    }
+    @if (businessDescription()?.description) {
+      <div
+        @fadeInOut
+        class="description"
+        [innerHTML]="businessDescription()!.description"></div>
+    }
+    <ac-values />
+    <ac-methodology />
+    @if (businessDescription()?.ceoMessage) {
+      <ac-ceo-message [ceoMessage]="businessDescription()!.ceoMessage" />
+    }
+    <ac-experiences />
+  </div>
+}
