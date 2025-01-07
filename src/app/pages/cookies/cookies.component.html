@@ -1,4 +1,4 @@
-@if (cookies()) {
+@defer (when cookies()) {
   <h1>{{ cookies().title }}</h1>
   <p [innerHTML]="cookies().content"></p>
   @defer (on timer(2000ms)) {

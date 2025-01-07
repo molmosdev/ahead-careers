@@ -1,4 +1,4 @@
-@if (legalNotice()) {
+@defer (when legalNotice()) {
   <h1>{{ legalNotice().title }}</h1>
   <p [innerHTML]="legalNotice().content"></p>
 }
