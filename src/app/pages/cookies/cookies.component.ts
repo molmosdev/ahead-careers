@@ -30,7 +30,6 @@ export class CookiesComponent implements OnInit {
       ...data,
       content: this.sanityService.transformBlockToHtml(data?.content),
     });
-    console.log('Cookies data:', this.cookies());
   }
 
   /**
