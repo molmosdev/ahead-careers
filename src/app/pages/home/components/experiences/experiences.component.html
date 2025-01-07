@@ -3,9 +3,13 @@
     {{ data()!.title }}
   </h1>
   <div class="slider">
-    <r-button class="left" type="secondary" (clickEmitter)="scrollBackward()">
+    <button
+      class="left"
+      type="button"
+      aria-label="Scroll backward"
+      (click)="scrollBackward()">
       <div class="icon-chevron-left"></div>
-    </r-button>
+    </button>
     <div class="experiences" #experiencesContainer>
       @for (experience of data()!.experiences; track experience) {
         <div class="experience">
@@ -24,8 +28,12 @@
         </div>
       }
     </div>
-    <r-button class="right" type="secondary" (clickEmitter)="scrollForward()">
+    <button
+      class="right"
+      type="button"
+      aria-label="Scroll forward"
+      (click)="scrollForward()">
       <div class="icon-chevron-right"></div>
-    </r-button>
+    </button>
   </div>
 }
