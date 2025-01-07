@@ -8,7 +8,7 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
-import { fadeInOutTrigger, fadeOutTrigger } from './shared/animations';
+import { fadeInOutTrigger } from './shared/animations';
 import { OffersButtonComponent } from './shared/components/offers-button/offers-button.component';
 import { RouteService } from './core/services/route.service';
 import { Path } from './shared/enums/path';
@@ -37,7 +37,7 @@ import { GoogleAnalyticsService } from './core/services/google-analytics.service
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  animations: [fadeInOutTrigger, fadeOutTrigger],
+  animations: [fadeInOutTrigger],
 })
 export class AppComponent {
   responsiveService = inject(ResponsiveService);

@@ -168,3 +168,17 @@ r-switch section .switch-container {
   background-color: var(--light-grey);
   border-color: var(--light-grey);
 }
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

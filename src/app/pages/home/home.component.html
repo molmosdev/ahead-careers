@@ -1,7 +1,10 @@
 <div class="slogan-wrapper">
   @if (businessDescription()?.slogan) {
-    <div class="slogan" [innerHTML]="businessDescription()!.slogan"></div>
+    <div
+      class="slogan fade-in"
+      [innerHTML]="businessDescription()!.slogan"></div>
     <r-button
+      class="fade-in"
       [routerLink]="'/offers'"
       type="secondary"
       r-in-viewport
@@ -14,15 +17,15 @@
 <div class="rounded-section"></div>
 <div class="home-wrapper">
   @if (businessDescription()?.sectors) {
-    <ac-sectors [sectors]="businessDescription()!.sectors" />
+    <ac-sectors class="fade-in" [sectors]="businessDescription()!.sectors" />
   }
   @if (businessDescription()?.description) {
     <div
-      class="description"
+      class="description fade-in"
       [innerHTML]="businessDescription()!.description"></div>
   }
-  <ac-values />
-  <ac-methodology />
+  <ac-values class="fade-in" />
+  <ac-methodology class="fade-in" />
   @if (businessDescription()?.ceoMessage) {
     <ac-ceo-message [ceoMessage]="businessDescription()!.ceoMessage" />
   }

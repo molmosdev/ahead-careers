@@ -1,7 +1,7 @@
 <header>
   <div class="content">
     <img
-      class="logo"
+      class="logo fade-in"
       src="/svg/logo-negative.svg"
       [ngClass]="{ 'is-blank': isBlank() }"
       [routerLink]="'/'"
@@ -10,7 +10,6 @@
       <div class="right">
         @defer (on timer(100ms)) {
           <r-button
-            @fadeInOut
             class="contact-button"
             (clickEmitter)="executeDynamicButton()"
             type="primary"
