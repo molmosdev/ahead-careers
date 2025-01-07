@@ -1,8 +1,6 @@
 @defer (when privacyPolicy()) {
-  @defer (on timer(500ms)) {
-    <section @fadeInOut>
-      <h1>{{ privacyPolicy().title }}</h1>
-      <p [innerHTML]="privacyPolicy().content"></p>
-    </section>
-  }
+  <section class="fade-in">
+    <h1>{{ privacyPolicy()?.title }}</h1>
+    <p [innerHTML]="privacyPolicy()?.content"></p>
+  </section>
 }
