@@ -171,7 +171,7 @@ r-switch section .switch-container {
 
 .fade-in {
   opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
+  animation: fadeIn 0.7s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
