@@ -7,30 +7,28 @@
       [routerLink]="'/'"
       alt="" />
     @if (!isBlank()) {
-      @defer (on timer (90ms)) {
-        <div class="right fade-in">
-          <r-button
-            class="contact-button"
-            (clickEmitter)="executeDynamicButton()"
-            type="primary"
-            [@moveToTheLeftTrigger]="
-              !isOffersCtaVisible() && !isMobile() && isHomePage()
-                ? 'true'
-                : 'false'
-            ">
-            @if (isHomePage()) {
-              Contáctanos
-            } @else {
-              Inicio
-            }
-          </r-button>
-          @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
-            <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
-              >Nuestras ofertas</r-button
-            >
+      <div class="right fade-in delay">
+        <r-button
+          class="contact-button"
+          (clickEmitter)="executeDynamicButton()"
+          type="primary"
+          [@moveToTheLeftTrigger]="
+            !isOffersCtaVisible() && !isMobile() && isHomePage()
+              ? 'true'
+              : 'false'
+          ">
+          @if (isHomePage()) {
+            Contáctanos
+          } @else {
+            Inicio
           }
-        </div>
-      }
+        </r-button>
+        @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
+          <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
+            >Nuestras ofertas</r-button
+          >
+        }
+      </div>
     }
   </div>
   <div class="rounded-section"></div>
