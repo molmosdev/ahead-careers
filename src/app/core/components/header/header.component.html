@@ -20,9 +20,7 @@
           @if (isHomePage()) {
             Contáctanos
           } @else {
-            @defer (on timer (2000ms)) {
-              Inicio
-            }
+            Inicio
           }
         </r-button>
         @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
