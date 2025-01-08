@@ -49,6 +49,11 @@
         r-button.contact-button {
           position: absolute;
           right: 0;
+
+          span {
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+          }
         }
       }
 
@@ -88,5 +93,15 @@
         }
       }
     }
+  }
+
+  .move-to-left {
+    transform: translateX(calc((100% + 3rem) * -1));
+    transition: transform 0.2s 0.1s ease-in-out;
+  }
+
+  .move-to-original {
+    transform: translateX(0);
+    transition: transform 0.2s ease-in-out;
   }
 }

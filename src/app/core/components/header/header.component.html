@@ -7,26 +7,27 @@
       [routerLink]="'/'"
       alt="" />
     @if (!isBlank()) {
-      <div class="right fade-in">
+      <div class="right">
         <r-button
           class="contact-button"
+          [ngClass]="{
+            'move-to-left':
+              !isOffersCtaVisible() && !isMobile() && isHomePage(),
+            'move-to-original':
+              isOffersCtaVisible() || isMobile() || !isHomePage(),
+          }"
           (clickEmitter)="executeDynamicButton()"
-          type="primary"
-          [@moveToTheLeftTrigger]="
-            !isOffersCtaVisible() && !isMobile() && isHomePage()
-              ? 'true'
-              : 'false'
-          ">
+          type="primary">
           @if (isHomePage()) {
-            Contáctanos
+            <span class="fade-in">Contáctanos</span>
           } @else {
-            Inicio
+            <span class="fade-in">Inicio</span>
           }
         </r-button>
         @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
-          <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
-            >Nuestras ofertas</r-button
-          >
+          <r-button type="secondary" [routerLink]="'/offers'" class="fade-in">
+            Nuestras ofertas
+          </r-button>
         }
       </div>
     }

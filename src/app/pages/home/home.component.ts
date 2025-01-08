@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ValuesComponent } from './components/values/values.component';
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { SanityService } from '../../core/services/sanity.service';
@@ -30,7 +30,7 @@ import { BusinessDescription } from '../../shared/interfaces/business-descriptio
   ],
   animations: [fadeInOutTrigger],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   sanityService = inject(SanityService);
   businessDescription = signal<BusinessDescription | undefined>(undefined);
   InViewportService = inject(InViewportService);
@@ -45,9 +45,5 @@ export class HomeComponent implements OnInit, OnDestroy {
       ceoMessage: this.sanityService.transformBlockToHtml(data?.ceoMessage),
       description: this.sanityService.transformBlockToHtml(data?.description),
     });
-  }
-
-  ngOnDestroy(): void {
-    this.InViewportService.updateElementVisibility('offers-cta', true);
   }
 }

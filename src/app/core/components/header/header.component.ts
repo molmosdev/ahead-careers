@@ -1,6 +1,4 @@
 import { Component, computed, inject, linkedSignal } from '@angular/core';
-import { fadeInOutTrigger } from '../../../shared/animations';
-import { moveToTheLeftTrigger } from './header.animations';
 import { Button, InViewportService } from '@realm-ui/angular';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RouteService } from '../../services/route.service';
@@ -14,7 +12,6 @@ import { NgClass } from '@angular/common';
   imports: [Button, RouterLink, NgClass],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
-  animations: [fadeInOutTrigger, moveToTheLeftTrigger],
 })
 export class HeaderComponent {
   route = inject(ActivatedRoute);
@@ -26,12 +23,14 @@ export class HeaderComponent {
   currentPath = computed(() => this.routeService.currentPath());
   isHomePage = computed(() => this.routeService.currentPath() === Path.Home);
   isOffersCtaVisible = linkedSignal(() => {
-    const offersCta = this.inViewportService.elements()['offers-cta'];
-    return offersCta !== undefined ? offersCta : true;
+    return this.inViewportService.elements()['offers-cta'];
   });
   contactUsModalService = inject(ContactUsModalService);
   isContactUsModalOpen = computed(() => this.contactUsModalService.isOpen());
   router = inject(Router);
+  isMovedToLeft = computed(
+    () => !this.isOffersCtaVisible() && !this.isMobile() && this.isHomePage()
+  );
 
   executeDynamicButton() {
     if (this.isHomePage()) {
