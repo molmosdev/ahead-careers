@@ -1,66 +1,69 @@
 @defer (when offer()) {
-  <div class="fade-in">
-    <div class="offer-header">
-      <div class="top">
-        <h1>{{ offer().jobTitle }}</h1>
-        @if (!isMobile()) {
-          <ac-social-buttons [offer]="offer()" />
-        }
-      </div>
-      <p>Oferta publicada: {{ offer().editionDate | date: 'dd/MM/yyyy' }}</p>
-      <div class="offer-details">
-        <div class="detail">
-          <h3>Oferta</h3>
-          <p>{{ offer().offerId }}</p>
-        </div>
-        <div class="detail">
-          <h3>Sector</h3>
-          <p>{{ offer().industry }}</p>
-        </div>
-        <div class="detail">
-          <h3>Ubicación</h3>
-          <p>{{ offer().location }}</p>
-        </div>
-        <div class="detail">
-          <h3>Contrato</h3>
-          @if (offer().contractType === 'permanent') {
-            <p>Indefinido</p>
-          } @else {
-            <p>Temporal</p>
-          }
-        </div>
-        <div class="detail">
-          <h3>Salario</h3>
-          <p>{{ offer().salary }}</p>
-        </div>
-      </div>
-    </div>
-    <div
-      class="offer-content"
-      [innerHTML]="getHtmlFromBlock(offer().offerContent)"></div>
-    <div class="disclaimer">
-      <p>
-        Si estás interesado/a en esta oferta, haz clic en "Aplicar ahora" y
-        adjunta tu CV actualizado.
-      </p>
-      <p>
-        Si esta oferta no se adapta a tu perfil pero estás buscando un nuevo
-        reto profesional,
-        <a tabindex="0" (click)="contactUsModalService.isOpen.set(true)"
-          >contáctanos</a
-        >
-        y valoraremos tu candidatura. Te garantizamos la confidencialidad.
-      </p>
-    </div>
-    <div class="bottom-controls">
-      @if (isMobile()) {
+  <div class="offer-header">
+    <div class="top">
+      <h1 class="fade-in">{{ offer().jobTitle }}</h1>
+      @if (!isMobile()) {
         <ac-social-buttons [offer]="offer()" />
       }
-      <r-button type="primary" (click)="isApplyModalOpen.set(true)">
-        <i class="icon-send"></i>
-        Aplicar ahora
-      </r-button>
     </div>
+    <p class="fade-in">
+      Oferta publicada: {{ offer().editionDate | date: 'dd/MM/yyyy' }}
+    </p>
+    <div class="offer-details fade-in">
+      <div class="detail">
+        <h3>Oferta</h3>
+        <p>{{ offer().offerId }}</p>
+      </div>
+      <div class="detail">
+        <h3>Sector</h3>
+        <p>{{ offer().industry }}</p>
+      </div>
+      <div class="detail">
+        <h3>Ubicación</h3>
+        <p>{{ offer().location }}</p>
+      </div>
+      <div class="detail">
+        <h3>Contrato</h3>
+        @if (offer().contractType === 'permanent') {
+          <p>Indefinido</p>
+        } @else {
+          <p>Temporal</p>
+        }
+      </div>
+      <div class="detail">
+        <h3>Salario</h3>
+        <p>{{ offer().salary }}</p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="offer-content fade-in"
+    [innerHTML]="getHtmlFromBlock(offer().offerContent)"></div>
+  <div class="disclaimer fade-in">
+    <p>
+      Si estás interesado/a en esta oferta, haz clic en "Aplicar ahora" y
+      adjunta tu CV actualizado.
+    </p>
+    <p>
+      Si esta oferta no se adapta a tu perfil pero estás buscando un nuevo reto
+      profesional,
+      <a tabindex="0" (click)="contactUsModalService.isOpen.set(true)"
+        >contáctanos</a
+      >
+      y valoraremos tu candidatura. Te garantizamos la confidencialidad.
+    </p>
+  </div>
+  <div class="bottom-controls">
+    @if (isMobile()) {
+      <ac-social-buttons [offer]="offer()" />
+    }
+    <r-button
+      type="primary"
+      class="fade-in"
+      (click)="isApplyModalOpen.set(true)">
+      <i class="icon-send"></i>
+      Aplicar ahora
+    </r-button>
   </div>
 }
 <r-dialog [(show)]="isApplyModalOpen" [clickOutside]="true">
