@@ -11,10 +11,16 @@
         <r-button
           class="contact-button"
           [ngClass]="{
+            'initial-state': firstLoad(),
             'move-to-left':
-              !isOffersCtaVisible() && !isMobile() && isHomePage(),
+              !firstLoad() &&
+              !isOffersCtaVisible() &&
+              !isMobile() &&
+              isHomePage(),
             'move-to-original':
-              isOffersCtaVisible() || isMobile() || !isHomePage(),
+              (!firstLoad() && isOffersCtaVisible()) ||
+              isMobile() ||
+              !isHomePage(),
           }"
           (clickEmitter)="executeDynamicButton()"
           type="primary">

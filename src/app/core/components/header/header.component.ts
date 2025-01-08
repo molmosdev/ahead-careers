@@ -1,4 +1,11 @@
-import { Component, computed, inject, linkedSignal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  computed,
+  inject,
+  linkedSignal,
+  signal,
+} from '@angular/core';
 import { Button, InViewportService } from '@realm-ui/angular';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RouteService } from '../../services/route.service';
@@ -13,7 +20,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {
+export class HeaderComponent implements AfterViewInit {
   route = inject(ActivatedRoute);
   routeService = inject(RouteService);
   isBlank = computed(() => !!this.routeService.urlParams()['_blank']);
@@ -32,6 +39,7 @@ export class HeaderComponent {
   isMovedToLeft = computed(
     () => !this.isOffersCtaVisible() && !this.isMobile() && this.isHomePage()
   );
+  firstLoad = signal<boolean>(true);
 
   executeDynamicButton() {
     if (this.isHomePage()) {
@@ -39,5 +47,9 @@ export class HeaderComponent {
     } else {
       this.router.navigateByUrl(Path.Home);
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.firstLoad.set(false);
   }
 }
