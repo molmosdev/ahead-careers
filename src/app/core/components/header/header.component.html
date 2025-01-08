@@ -8,7 +8,7 @@
       alt="" />
     @if (!isBlank()) {
       <div class="right fade-in">
-        @defer (on timer (90ms)) {
+        @defer (on timer (150ms)) {
           <r-button
             class="contact-button"
             (clickEmitter)="executeDynamicButton()"
