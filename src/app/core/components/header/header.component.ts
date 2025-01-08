@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterRender,
   Component,
   computed,
   inject,
@@ -20,7 +20,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent {
   route = inject(ActivatedRoute);
   routeService = inject(RouteService);
   isBlank = computed(() => !!this.routeService.urlParams()['_blank']);
@@ -41,15 +41,17 @@ export class HeaderComponent implements AfterViewInit {
   );
   firstLoad = signal<boolean>(true);
 
+  constructor() {
+    afterRender(() => {
+      this.firstLoad.set(false);
+    });
+  }
+
   executeDynamicButton() {
     if (this.isHomePage()) {
       this.contactUsModalService.isOpen.set(true);
     } else {
       this.router.navigateByUrl(Path.Home);
     }
-  }
-
-  ngAfterViewInit(): void {
-    this.firstLoad.set(false);
   }
 }

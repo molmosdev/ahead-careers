@@ -11,22 +11,16 @@
         <r-button
           class="contact-button"
           [ngClass]="{
-            'initial-state': firstLoad(),
             'move-to-left':
-              !firstLoad() &&
-              !isOffersCtaVisible() &&
-              !isMobile() &&
-              isHomePage(),
+              !isOffersCtaVisible() && !isMobile() && isHomePage(),
             'move-to-original':
-              (!firstLoad() && isOffersCtaVisible()) ||
-              isMobile() ||
-              !isHomePage(),
+              isOffersCtaVisible() || isMobile() || !isHomePage(),
           }"
           (clickEmitter)="executeDynamicButton()"
           type="primary">
           @if (isHomePage()) {
             <span class="fade-in">Contáctanos</span>
-          } @else {
+          } @else if (!firstLoad()) {
             <span class="fade-in">Inicio</span>
           }
         </r-button>
