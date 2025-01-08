@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, linkedSignal } from '@angular/core';
 import { fadeInOutTrigger } from '../../../shared/animations';
 import { moveToTheLeftTrigger } from './header.animations';
 import { Button, InViewportService } from '@realm-ui/angular';
@@ -25,9 +25,10 @@ export class HeaderComponent {
   isMobile = computed(() => this.responsiveService.isMobile());
   currentPath = computed(() => this.routeService.currentPath());
   isHomePage = computed(() => this.routeService.currentPath() === Path.Home);
-  isOffersCtaVisible = computed(
-    () => this.inViewportService.elements()['offers-cta']
-  );
+  isOffersCtaVisible = linkedSignal(() => {
+    const offersCta = this.inViewportService.elements()['offers-cta'];
+    return offersCta !== undefined ? offersCta : true;
+  });
   contactUsModalService = inject(ContactUsModalService);
   isContactUsModalOpen = computed(() => this.contactUsModalService.isOpen());
   router = inject(Router);

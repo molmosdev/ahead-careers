@@ -7,8 +7,8 @@
       [routerLink]="'/'"
       alt="" />
     @if (!isBlank()) {
-      <div class="right">
-        @defer (on timer(100ms)) {
+      @defer (on timer (100ms)) {
+        <div class="right fade-in">
           <r-button
             class="contact-button"
             (clickEmitter)="executeDynamicButton()"
@@ -24,13 +24,13 @@
               Inicio
             }
           </r-button>
-        }
-        @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
-          <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
-            >Nuestras ofertas</r-button
-          >
-        }
-      </div>
+          @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
+            <r-button type="secondary" [routerLink]="'/offers'" @fadeInOut
+              >Nuestras ofertas</r-button
+            >
+          }
+        </div>
+      }
     }
   </div>
   <div class="rounded-section"></div>
