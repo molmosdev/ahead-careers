@@ -23,7 +23,8 @@ export class HeaderComponent {
   currentPath = computed(() => this.routeService.currentPath());
   isHomePage = computed(() => this.routeService.currentPath() === Path.Home);
   isOffersCtaVisible = linkedSignal(() => {
-    return this.inViewportService.elements()['offers-cta'];
+    const offersCta = this.inViewportService.elements()['offers-cta'];
+    return offersCta !== undefined ? offersCta : true;
   });
   contactUsModalService = inject(ContactUsModalService);
   isContactUsModalOpen = computed(() => this.contactUsModalService.isOpen());
