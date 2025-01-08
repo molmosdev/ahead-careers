@@ -20,7 +20,6 @@ import { RequestType } from '../../enums/request-type';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SanityService } from '../../../core/services/sanity.service';
 import { ContactRequestBody } from './interfaces/contact-request-body';
-import { fadeInOutTrigger } from '../../animations';
 import { RouterLink } from '@angular/router';
 import { BusinessRequestReason } from './enums/business-request-reason.enum';
 
@@ -39,7 +38,6 @@ import { BusinessRequestReason } from './enums/business-request-reason.enum';
   ],
   templateUrl: './contact-us-modal.component.html',
   styleUrl: './contact-us-modal.component.css',
-  animations: [fadeInOutTrigger],
 })
 export class ContactUsModalComponent {
   show = model<boolean>(false);

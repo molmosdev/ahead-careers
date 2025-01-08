@@ -1,10 +1,9 @@
 @if (data()) {
-  <h1 class="center" @fadeInOut>
+  <h1 class="center">
     {{ data()!.title }}
   </h1>
   <div class="slider">
     <r-button
-      [@fadeInOut]="{ value: '', params: { dureation: '0.1s' } }"
       aria-label="Scroll backward"
       class="left"
       [ngClass]="{ hidden: !canScrollBackward() }"
@@ -34,7 +33,6 @@
       }
     </div>
     <r-button
-      [@fadeInOut]="{ value: '', params: { dureation: '0.1s' } }"
       class="right"
       [type]="canScrollForward() ? 'primary' : 'secondary'"
       [ngClass]="{ hidden: !canScrollForward() }"

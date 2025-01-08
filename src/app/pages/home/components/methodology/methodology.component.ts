@@ -1,14 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { Methodology } from './interfaces/methodology';
-import { fadeInOutTrigger } from '../../../../shared/animations';
 
 @Component({
   selector: 'ac-methodology',
   imports: [],
   templateUrl: './methodology.component.html',
   styleUrl: './methodology.component.css',
-  animations: [fadeInOutTrigger],
 })
 export class MethodologyComponent {
   data = signal<Methodology | undefined>(undefined);

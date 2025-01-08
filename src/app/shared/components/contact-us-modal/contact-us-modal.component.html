@@ -116,7 +116,7 @@
     de Ahead Careers
   </p>
 } @else {
-  <h3 class="center" @fadeInOut>
+  <h3 class="center fade-in">
     @if (selectedRequestType() === RequestType.Business) {
       @if (
         requestForm().get('reason')?.value === BusinessRequestReason.Information
@@ -129,8 +129,8 @@
       ¡Tu CV actualizado ha sido enviado con éxito!
     }
   </h3>
-  <p @fadeInOut>
+  <p class="fade-in">
     El equipo de Ahead Careers lo revisará con la mayor brevedad posible.
   </p>
-  <p @fadeInOut>¡Gracias por contactarnos!</p>
+  <p class="fade-in">¡Gracias por contactarnos!</p>
 }

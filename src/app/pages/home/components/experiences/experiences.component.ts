@@ -8,8 +8,6 @@ import {
   viewChild,
 } from '@angular/core';
 import { SanityService } from '../../../../core/services/sanity.service';
-
-import { fadeInOutTrigger } from '../../../../shared/animations';
 import { Experiences } from './interfaces/experiences';
 import { Button } from '@realm-ui/angular';
 import { NgClass } from '@angular/common';
@@ -19,7 +17,6 @@ import { NgClass } from '@angular/common';
   imports: [Button, NgClass],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.css',
-  animations: [fadeInOutTrigger],
 })
 export class ExperiencesComponent implements OnInit {
   sanityService = inject(SanityService);

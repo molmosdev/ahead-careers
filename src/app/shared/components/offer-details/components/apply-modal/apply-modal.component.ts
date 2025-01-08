@@ -10,7 +10,6 @@ import { Button, Text, Number } from '@realm-ui/angular';
 import { Offer } from '../../../../../pages/offers/interfaces/offer.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SanityService } from '../../../../../core/services/sanity.service'; // Importa el servicio
-import { fadeInOutTrigger } from '../../../../animations';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -18,7 +17,6 @@ import { RouterLink } from '@angular/router';
   imports: [Button, Text, Number, RouterLink],
   templateUrl: './apply-modal.component.html',
   styleUrl: './apply-modal.component.css',
-  animations: [fadeInOutTrigger],
 })
 export class ApplyModalComponent {
   offer = input.required<Offer>();

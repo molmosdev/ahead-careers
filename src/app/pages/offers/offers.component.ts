@@ -2,7 +2,6 @@ import { Component, computed, inject, linkedSignal } from '@angular/core';
 import { SanityService } from '../../core/services/sanity.service';
 import { Offer } from './interfaces/offer.interface';
 import { Router } from '@angular/router';
-import { fadeInOutTrigger } from '../../shared/animations';
 import { OfferDetailsComponent } from '../../shared/components/offer-details/offer-details.component';
 import { ResponsiveService } from '../../core/services/responsive.service';
 import { NgClass } from '@angular/common';
@@ -12,7 +11,6 @@ import { NgClass } from '@angular/common';
   imports: [OfferDetailsComponent, NgClass],
   templateUrl: './offers.component.html',
   styleUrl: './offers.component.css',
-  animations: [fadeInOutTrigger],
 })
 export class OffersComponent {
   router = inject(Router);

@@ -1,6 +1,5 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { Offer } from '../../../pages/offers/interfaces/offer.interface';
-import { fadeInOutTrigger } from '../../animations';
 import { DatePipe } from '@angular/common';
 import { SanityService } from '../../../core/services/sanity.service';
 import { Button, Dialog, LazyContentDirective } from '@realm-ui/angular';
@@ -21,7 +20,6 @@ import { ContactUsModalService } from '../../../core/services/contact-us-modal.s
   ],
   templateUrl: './offer-details.component.html',
   styleUrl: './offer-details.component.css',
-  animations: [fadeInOutTrigger],
 })
 export class OfferDetailsComponent {
   offer = input.required<Offer>();

@@ -1,6 +1,6 @@
 @defer (when offers() && offers().length > 0) {
-  <div class="offers">
-    <h1 @fadeInOut [ngClass]="{ center: isMobile() }">Nuestras ofertas</h1>
+  <div class="offers fade-in">
+    <h1 [ngClass]="{ center: isMobile() }">Nuestras ofertas</h1>
     <div class="offers-list">
       @for (offer of offers(); track offer.offerId) {
         <div
@@ -10,7 +10,6 @@
             selected:
               selectedOffer() && selectedOffer().offerId === offer.offerId,
           }"
-          @fadeInOut
           (click)="selectOffer(offer)">
           <h3>{{ offer.jobTitle }}</h3>
           <div class="details">

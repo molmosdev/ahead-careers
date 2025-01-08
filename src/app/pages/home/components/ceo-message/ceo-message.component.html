@@ -1,5 +1,5 @@
 @if (ceoMessage()) {
-  <div class="ceo-message" @fadeInOut>
+  <div class="ceo-message">
     <div class="message">
       <div class="message-content" [innerHTML]="ceoMessage()"></div>
       <div class="bottom">
@@ -16,6 +16,6 @@
         </a>
       </div>
     </div>
-    <img class="ceo-image" src="/webp/ceo.webp" alt="CEO, Eric Olmos" />
+    <img class="ceo-image fade-in" src="/webp/ceo.webp" alt="CEO, Eric Olmos" />
   </div>
 }
