@@ -6,6 +6,7 @@
   flex-direction: column;
 
   .slider {
+    margin-top: 1.75rem;
     position: relative;
     max-width: 100vw;
     width: 1300px;
