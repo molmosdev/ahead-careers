@@ -1,11 +1,4 @@
-import {
-  afterRender,
-  Component,
-  computed,
-  inject,
-  linkedSignal,
-  signal,
-} from '@angular/core';
+import { Component, computed, inject, linkedSignal } from '@angular/core';
 import { Button, InViewportService } from '@realm-ui/angular';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RouteService } from '../../services/route.service';
@@ -39,13 +32,6 @@ export class HeaderComponent {
   isMovedToLeft = computed(
     () => !this.isOffersCtaVisible() && !this.isMobile() && this.isHomePage()
   );
-  firstLoad = signal<boolean>(true);
-
-  constructor() {
-    afterRender(() => {
-      this.firstLoad.set(false);
-    });
-  }
 
   executeDynamicButton() {
     if (this.isHomePage()) {

@@ -20,8 +20,11 @@
           type="primary">
           @if (isHomePage()) {
             <span class="fade-in">Contáctanos</span>
-          } @else if (!firstLoad()) {
-            <span class="fade-in">Inicio</span>
+          }
+          @defer (on timer(1000ms)) {
+            @if (!isHomePage()) {
+              <span class="fade-in">Inicio</span>
+            }
           }
         </r-button>
         @if (!isOffersCtaVisible() && isHomePage() && !isMobile()) {
