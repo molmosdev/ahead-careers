@@ -4,7 +4,8 @@
   </h1>
   <div class="slider">
     <r-button
-      aria-label="Scroll backward"
+      ariaLabel="Scroll backward"
+      title="Scroll backward"
       class="left"
       [ngClass]="{ hidden: !canScrollBackward() }"
       [type]="canScrollBackward() ? 'primary' : 'secondary'"
@@ -36,7 +37,8 @@
       class="right"
       [type]="canScrollForward() ? 'primary' : 'secondary'"
       [ngClass]="{ hidden: !canScrollForward() }"
-      aria-label="Scroll forward"
+      ariaLabel="Scroll forward"
+      title="Scroll forward"
       (clickEmitter)="scrollForward()">
       <div class="icon-chevron-right"></div>
     </r-button>
