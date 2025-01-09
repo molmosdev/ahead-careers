@@ -6,13 +6,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/home/home.component').then(m => m.HomeComponent),
     data: {
-      title: 'Ahead Careers',
+      title: 'Ahead Careers - Shaping Your Future',
       description:
-        'Ahead Careers conecta empresas con el mejor talento y acompaña a profesionales en su próximo reto laboral, ofreciendo asesoramiento personalizado.',
+        'Ahead Careers conecta empresas con talento y ayuda a profesionales a encontrar su próximo reto con asesoramiento personalizado.',
       keywords:
         'carreras, oportunidades, trabajo, Ahead Careers, Eric Olmos, consultoría, selección de personal, selección, talento',
     },
-    title: 'Ahead Careers',
+    title: 'Ahead Careers - Shaping Your Future',
   },
   {
     path: 'offers',
