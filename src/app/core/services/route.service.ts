@@ -58,6 +58,7 @@ export class RouteService {
    */
   setMetaTagsForRoute(route: ActivatedRouteSnapshot) {
     this.projectTitle.setTitle(route.data['title']);
+    console.log(route.data);
     this.meta.updateTag({
       name: 'description',
       content: route.data['description'],
@@ -67,7 +68,10 @@ export class RouteService {
     this.meta.updateTag({
       name: 'title',
       property: 'og:title',
-      content: route.data['title'] + ' (' + route.data['description'] + ')',
+      content:
+        route.data['title'] === 'Ahead Careers - Shaping Your Future'
+          ? route.data['title']
+          : route.data['title'] + ' (' + route.data['description'] + ')',
     });
     this.meta.updateTag({
       name: 'description',
