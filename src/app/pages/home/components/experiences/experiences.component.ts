@@ -1,33 +1,27 @@
 import {
   Component,
-  computed,
-  ElementRef,
   inject,
   OnInit,
   signal,
   viewChild,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ElementRef,
 } from '@angular/core';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { Experiences } from './interfaces/experiences';
 import { Button } from '@realm-ui/angular';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'ac-experiences',
-  imports: [Button, NgClass],
+  imports: [Button],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ExperiencesComponent implements OnInit {
   sanityService = inject(SanityService);
   data = signal<Experiences | undefined>(undefined);
-  index = signal(0);
-  experiencesContainer = viewChild<ElementRef>('experiencesContainer');
-  isScrolling = signal(false);
-  canScrollBackward = computed(() => this.index() > 0);
-  canScrollForward = computed(
-    () => this.index() < this.data()!.experiences.length - 1
-  );
+  swiper = viewChild<ElementRef>('swiper');
 
   /**
    * Initializes the component and fetches data from the Sanity service.
@@ -47,58 +41,16 @@ export class ExperiencesComponent implements OnInit {
   }
 
   /**
-   * Scrolls the experiences container forward by one container width.
-   * Prevents rapid consecutive clicks by using a scrolling flag.
+   * Slides to the next slide in the Swiper component.
    */
-  scrollForward(): void {
-    if (this.isScrolling() || !this.canScrollForward()) return; // Prevent rapid consecutive clicks and scrolling beyond the end
-
-    const container = this.experiencesContainer()?.nativeElement;
-    const size = container.clientWidth;
-
-    this.isScrolling.set(true); // Activate scrolling flag
-    container.scrollBy({
-      left: size / 2,
-      behavior: 'smooth',
-    });
-
-    container.addEventListener(
-      'scrollend',
-      () => {
-        if (this.canScrollForward()) {
-          this.index.set(this.index() + 1); // Increment index if possible
-        }
-        this.isScrolling.set(false); // Deactivate scrolling flag
-      },
-      { once: true }
-    );
+  slideNext(): void {
+    this.swiper()?.nativeElement.swiper.slideNext();
   }
 
   /**
-   * Scrolls the experiences container backward by one container width.
-   * Prevents rapid consecutive clicks by using a scrolling flag.
+   * Slides to the previous slide in the Swiper component.
    */
-  scrollBackward(): void {
-    if (this.isScrolling() || !this.canScrollBackward()) return; // Prevent rapid consecutive clicks and scrolling beyond the start
-
-    const container = this.experiencesContainer()?.nativeElement;
-    const size = container.clientWidth;
-
-    this.isScrolling.set(true); // Activate scrolling flag
-    container.scrollBy({
-      left: -size / 2,
-      behavior: 'smooth',
-    });
-
-    container.addEventListener(
-      'scrollend',
-      () => {
-        if (this.canScrollBackward()) {
-          this.index.set(this.index() - 1); // Decrement index if possible
-        }
-        this.isScrolling.set(false); // Deactivate scrolling flag
-      },
-      { once: true }
-    );
+  slidePrev(): void {
+    this.swiper()?.nativeElement.swiper.slidePrev();
   }
 }
