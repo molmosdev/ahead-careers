@@ -58,7 +58,6 @@ export class RouteService {
    */
   setMetaTagsForRoute(route: ActivatedRouteSnapshot) {
     this.projectTitle.setTitle(route.data['title']);
-    console.log(route.data);
     this.meta.updateTag({
       name: 'description',
       content: route.data['description'],
