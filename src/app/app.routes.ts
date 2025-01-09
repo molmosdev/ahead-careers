@@ -9,7 +9,8 @@ export const routes: Routes = [
       title: 'Ahead Careers',
       description:
         'Ahead Careers conecta empresas con el mejor talento y acompaña a profesionales en su próximo reto laboral, ofreciendo asesoramiento personalizado.',
-      keywords: 'carreras, oportunidades, trabajo, Ahead Careers, Eric Olmos',
+      keywords:
+        'carreras, oportunidades, trabajo, Ahead Careers, Eric Olmos, consultoría, selección de personal, selección, talento',
     },
     title: 'Ahead Careers',
   },
