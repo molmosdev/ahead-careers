@@ -1,7 +1,9 @@
 <ac-header />
 <router-outlet />
-@if (isMobile() && isHomePage() && !isOffersCtaVisible()) {
-  <ac-offers-button @fadeInOut />
+@defer (on timer(500ms)) {
+  @if (isMobile() && isHomePage() && !isOffersCtaVisible()) {
+    <ac-offers-button @fadeInOut />
+  }
 }
 <ac-footer />
 <!-- Contact us modal -->
