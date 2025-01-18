@@ -2,16 +2,20 @@
   --blue: #162084;
   --white: #fff;
   --light-grey: #fafafa;
+  --mid-grey: #eeeeee;
   --grey: #798194;
 
   /* realm-ui colors */
   --app-background: var(--white);
   --background: var(--white);
   --foreground: var(--grey);
+  --border-color: var(--mid-grey);
   --primary: var(--blue);
   --primary-foreground: var(--white);
+  --primary-border-color: var(--blue);
   --secondary: var(--light-grey);
   --secondary-foreground: var(--blue);
+  --secondary-border-color: var(--light-grey);
   --error: #fff0f0;
   --error-foreground: #c40000ab;
   --input-background: var(--light-grey);
