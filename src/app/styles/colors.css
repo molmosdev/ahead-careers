@@ -9,7 +9,7 @@
   --app-background: var(--white);
   --background: var(--white);
   --foreground: var(--grey);
-  --border-color: var(--mid-grey);
+  --border-color: transparent;
   --primary: var(--blue);
   --primary-foreground: var(--white);
   --primary-border-color: var(--blue);
