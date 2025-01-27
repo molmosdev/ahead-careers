@@ -3,7 +3,7 @@ import { SanityService } from '../../core/services/sanity.service';
 import { ResponsiveService } from '../../core/services/responsive.service';
 import { TitleAndContent } from '../../shared/interfaces/title-and-content';
 import { GoogleAnalyticsService } from '../../core/services/google-analytics.service';
-import { Button } from '@realm-ui/angular';
+import { Button } from '@rem-ui/angular';
 
 @Component({
   selector: 'ac-cookies',

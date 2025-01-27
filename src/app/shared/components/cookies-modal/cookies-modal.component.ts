@@ -1,5 +1,5 @@
 import { Component, inject, model } from '@angular/core';
-import { Button } from '@realm-ui/angular';
+import { Button } from '@rem-ui/angular';
 import { GoogleAnalyticsService } from '../../../core/services/google-analytics.service';
 import { RouterLink } from '@angular/router';
 

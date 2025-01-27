@@ -10,7 +10,7 @@ import {
   Button,
   InViewportDirective,
   InViewportService,
-} from '@realm-ui/angular';
+} from '@rem-ui/angular';
 import { RouterLink } from '@angular/router';
 import { BusinessDescription } from '../../shared/interfaces/business-description';
 

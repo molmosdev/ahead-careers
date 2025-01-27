@@ -6,7 +6,7 @@ import {
   model,
   signal,
 } from '@angular/core';
-import { Button, Text, Number } from '@realm-ui/angular';
+import { Button, Text, Number } from '@rem-ui/angular';
 import { Offer } from '../../../../../pages/offers/interfaces/offer.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SanityService } from '../../../../../core/services/sanity.service'; // Importa el servicio

@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { SanityService } from '../../../../core/services/sanity.service';
 import { Experiences } from './interfaces/experiences';
-import { Button } from '@realm-ui/angular';
+import { Button } from '@rem-ui/angular';
 
 @Component({
   selector: 'ac-experiences',
