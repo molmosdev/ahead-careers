@@ -29,7 +29,8 @@ export class ExperiencesComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const data: Experiences = await this.sanityService.getDataByType(
       'experiences',
-      true
+      true,
+      []
     );
     this.data.set({
       ...data,

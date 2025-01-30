@@ -23,7 +23,8 @@ export class MethodologyComponent {
     this.data.set(
       (await this.sanityService.getDataByType(
         'methodology',
-        true
+        true,
+        []
       )) as Methodology
     );
   }

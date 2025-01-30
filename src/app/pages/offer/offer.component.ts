@@ -17,7 +17,8 @@ export class OfferComponent implements OnInit {
   routeService = inject(RouteService);
   sanityService = inject(SanityService);
   offer = computed<Offer>(() => {
-    const offer: Offer = this.sanityService.data.value()?.offers[0];
+    const offer: Offer =
+      this.sanityService.data.value() && this.sanityService.data.value()[0];
     this.routeService.setMetaTagsForRoute({
       data: {
         title: offer?.jobTitle,
@@ -29,9 +30,9 @@ export class OfferComponent implements OnInit {
 
   ngOnInit(): void {
     this.sanityService.params.set({
-      type: 'offers',
-      singleton: true,
-      filters: [{ name: 'offerId', value: this.id }],
+      type: 'offer',
+      singleton: false,
+      filters: [{ name: 'offerId', value: Number(this.id) }],
     });
   }
 }

@@ -1,4 +1,11 @@
-import { Component, computed, inject, linkedSignal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  linkedSignal,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { SanityService } from '../../core/services/sanity.service';
 import { Offer } from './interfaces/offer.interface';
 import { Router } from '@angular/router';
@@ -12,11 +19,13 @@ import { NgClass } from '@angular/common';
   templateUrl: './offers.component.html',
   styleUrl: './offers.component.css',
 })
-export class OffersComponent {
+export class OffersComponent implements OnInit {
   router = inject(Router);
   sanityService = inject(SanityService);
-  offers = computed<Offer[]>(() => {
-    const offers: Offer[] = this.sanityService.data.value()?.offers;
+  title = signal<string | undefined>(undefined);
+  offers = signal<Offer[]>([]);
+  formattedOffers = computed(() => {
+    const offers = this.offers();
     return (
       offers &&
       offers
@@ -32,12 +41,9 @@ export class OffersComponent {
   responsiveService = inject(ResponsiveService);
   isMobile = computed(() => this.responsiveService.isMobile());
 
-  constructor() {
-    this.sanityService.params.set({
-      type: 'offers',
-      singleton: true,
-      filters: [],
-    });
+  async ngOnInit() {
+    this.title.set(await this.sanityService.getDataByType('offers', true, []));
+    this.offers.set(await this.sanityService.getDataByType('offer', false, []));
   }
 
   selectOffer(offer: Offer) {

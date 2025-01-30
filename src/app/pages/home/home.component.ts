@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const data: BusinessDescription = await this.sanityService.getDataByType(
       'businessDescription',
-      true
+      true,
+      []
     );
     this.businessDescription.set({
       ...data,

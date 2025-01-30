@@ -25,7 +25,7 @@ export class CookiesComponent implements OnInit {
   );
 
   async ngOnInit(): Promise<void> {
-    const data = await this.sanityService.getDataByType('cookies', true);
+    const data = await this.sanityService.getDataByType('cookies', true, []);
     this.cookies.set({
       ...data,
       content: this.sanityService.transformBlockToHtml(data?.content),

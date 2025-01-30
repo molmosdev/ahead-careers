@@ -1,8 +1,8 @@
-@defer (when offers() && offers().length > 0) {
+@defer (when formattedOffers() && formattedOffers().length > 0) {
   <div class="offers fade-in">
     <h1 [ngClass]="{ center: isMobile() }">Nuestras ofertas</h1>
     <div class="offers-list">
-      @for (offer of offers(); track offer.offerId) {
+      @for (offer of formattedOffers(); track offer.offerId) {
         <div
           class="offer"
           tabindex="0"

@@ -16,7 +16,7 @@ export class ValuesComponent {
 
   async getComponentData() {
     this.data.set(
-      (await this.sanityService.getDataByType('values', true)) as Values
+      (await this.sanityService.getDataByType('values', true, [])) as Values
     );
   }
 
