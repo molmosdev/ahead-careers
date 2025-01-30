@@ -16,6 +16,9 @@ export class OffersComponent {
   router = inject(Router);
   sanityService = inject(SanityService);
   offers = computed<Offer[]>(() => this.sanityService.data.value()?.offers);
+  activeOffers = computed(
+    () => this.offers() && this.offers().filter(offer => offer.isActive)
+  );
   selectedOffer = linkedSignal<Offer>(() => this.offers()[0]);
   responsiveService = inject(ResponsiveService);
   isMobile = computed(() => this.responsiveService.isMobile());
