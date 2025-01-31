@@ -42,6 +42,6 @@ export const serverRoutes: ServerRoute[] = [
 
 async function fetchOfferIds(): Promise<string[]> {
   const sanityService = inject(SanityService);
-  const data = await sanityService.getDataByType('offers', true, []);
+  const data = await sanityService.getDataByType('offer', false, []);
   return data.offers.map((offer: { offerId: string }) => offer.offerId);
 }
