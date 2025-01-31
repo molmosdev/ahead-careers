@@ -30,11 +30,7 @@ export class OffersComponent implements OnInit {
       offers &&
       offers
         .filter(offer => offer.isActive)
-        .sort(
-          (a, b) =>
-            new Date(b.editionDate).getTime() -
-            new Date(a.editionDate).getTime()
-        )
+        .sort((a, b) => a.orderRank.localeCompare(b.orderRank))
     );
   });
   selectedOffer = linkedSignal<Offer>(() => this.offers()[0]);

@@ -11,4 +11,5 @@ export interface Offer {
   editionDate: string;
   offerContent: any;
   isActive: boolean;
+  orderRank: string;
 }
