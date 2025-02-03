@@ -33,7 +33,7 @@ export class OffersComponent implements OnInit {
         .sort((a, b) => a.orderRank.localeCompare(b.orderRank))
     );
   });
-  selectedOffer = linkedSignal<Offer>(() => this.offers()[0]);
+  selectedOffer = linkedSignal<Offer>(() => this.formattedOffers()[0]);
   responsiveService = inject(ResponsiveService);
   isMobile = computed(() => this.responsiveService.isMobile());
 
