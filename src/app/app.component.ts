@@ -16,7 +16,7 @@ import {
   Dialog,
   InViewportService,
   LazyContentDirective,
-} from '@realm-ui/angular';
+} from '@rem-ui/angular';
 import { ResponsiveService } from './core/services/responsive.service';
 import { ContactUsModalService } from './core/services/contact-us-modal.service';
 import { ContactUsModalComponent } from './shared/components/contact-us-modal/contact-us-modal.component';

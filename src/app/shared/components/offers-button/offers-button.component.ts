@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Button } from '@realm-ui/angular';
+import { Button } from '@rem-ui/angular';
 
 @Component({
   selector: 'ac-offers-button',

@@ -1,5 +1,5 @@
 import { effect, inject, Injectable, signal } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
 
@@ -41,13 +41,13 @@ export class GoogleAnalyticsService {
       sameSite: 'Lax',
     });
     this.loadAnalyticsScript();
-    this.router.events.subscribe(event => {
+    /*     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         gtag('config', environment.G_TAG, {
           page_path: event.urlAfterRedirects,
         });
       }
-    });
+    }); */
   }
 
   /**
@@ -61,11 +61,13 @@ export class GoogleAnalyticsService {
 
     const inlineScript = document.createElement('script');
     inlineScript.text = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-    `;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', '${environment.G_TAG}');
+      `;
     document.head.appendChild(inlineScript);
   }
 

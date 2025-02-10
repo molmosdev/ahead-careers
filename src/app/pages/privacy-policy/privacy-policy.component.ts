@@ -16,7 +16,11 @@ export class PrivacyPolicyComponent implements OnInit {
   isMobile = computed(() => this.responsiveService.isMobile());
 
   async ngOnInit(): Promise<void> {
-    const data = await this.sanityService.getDataByType('privacyPolicy', true);
+    const data = await this.sanityService.getDataByType(
+      'privacyPolicy',
+      true,
+      []
+    );
     this.privacyPolicy.set({
       ...data,
       content: this.sanityService.transformBlockToHtml(data?.content),

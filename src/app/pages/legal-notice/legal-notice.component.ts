@@ -16,7 +16,11 @@ export class LegalNoticeComponent implements OnInit {
   isMobile = computed(() => this.responsiveService.isMobile());
 
   async ngOnInit(): Promise<void> {
-    const data = await this.sanityService.getDataByType('legalNotice', true);
+    const data = await this.sanityService.getDataByType(
+      'legalNotice',
+      true,
+      []
+    );
     this.legalNotice.set({
       ...data,
       content: this.sanityService.transformBlockToHtml(data?.content),

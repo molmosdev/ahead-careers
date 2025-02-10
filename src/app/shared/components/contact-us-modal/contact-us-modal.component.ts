@@ -15,7 +15,7 @@ import {
   Select,
   Option,
   Switch,
-} from '@realm-ui/angular';
+} from '@rem-ui/angular';
 import { RequestType } from '../../enums/request-type';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SanityService } from '../../../core/services/sanity.service';

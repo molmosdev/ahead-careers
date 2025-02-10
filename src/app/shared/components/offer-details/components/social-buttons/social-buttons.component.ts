@@ -1,5 +1,5 @@
 import { Component, computed, input, signal } from '@angular/core';
-import { Button, Dialog } from '@realm-ui/angular';
+import { Button, Dialog } from '@rem-ui/angular';
 import { Offer } from '../../../../../pages/offers/interfaces/offer.interface';
 
 @Component({

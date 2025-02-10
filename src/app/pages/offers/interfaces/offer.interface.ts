@@ -1,7 +1,6 @@
 export interface Offer {
   consultantName: string;
   contractType: string;
-  consultantSelection: string;
   jobTitle: string;
   offerId: number;
   location: string;
@@ -11,4 +10,6 @@ export interface Offer {
   publicationDate: string;
   editionDate: string;
   offerContent: any;
+  isActive: boolean;
+  orderRank: string;
 }

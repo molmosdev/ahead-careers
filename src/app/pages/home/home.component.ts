@@ -10,7 +10,7 @@ import {
   Button,
   InViewportDirective,
   InViewportService,
-} from '@realm-ui/angular';
+} from '@rem-ui/angular';
 import { RouterLink } from '@angular/router';
 import { BusinessDescription } from '../../shared/interfaces/business-description';
 
@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const data: BusinessDescription = await this.sanityService.getDataByType(
       'businessDescription',
-      true
+      true,
+      []
     );
     this.businessDescription.set({
       ...data,

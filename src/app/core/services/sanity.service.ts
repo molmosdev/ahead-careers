@@ -19,29 +19,61 @@ export class SanityService {
     | {
         type: string;
         singleton: boolean;
-        filters: { name: string; value: string }[];
+        filters: { name: string; value: string | number }[];
       }
     | undefined
   >(undefined);
+
   data = resource({
     request: this.params,
     loader: async ({ request: params }) => {
       if (params) {
-        let query = `*[_type == "${params.type}"]`;
+        let query = `*[_type == "${params.type}"`;
+
         if (params.filters && params.filters.length > 0) {
           const filtersQuery = params.filters
-            .map(filter => `${filter.name} == ${filter.value}`)
+            .map(filter => {
+              const value =
+                typeof filter.value === 'number'
+                  ? filter.value
+                  : `"${filter.value}"`;
+              return `${filter.name} == ${value}`;
+            })
             .join(' && ');
-          query += ` { "${params.type}": ${params.type}[${filtersQuery}] }`;
+
+          query += ` && ${filtersQuery}`;
         }
+
+        query += `]`;
+
         const data = await this.client.fetch(query);
         return params.singleton ? data[0] : data;
       }
     },
   });
 
-  async getDataByType(type: string, singleton = false): Promise<any> {
-    const query = `*[_type == "${type}"]`;
+  async getDataByType(
+    type: string,
+    singleton: boolean,
+    filters: { name: string; value: string }[]
+  ): Promise<any> {
+    let query = `*[_type == "${type}"`;
+
+    if (filters && filters.length > 0) {
+      const filtersQuery = filters
+        .map(filter => {
+          const value =
+            typeof filter.value === 'number'
+              ? filter.value
+              : `"${filter.value}"`;
+          return `${filter.name} == ${value}`;
+        })
+        .join(' && ');
+
+      query += ` && ${filtersQuery}`;
+    }
+
+    query += `]`;
     const data = await this.client.fetch(query);
     return singleton ? data[0] : data;
   }

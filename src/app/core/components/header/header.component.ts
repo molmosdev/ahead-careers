@@ -1,5 +1,5 @@
 import { Component, computed, inject, linkedSignal } from '@angular/core';
-import { Button, InViewportService } from '@realm-ui/angular';
+import { Button, InViewportService } from '@rem-ui/angular';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RouteService } from '../../services/route.service';
 import { Path } from '../../../shared/enums/path';

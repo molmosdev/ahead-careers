@@ -67,7 +67,10 @@ export class RouteService {
     this.meta.updateTag({
       name: 'title',
       property: 'og:title',
-      content: route.data['title'] + ' (' + route.data['description'] + ')',
+      content:
+        route.data['title'] === 'Ahead Careers - Shaping Your Future'
+          ? route.data['title']
+          : route.data['title'] + ' (' + route.data['description'] + ')',
     });
     this.meta.updateTag({
       name: 'description',
