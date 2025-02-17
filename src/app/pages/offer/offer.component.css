@@ -26,4 +26,10 @@
       }
     }
   }
+
+  .offer-not-active {
+    text-align: center;
+    margin-inline: auto;
+    margin-top: 10dvh;
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, computed, inject, Input, OnInit } from '@angular/core';
 import { SanityService } from '../../core/services/sanity.service';
 import { Button } from '@rem-ui/angular';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Offer } from '../offers/interfaces/offer.interface';
 import { OfferDetailsComponent } from '../../shared/components/offer-details/offer-details.component';
 import { RouteService } from '../../core/services/route.service';
@@ -27,6 +27,8 @@ export class OfferComponent implements OnInit {
     } as any);
     return offer;
   });
+  isActive = computed(() => this.offer().isActive);
+  router = inject(Router);
 
   ngOnInit(): void {
     this.sanityService.params.set({
